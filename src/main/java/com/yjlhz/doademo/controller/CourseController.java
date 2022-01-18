@@ -38,11 +38,11 @@ public class CourseController {
 //    public void updateCourseById(Course course){
 //        courseMapper.updateCourseById(course);
 //    }
-
-    @GetMapping("/deleteCourseById")
-    public void deleteCourseById(Integer courseId){
-        courseMapper.deleteCourseById(courseId);
-    }
+//
+//    @GetMapping("/deleteCourseById")
+//    public void deleteCourseById(Integer courseId){
+//        courseMapper.deleteCourseById(courseId);
+//    }
 
     @GetMapping("/queryCourserByName")
     public Course queryCourserByName(String courseName){

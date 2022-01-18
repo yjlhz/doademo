@@ -14,11 +14,11 @@ public interface CourseMapper {
 
     Course queryCourseById(Integer courseId);
 
-    void addCourse(Course course);
+    int addCourse(Course course);
 
-    void updateCourseById(Course course);
+    int updateCourseById(Course course);
 
-    void deleteCourseById(Integer courseId);
+    int deleteCourseById(Integer courseId);
 
     Course queryCourserByName(String courseName);
 
