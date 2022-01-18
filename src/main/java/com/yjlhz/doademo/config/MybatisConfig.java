@@ -1,5 +1,6 @@
 package com.yjlhz.doademo.config;
 
+import org.apache.ibatis.logging.stdout.StdOutImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tk.mybatis.mapper.autoconfigure.ConfigurationCustomizer;
@@ -13,6 +14,7 @@ public class MybatisConfig {
             @Override
             public void customize(org.apache.ibatis.session.Configuration configuration) {
                 configuration.setMapUnderscoreToCamelCase(true);
+                configuration.setLogImpl(new StdOutImpl("").getClass());
             }
         };
     }

@@ -1,7 +1,10 @@
 com\yjlhz\doademo\config\MybatisConfig.class
+com\yjlhz\doademo\vo\ResultVO.class
 com\yjlhz\doademo\mapper\CourseMapper.class
+com\yjlhz\doademo\utils\ResultVOUtil.class
 com\yjlhz\doademo\controller\CourseController.class
 com\yjlhz\doademo\DoademoApplication.class
+com\yjlhz\doademo\enums\ResultEnum.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
 com\yjlhz\doademo\config\SwaggerConfig.class
 com\yjlhz\doademo\pojo\Course.class

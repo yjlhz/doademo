@@ -12,4 +12,14 @@ public interface CourseMapper {
 
     List<Course> queryCourseList();
 
+    Course queryCourseById(Integer courseId);
+
+    void addCourse(Course course);
+
+    void updateCourseById(Course course);
+
+    void deleteCourseById(Integer courseId);
+
+    Course queryCourserByName(String courseName);
+
 }
