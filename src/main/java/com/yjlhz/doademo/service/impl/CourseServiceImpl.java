@@ -1,0 +1,38 @@
+package com.yjlhz.doademo.service.impl;
+
+import com.yjlhz.doademo.enums.ResultEnum;
+import com.yjlhz.doademo.form.CourseForm;
+import com.yjlhz.doademo.mapper.CourseMapper;
+import com.yjlhz.doademo.pojo.Course;
+import com.yjlhz.doademo.service.CourseService;
+import com.yjlhz.doademo.utils.ResultVOUtil;
+import com.yjlhz.doademo.vo.ResultVO;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * @author lhz
+ * @title: CourseServiceImpl
+ * @projectName doademo
+ * @description: 课程信息实现类
+ * @date 2022/1/20 23:57
+ */
+@Service
+public class CourseServiceImpl implements CourseService {
+
+    @Autowired
+    private CourseMapper courseMapper;
+
+    @Override
+    public ResultVO addCourse(CourseForm courseForm) {
+        Course course = new Course();
+        BeanUtils.copyProperties(courseForm,course);
+        int res = courseMapper.addCourse(course);
+        if (res == -1){
+            ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
+
+}
