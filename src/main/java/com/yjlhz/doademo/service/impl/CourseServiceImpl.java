@@ -11,6 +11,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+
 /**
  * @author lhz
  * @title: CourseServiceImpl
@@ -34,5 +37,49 @@ public class CourseServiceImpl implements CourseService {
         }
         return ResultVOUtil.success();
     }
+
+    @Override
+    public ResultVO updateCourse(CourseForm courseForm) {
+        Course course = courseMapper.queryCourserByName(courseForm.getCourseName());
+        BeanUtils.copyProperties(courseForm,course);
+        int res = courseMapper.updateCourseById(course);
+        if (res == -1){
+            ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
+
+    @Override
+    public ResultVO deleteCourse(String courseName) {
+        Course course = courseMapper.queryCourserByName(courseName);
+        if (course==null){
+            return ResultVOUtil.error(ResultEnum.NULLPOINT_ERROR);
+        }
+        int res = courseMapper.deleteCourseById(course.getCourseId());
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
+
+    @Override
+    public ResultVO queryCourseByName(String courseName) {
+        Course course = courseMapper.queryCourserByName(courseName);
+        if (course == null){
+            return ResultVOUtil.error(ResultEnum.NULLPOINT_ERROR);
+        }
+        return ResultVOUtil.success(course);
+    }
+
+    @Override
+    public ResultVO queryCourses() {
+        List<Course> courseList = courseMapper.queryCourseList();
+        return ResultVOUtil.success(courseList);
+    }
+
+//    @Override
+//    public ResultVO queryCoursesByCredit(Double CourseCredit) {
+//        List<Course> courseList = new ArrayList<>();
+//    }
 
 }

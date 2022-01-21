@@ -22,45 +22,36 @@ import java.util.List;
 public class CourseController {
 
     @Autowired
-    private CourseMapper courseMapper;
-
-    @Autowired
     private CourseService courseService;
 
     @GetMapping("/queryCourseList")
-    public List<Course> queryCourseList(){
-        List<Course> courses = courseMapper.queryCourseList();
-        for (Course course : courses){
-            System.out.println(course);
-        }
-        return courses;
-    }
-
-    @GetMapping("/queryCourseById")
-    public Course queryCourseById(Integer courseId){
-        return courseMapper.queryCourseById(courseId);
+    public ResultVO queryCourseList(){
+        return courseService.queryCourses();
     }
 
     @PostMapping("/addCourse")
     public ResultVO addCourse(@Valid CourseForm courseForm, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
-            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+            return ResultVOUtil.error(ResultEnum.PARAMETER_ERROR);
         }
         return courseService.addCourse(courseForm);
     }
-//
-//    @PostMapping("/updateCourseById")
-//    public void updateCourseById(Course course){
-//        courseMapper.updateCourseById(course);
-//    }
-//
-//    @GetMapping("/deleteCourseById")
-//    public void deleteCourseById(Integer courseId){
-//        courseMapper.deleteCourseById(courseId);
-//    }
+
+    @PostMapping("/updateCourse")
+    public ResultVO updateCourseById(@Valid CourseForm courseForm,BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return ResultVOUtil.error(ResultEnum.PARAMETER_ERROR);
+        }
+        return courseService.updateCourse(courseForm);
+    }
+
+    @GetMapping("/deleteCourse")
+    public ResultVO deleteCourse(String courseName){
+        return courseService.deleteCourse(courseName);
+    }
 
     @GetMapping("/queryCourserByName")
-    public Course queryCourserByName(String courseName){
-        return courseMapper.queryCourserByName(courseName);
+    public ResultVO queryCourserByName(String courseName){
+        return courseService.queryCourseByName(courseName);
     }
 }
