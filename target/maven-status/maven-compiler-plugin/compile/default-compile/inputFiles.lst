@@ -4,11 +4,14 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\FirstRequir
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\CourseController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\CourseService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\StudentProblem.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\MajorServiceImpl.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\MvcConfig.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Student.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\PlanMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\SwaggerConfig.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\PlanCourseMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\enums\ResultEnum.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\MajorForm.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Course.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\MybatisConfig.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\ProblemMapper.java
@@ -17,6 +20,8 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\StudentMa
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\CourseForm.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\helloController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\StudentCourse.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\MajorService.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\UpLoadConfig.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\CourseMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\CourseServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\PlanRequirement.java
@@ -28,10 +33,12 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Plan.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\StudentProblemMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\PlanCourse.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Major.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\CourseDTO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\SecondRequirementMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\FirstRequirementMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\SecondRequirement.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\CourseScoreMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\StudentCourseMapper.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\CourseListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\ExamineMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Examine.java

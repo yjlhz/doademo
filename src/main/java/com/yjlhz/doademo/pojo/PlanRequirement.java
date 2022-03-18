@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author lhz
  * @title: PlanRequirement
  * @projectName doademo
- * @description: 教学计划指定一级指标点
+ * @description: 教学计划指定二级指标点
  * @date 2022/1/2421:20
  */
 

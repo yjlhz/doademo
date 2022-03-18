@@ -1,6 +1,7 @@
 package com.yjlhz.doademo.mapper;
 
 import com.yjlhz.doademo.pojo.Course;
+import com.yjlhz.doademo.pojo.CourseDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -21,5 +22,12 @@ public interface CourseMapper {
     int deleteCourseById(Integer courseId);
 
     Course queryCourserByName(String courseName);
+
+    /**
+     * 导入excel中数据
+     * @param record
+     * @return
+     */
+    int upload(CourseDTO record);
 
 }

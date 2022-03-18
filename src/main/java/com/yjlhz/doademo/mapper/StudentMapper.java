@@ -1,7 +1,10 @@
 package com.yjlhz.doademo.mapper;
 
+import com.yjlhz.doademo.pojo.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author lhz
@@ -13,5 +16,14 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface StudentMapper {
+    List<Student> queryStudentList();
+
+    Student queryStudentById(String sNum);
+
+    int addStudent(Student student);
+
+    int updateStudentById(Student student);
+
+    int deleteStudentById(String sNum);
 
 }
