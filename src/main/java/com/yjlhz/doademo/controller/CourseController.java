@@ -30,7 +30,7 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @PostMapping("/myUpload")
+    @PostMapping("/upload")
     @ApiOperation("批量上传课程")
     ResultVO uploadCourse(@RequestParam(value = "file", required = false) MultipartFile file) {
         return courseService.uploadCourse(file);
