@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController
@@ -29,6 +30,12 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @GetMapping("/export")
+    @ApiOperation("批量导出课程")
+    void exportCourse(HttpServletResponse response){
+        courseService.exportCourse(response);
+    }
 
     @PostMapping("/upload")
     @ApiOperation("批量上传课程")

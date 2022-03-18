@@ -1,6 +1,8 @@
 package com.yjlhz.doademo.service.impl;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.write.metadata.style.WriteCellStyle;
+import com.alibaba.excel.write.style.HorizontalCellStyleStrategy;
 import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.CourseForm;
 import com.yjlhz.doademo.listener.CourseListener;
@@ -10,12 +12,16 @@ import com.yjlhz.doademo.pojo.CourseDTO;
 import com.yjlhz.doademo.service.CourseService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -90,6 +96,38 @@ public class CourseServiceImpl implements CourseService {
             e.printStackTrace();
         }
         return ResultVOUtil.success();
+    }
+
+    @Override
+    public void exportCourse(HttpServletResponse response) {
+        try {
+            List<Course> dataLists = courseMapper.queryCourseList();
+            List<CourseDTO> dataList = new ArrayList<>();
+            for (Course course : dataLists){
+                CourseDTO courseDTO = new CourseDTO();
+                courseDTO.setCourseName(course.getCourseName());
+                courseDTO.setCourseCredit(course.getCourseCredit());
+                dataList.add(courseDTO);
+            }
+            WriteCellStyle headWriteCellStyle = new WriteCellStyle();
+            //设置头居中
+            headWriteCellStyle.setHorizontalAlignment(HorizontalAlignment.CENTER);
+            //内容策略
+            WriteCellStyle contentWriteCellStyle = new WriteCellStyle();
+            //设置 水平居中
+            contentWriteCellStyle.setHorizontalAlignment(HorizontalAlignment.LEFT);
+            HorizontalCellStyleStrategy horizontalCellStyleStrategy = new HorizontalCellStyleStrategy(headWriteCellStyle, contentWriteCellStyle);
+            response.setContentType("application/vnd.ms-excel;charset=utf-8");
+            //response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.setCharacterEncoding("utf-8");
+            // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
+            String fileName = URLEncoder.encode("课程信息表", "UTF-8");
+            response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
+            // 这里需要设置不关闭流
+            EasyExcel.write(response.getOutputStream(), CourseDTO.class).autoCloseStream(Boolean.FALSE).registerWriteHandler(horizontalCellStyleStrategy).sheet("课程信息表").doWrite(dataList);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 //    @Override

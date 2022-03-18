@@ -4,6 +4,8 @@ import com.yjlhz.doademo.form.CourseForm;
 import com.yjlhz.doademo.vo.ResultVO;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+
 public interface CourseService {
 
     ResultVO addCourse(CourseForm courseForm);
@@ -22,6 +24,11 @@ public interface CourseService {
      * @return
      */
     ResultVO uploadCourse(MultipartFile multipartFile);
+
+    /**
+     * 批量导出课程
+     */
+    void exportCourse(HttpServletResponse response);
 
 //    ResultVO queryCoursesByCredit(Double CourseCredit);
 }
