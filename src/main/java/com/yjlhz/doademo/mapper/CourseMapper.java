@@ -1,7 +1,7 @@
 package com.yjlhz.doademo.mapper;
 
 import com.yjlhz.doademo.pojo.Course;
-import com.yjlhz.doademo.pojo.CourseDTO;
+import com.yjlhz.doademo.dto.CourseDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

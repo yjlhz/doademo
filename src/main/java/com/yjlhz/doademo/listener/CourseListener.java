@@ -4,7 +4,7 @@ import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.fastjson.JSON;
 import com.yjlhz.doademo.mapper.CourseMapper;
-import com.yjlhz.doademo.pojo.CourseDTO;
+import com.yjlhz.doademo.dto.CourseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -8,7 +8,7 @@ import com.yjlhz.doademo.form.CourseForm;
 import com.yjlhz.doademo.listener.CourseListener;
 import com.yjlhz.doademo.mapper.CourseMapper;
 import com.yjlhz.doademo.pojo.Course;
-import com.yjlhz.doademo.pojo.CourseDTO;
+import com.yjlhz.doademo.dto.CourseDTO;
 import com.yjlhz.doademo.service.CourseService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;

@@ -24,7 +24,7 @@
         delete from course
         where course_id = #{courseId,jdbcType=INTEGER}
     </delete>
-    <insert id="upload" parameterType="CourseDTO">
+    <insert id="upload" parameterType="com.yjlhz.doademo.dto.CourseDTO">
     insert into course (course_name,course_credit)
     value (#{courseName,jdbcType=VARCHAR}, #{courseCredit,jdbcType=DOUBLE})
     </insert>
