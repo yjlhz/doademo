@@ -8,6 +8,7 @@ com\yjlhz\doademo\service\impl\StudentServiceImpl.class
 com\yjlhz\doademo\DoademoApplication.class
 com\yjlhz\doademo\mapper\ExamineMapper.class
 com\yjlhz\doademo\pojo\PlanRequirement.class
+com\yjlhz\doademo\form\FirstRequirementForm.class
 com\yjlhz\doademo\form\MajorForm.class
 com\yjlhz\doademo\form\StudentForm.class
 com\yjlhz\doademo\mapper\CourseScoreMapper.class
@@ -26,6 +27,8 @@ com\yjlhz\doademo\pojo\SecondRequirement.class
 com\yjlhz\doademo\mapper\MajorMapper.class
 com\yjlhz\doademo\service\PlanService.class
 com\yjlhz\doademo\enums\ResultEnum.class
+com\yjlhz\doademo\service\FirstRequirementService.class
+com\yjlhz\doademo\service\impl\FirstRequirementImpl.class
 com\yjlhz\doademo\controller\PlanController.class
 com\yjlhz\doademo\config\SwaggerConfig.class
 com\yjlhz\doademo\config\MvcConfig.class
@@ -44,6 +47,7 @@ com\yjlhz\doademo\mapper\CourseMapper.class
 com\yjlhz\doademo\utils\ResultVOUtil.class
 com\yjlhz\doademo\pojo\Major.class
 com\yjlhz\doademo\pojo\Student.class
+com\yjlhz\doademo\controller\FirstRequirementController.class
 com\yjlhz\doademo\mapper\PlanRequirementMapper.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
 com\yjlhz\doademo\config\UpLoadConfig.class

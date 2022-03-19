@@ -23,7 +23,7 @@ public class Student implements Serializable {
 
     private String sName;
 
-    private Integer gender;
+    private Integer gender;//0:女 1:男
 
     private String major;
 

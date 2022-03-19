@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yjlhz.doademo.mapper.FirstRequirementMapper" >
-
+    <select id="queryFirstRequirementList" resultType="FirstRequirement">
+        select id,first_requirement_no,description from first_requirement
+    </select>
+    <insert id="addFirstRequirement" parameterType="FirstRequirement">
+        insert into first_requirement (id,first_requirement_no,description)
+        value (#{id,jdbcType=INTEGER}, #{firstRequirementNo,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateFirstRequirementById" parameterType="FirstRequirement">
+        update first_requirement
+        set first_requirement_no = #{firstRequirementNo,jdbcType=INTEGER},
+        description= #{description,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteFirstRequirementById" parameterType="java.lang.Integer">
+        delete from first_requirement
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
 </mapper>
