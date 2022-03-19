@@ -1,7 +1,10 @@
 package com.yjlhz.doademo.mapper;
 
+import com.yjlhz.doademo.pojo.Examine;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author lhz
@@ -13,5 +16,9 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface ExamineMapper {
+
+    List<Examine> queryExamineByPlanCourseId(Integer id);
+
+    int addExamine(Examine examine);
 
 }
