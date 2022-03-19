@@ -58,4 +58,5 @@ com\yjlhz\doademo\config\UpLoadConfig.class
 com\yjlhz\doademo\pojo\PlanCourse.class
 com\yjlhz\doademo\pojo\CourseScore.class
 com\yjlhz\doademo\pojo\Course.class
+com\yjlhz\doademo\controller\MajorController.class
 com\yjlhz\doademo\controller\helloController.class

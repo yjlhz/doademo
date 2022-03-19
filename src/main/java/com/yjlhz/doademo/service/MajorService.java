@@ -14,4 +14,6 @@ public interface MajorService {
 
     ResultVO addMajor(MajorForm majorForm);
 
+    ResultVO queryMajors();
+
 }

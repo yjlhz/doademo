@@ -11,6 +11,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author lhz
  * @title: MajorServiceImpl
@@ -34,5 +36,11 @@ public class MajorServiceImpl implements MajorService {
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
         }
         return ResultVOUtil.success();
+    }
+
+    @Override
+    public ResultVO queryMajors() {
+        List<Major> majorList = majorMapper.queryMajorList();
+        return ResultVOUtil.success(majorList);
     }
 }
