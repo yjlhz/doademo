@@ -6,7 +6,7 @@
     </select>
     <insert id="addFirstRequirement" parameterType="FirstRequirement">
         insert into first_requirement (id,first_requirement_no,description)
-        value (#{id,jdbcType=INTEGER}, #{firstRequirementNo,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+        value (#{id,jdbcType=INTEGER}, #{firstRequirementNo,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
     </insert>
     <update id="updateFirstRequirementById" parameterType="FirstRequirement">
         update first_requirement

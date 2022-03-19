@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yjlhz.doademo.mapper.SecondRequirementMapper" >
-
+    <select id="querySecondRequirementList" resultType="SecondRequirement">
+        select id,first_requirement_no,second_requirement_no,description from second_requirement
+    </select>
+    <insert id="addSecondRequirement" parameterType="SecondRequirement">
+        insert into second_requirement (id,first_requirement_no,second_requirement_no,description)
+        value (#{id,jdbcType=INTEGER}, #{firstRequirementNo,jdbcType=INTEGER}, #{secondRequirementNo,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateSecondRequirementById" parameterType="SecondRequirement">
+        update second_requirement
+        set first_requirement_no = #{firstRequirementNo,jdbcType=INTEGER},
+        second_requirement_no = #{secondRequirementNo,jdbcType=VARCHAR},
+        description= #{description,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteSecondRequirementById" parameterType="java.lang.Integer">
+        delete from second_requirement
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
 </mapper>

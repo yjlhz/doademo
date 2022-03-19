@@ -23,7 +23,7 @@ public class SecondRequirement implements Serializable {
 
     private Integer firstRequirementNo;
 
-    private Integer secondRequirementNo;
+    private String secondRequirementNo;
 
     private String description;
 
