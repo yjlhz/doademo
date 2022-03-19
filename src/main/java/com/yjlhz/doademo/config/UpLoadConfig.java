@@ -10,7 +10,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
  * @author lhz
  * @title: UpLoadConfig
  * @projectName doademo
- * @description: TODO
+ * @description: 文件上传配置类
  * @date 2022/3/18 17:03
  */
 @EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class})
