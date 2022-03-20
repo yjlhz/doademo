@@ -1,7 +1,10 @@
 package com.yjlhz.doademo.mapper;
 
+import com.yjlhz.doademo.pojo.Problem;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author lhz
@@ -13,5 +16,9 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface ProblemMapper {
+
+    List<Problem> queryProblemByExamineId(Integer id);
+
+    int addProblem(Problem problem);
 
 }
