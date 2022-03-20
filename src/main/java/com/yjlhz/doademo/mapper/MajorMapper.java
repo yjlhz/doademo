@@ -1,5 +1,7 @@
 package com.yjlhz.doademo.mapper;
 
+import com.yjlhz.doademo.dto.CourseDTO;
+import com.yjlhz.doademo.dto.MajorDTO;
 import com.yjlhz.doademo.pojo.Major;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -25,5 +27,12 @@ public interface MajorMapper {
     Major queryMajorById(Integer id);
 
     int addMajor(Major major);
+
+    /**
+     * 导入excel中数据
+     * @param record
+     * @return
+     */
+    int upload(MajorDTO record);
 
 }

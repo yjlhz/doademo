@@ -14,4 +14,8 @@
         insert into major (id,major_name)
         value (#{id,jdbcType=INTEGER}, #{majorName,jdbcType=VARCHAR})
     </insert>
+    <insert id="upload" parameterType="com.yjlhz.doademo.dto.MajorDTO">
+    insert into major (major_name)
+    value (#{majorName,jdbcType=VARCHAR})
+    </insert>
 </mapper>
