@@ -49,6 +49,7 @@ com\yjlhz\doademo\service\impl\CourseServiceImpl.class
 com\yjlhz\doademo\form\PlanForm.class
 com\yjlhz\doademo\dto\CourseDTO.class
 com\yjlhz\doademo\pojo\Plan.class
+com\yjlhz\doademo\controller\testListener.class
 com\yjlhz\doademo\controller\SecondRequirementController.class
 com\yjlhz\doademo\service\CourseService.class
 com\yjlhz\doademo\dto\MajorDTO.class
@@ -62,6 +63,7 @@ com\yjlhz\doademo\pojo\Major.class
 com\yjlhz\doademo\pojo\Student.class
 com\yjlhz\doademo\controller\FirstRequirementController.class
 com\yjlhz\doademo\service\ExamineService.class
+com\yjlhz\doademo\controller\test.class
 com\yjlhz\doademo\mapper\PlanRequirementMapper.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
 com\yjlhz\doademo\config\UpLoadConfig.class
