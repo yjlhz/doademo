@@ -4,18 +4,26 @@
     <select id="queryFirstRequirementList" resultType="FirstRequirement">
         select id,first_requirement_no,description from first_requirement
     </select>
+    <select id="queryFirstRequirementByNo" resultType="FirstRequirement">
+        select id,first_requirement_no,description from first_requirement
+        where first_requirement_no = #{FirstRequirementNo,jdbcType=INTEGER}
+    </select>
     <insert id="addFirstRequirement" parameterType="FirstRequirement">
         insert into first_requirement (id,first_requirement_no,description)
         value (#{id,jdbcType=INTEGER}, #{firstRequirementNo,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
     </insert>
-    <update id="updateFirstRequirementById" parameterType="FirstRequirement">
+    <update id="updateFirstRequirement" parameterType="FirstRequirement">
         update first_requirement
         set first_requirement_no = #{firstRequirementNo,jdbcType=INTEGER},
         description= #{description,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <delete id="deleteFirstRequirementById" parameterType="java.lang.Integer">
+    <delete id="deleteFirstRequirementByNo" parameterType="java.lang.Integer">
         delete from first_requirement
-        where id = #{id,jdbcType=INTEGER}
+        where first_requirement_no = #{FirstRequirementNo,jdbcType=INTEGER}
     </delete>
+    <insert id="uploadFirstRequirement" parameterType="com.yjlhz.doademo.dto.FirstRequirementDTO">
+    insert into first_requirement (first_requirement_no,description)
+    value (#{firstRequirementNo,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
+    </insert>
 </mapper>

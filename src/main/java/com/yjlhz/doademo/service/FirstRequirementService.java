@@ -2,6 +2,9 @@ package com.yjlhz.doademo.service;
 
 import com.yjlhz.doademo.form.FirstRequirementForm;
 import com.yjlhz.doademo.vo.ResultVO;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author lhz
@@ -16,8 +19,20 @@ public interface FirstRequirementService {
 
     ResultVO addFirstRequirement(FirstRequirementForm firstRequirementForm);
 
-    ResultVO updateFirstRequirementById(Integer id);
+    ResultVO updateFirstRequirement(FirstRequirementForm firstRequirementForm);
 
-    ResultVO deleteFirstRequirement(Integer id);
+    ResultVO deleteFirstRequirementByNo(Integer no);
+
+    /**
+     * 通过文件新增一级指标点
+     * @param multipartFile
+     * @return
+     */
+    ResultVO uploadFirstRequirement(MultipartFile multipartFile);
+
+    /**
+     * 批量导出一级指标点
+     */
+    void exportFirstRequirement(HttpServletResponse response);
 
 }
