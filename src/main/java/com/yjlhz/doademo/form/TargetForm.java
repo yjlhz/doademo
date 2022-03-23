@@ -17,7 +17,7 @@ public class TargetForm {
 
     private Integer targetNo;
 
-    private Integer planId;
+    private Integer planCourseId;
 
     private String description;
 

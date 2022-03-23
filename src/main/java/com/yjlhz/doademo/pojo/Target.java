@@ -27,7 +27,7 @@ public class Target implements Serializable {
 
     private Integer targetNo;
 
-    private Integer planId;
+    private Integer planCourseId;
 
     private String description;
 
