@@ -32,7 +32,7 @@ public interface FirstRequirementMapper {
     int deleteFirstRequirementByNo(Integer no);
 
     /**
-     * 通过文件新增课程
+     * 通过文件新增一级指标点
      * @param record
      * @return
      */

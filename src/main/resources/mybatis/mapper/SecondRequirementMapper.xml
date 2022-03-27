@@ -15,8 +15,16 @@
         description= #{description,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <delete id="deleteSecondRequirementById" parameterType="java.lang.Integer">
+    <delete id="deleteSecondRequirementByNo" parameterType="java.lang.String">
         delete from second_requirement
-        where id = #{id,jdbcType=INTEGER}
+        where second_requirement_no = #{secondRequirementNo,jdbcType=VARCHAR}
     </delete>
+    <select id="querySecondRequirementByNo" resultType="SecondRequirement">
+        select id,first_requirement_no,second_requirement_no,description from second_requirement
+        where second_requirement_no = #{secondRequirementNo,jdbcType=VARCHAR}
+    </select>
+    <insert id="uploadSecondRequirement" parameterType="com.yjlhz.doademo.dto.SecondRequirementDTO">
+    insert into second_requirement (first_requirement_no,second_requirement_no,description)
+    value (#{firstRequirementNo,jdbcType=INTEGER}, #{secondRequirementNo,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR})
+    </insert>
 </mapper>

@@ -35,13 +35,13 @@ public class FirstRequirementController {
 
     @PostMapping("/uploadFirstRequirement")
     @ApiOperation("批量上传一级指标点")
-    ResultVO uploadCourse(@RequestParam(value = "file", required = false) MultipartFile file) {
+    ResultVO upload(@RequestParam(value = "file", required = false) MultipartFile file) {
         return firstRequirementService.uploadFirstRequirement(file);
     }
 
     @GetMapping("/exportFirstRequirement")
     @ApiOperation("批量导出一级指标点")
-    void exportCourse(HttpServletResponse response){
+    void export(HttpServletResponse response){
         firstRequirementService.exportFirstRequirement(response);
     }
 
