@@ -17,7 +17,8 @@
     <update id="updateCourseById" parameterType="Course">
         update course
         set course_credit = #{courseCredit,jdbcType=DOUBLE},
-        course_name= #{courseName,jdbcType=VARCHAR}
+        course_name= #{courseName,jdbcType=VARCHAR},
+        course_id = #{courseId,jdbcType=INTEGER}
         where course_id = #{courseId,jdbcType=INTEGER}
     </update>
     <delete id="deleteCourseById" parameterType="java.lang.Integer">
@@ -25,7 +26,7 @@
         where course_id = #{courseId,jdbcType=INTEGER}
     </delete>
     <insert id="upload" parameterType="com.yjlhz.doademo.dto.CourseDTO">
-    insert into course (course_name,course_credit)
-    value (#{courseName,jdbcType=VARCHAR}, #{courseCredit,jdbcType=DOUBLE})
+    insert into course (course_id,course_name,course_credit)
+    value (#{courseId,jdbcType=INTEGER},#{courseName,jdbcType=VARCHAR}, #{courseCredit,jdbcType=DOUBLE})
     </insert>
 </mapper>

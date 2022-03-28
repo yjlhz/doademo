@@ -39,6 +39,11 @@ public class CourseServiceImpl implements CourseService {
     private CourseMapper courseMapper;
 
     @Override
+    public ResultVO queryCourseById(Integer courseId) {
+        return ResultVOUtil.success(courseMapper.queryCourseById(courseId));
+    }
+
+    @Override
     public ResultVO addCourse(CourseForm courseForm) {
         Course course = new Course();
         BeanUtils.copyProperties(courseForm,course);
@@ -51,7 +56,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public ResultVO updateCourse(CourseForm courseForm) {
-        Course course = courseMapper.queryCourserByName(courseForm.getCourseName());
+        Course course = courseMapper.queryCourseById(courseForm.getCourseId());
         BeanUtils.copyProperties(courseForm,course);
         int res = courseMapper.updateCourseById(course);
         if (res == -1){
@@ -61,12 +66,8 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public ResultVO deleteCourse(String courseName) {
-        Course course = courseMapper.queryCourserByName(courseName);
-        if (course==null){
-            return ResultVOUtil.error(ResultEnum.NULLPOINT_ERROR);
-        }
-        int res = courseMapper.deleteCourseById(course.getCourseId());
+    public ResultVO deleteCourse(Integer courseId) {
+        int res = courseMapper.deleteCourseById(courseId);
         if (res == -1){
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
         }
@@ -105,6 +106,7 @@ public class CourseServiceImpl implements CourseService {
             List<CourseDTO> dataList = new ArrayList<>();
             for (Course course : dataLists){
                 CourseDTO courseDTO = new CourseDTO();
+                courseDTO.setCourseId(course.getCourseId());
                 courseDTO.setCourseName(course.getCourseName());
                 courseDTO.setCourseCredit(course.getCourseCredit());
                 dataList.add(courseDTO);

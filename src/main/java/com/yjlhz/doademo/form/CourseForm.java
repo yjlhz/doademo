@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class CourseForm {
 
+    private Integer courseId;
+
     private String courseName;
 
     private Double courseCredit;

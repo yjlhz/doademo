@@ -17,10 +17,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CourseDTO {
 
-    @ExcelProperty(value = "课程名称",index = 0)
+    @ExcelProperty(value = "课程编号",index = 0)
+    private Integer courseId;
+
+    @ExcelProperty(value = "课程名称",index = 1)
     private String courseName;
 
-    @ExcelProperty(value = "课程学分",index = 1)
+    @ExcelProperty(value = "课程学分",index = 2)
     private Double courseCredit;
 
 }

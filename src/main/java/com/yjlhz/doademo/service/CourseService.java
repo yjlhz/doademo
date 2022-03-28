@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface CourseService {
 
+    ResultVO queryCourseById(Integer courseId);
+
     ResultVO addCourse(CourseForm courseForm);
 
     ResultVO updateCourse(CourseForm courseForm);
 
-    ResultVO deleteCourse(String courseName);
+    ResultVO deleteCourse(Integer courseId);
 
     ResultVO queryCourseByName(String courseName);
 

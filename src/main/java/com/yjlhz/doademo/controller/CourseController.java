@@ -63,12 +63,17 @@ public class CourseController {
     }
 
     @GetMapping("/deleteCourse")
-    public ResultVO deleteCourse(String courseName){
-        return courseService.deleteCourse(courseName);
+    public ResultVO deleteCourse(Integer courseId){
+        return courseService.deleteCourse(courseId);
     }
 
     @GetMapping("/queryCourserByName")
     public ResultVO queryCourserByName(String courseName){
         return courseService.queryCourseByName(courseName);
+    }
+
+    @GetMapping("/queryCourserById")
+    public ResultVO queryCourserById(Integer courseId){
+        return courseService.queryCourseById(courseId);
     }
 }
