@@ -7,6 +7,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\PlanServ
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\SecondRequirementService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\PlanController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ExamineServiceImpl.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\SecondRequirementListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\MajorServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\MvcConfig.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\dto\MajorDTO.java
@@ -51,6 +52,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\StudentCo
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Examine.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\StudentServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\FirstRequirement.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\dto\SecondRequirementDTO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\StudentProblem.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\PlanForm.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\MajorListener.java
