@@ -2,12 +2,8 @@ package com.yjlhz.doademo.service.impl;
 
 import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.PlanForm;
-import com.yjlhz.doademo.mapper.PlanMapper;
-import com.yjlhz.doademo.mapper.PlanRequirementMapper;
-import com.yjlhz.doademo.mapper.SecondRequirementMapper;
-import com.yjlhz.doademo.pojo.Plan;
-import com.yjlhz.doademo.pojo.PlanRequirement;
-import com.yjlhz.doademo.pojo.SecondRequirement;
+import com.yjlhz.doademo.mapper.*;
+import com.yjlhz.doademo.pojo.*;
 import com.yjlhz.doademo.service.PlanService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
@@ -37,6 +33,12 @@ public class PlanServiceImpl implements PlanService {
     @Autowired
     private SecondRequirementMapper secondRequirementMapper;
 
+    @Autowired
+    private PlanCourseMapper planCourseMapper;
+
+    @Autowired
+    private CourseMapper courseMapper;
+
     @Override
     public ResultVO queryPlans() {
         List<Plan> planList = planMapper.queryPlanList();
@@ -46,6 +48,10 @@ public class PlanServiceImpl implements PlanService {
     @Override
     @Transactional
     public ResultVO addPlan(PlanForm planForm) {
+        //培养计划编号唯一
+        if (planMapper.queryPlanById(planForm.getId())!=null){
+            return ResultVOUtil.error(ResultEnum.CONFLICT_ERROR);
+        }
         Plan plan = new Plan();
         plan.setId(planForm.getId());
         plan.setName(planForm.getName());
@@ -55,7 +61,7 @@ public class PlanServiceImpl implements PlanService {
         plan.setMinScore(planForm.getMinScore());
         int res = planMapper.addPlan(plan);
         //如果不指定培养计划的指标点，就默认全选
-        if (planForm.getRequirement() == null || planForm.getRequirement().equals("")){
+        if (planForm.getRequirement() == null){
             List<SecondRequirement> secondRequirements = secondRequirementMapper.querySecondRequirementList();
             //绑定指标点
             for (SecondRequirement secondRequirement : secondRequirements){
@@ -65,14 +71,28 @@ public class PlanServiceImpl implements PlanService {
                 res = planRequirementMapper.addPlanRequirement(planRequirement);
             }
         }else {
-            String str = planForm.getRequirement();
-            String[] requirements = str.split(",");
+            List<String> requirements = planForm.getRequirement();
             for (String no : requirements){
                 PlanRequirement planRequirement = new PlanRequirement();
                 planRequirement.setPlanId(planForm.getId());
                 planRequirement.setRequirementNo(no);
                 res = planRequirementMapper.addPlanRequirement(planRequirement);
             }
+        }
+        if (planForm.getCourseId() == null){
+            return ResultVOUtil.error(ResultEnum.BINDING_ERROR);
+        }
+        //绑定专业课程，确定课程占计划权重
+        List<Integer> courseIds = planForm.getCourseId();
+        for (Integer courseId : courseIds){
+            PlanCourse planCourse = new PlanCourse();
+            planCourse.setPlanId(planForm.getId());
+            planCourse.setCourseId(courseId);
+            Course course = courseMapper.queryCourseById(courseId);
+            double credit = course.getCourseCredit();
+            double weight = credit / planForm.getMinScore();
+            planCourse.setWeight(weight);
+            res = planCourseMapper.addPlanCourse(planCourse);
         }
         if (res == -1){
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
@@ -87,6 +107,10 @@ public class PlanServiceImpl implements PlanService {
 
     @Override
     public ResultVO deletePlan(Integer id) {
-        return null;
+        int res = planMapper.deletePlanById(id);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
     }
 }

@@ -22,6 +22,8 @@ public interface PlanMapper {
 
     int addPlan(Plan plan);
 
+    Plan queryPlanById(Integer id);
+
     int deletePlanById(Integer planId);
 
 }

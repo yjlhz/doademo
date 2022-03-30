@@ -12,4 +12,8 @@
         delete from plan
         where id = #{id,jdbcType=INTEGER}
     </delete>
+    <select id="queryPlanById" resultType="Plan">
+        select id,`name`,grade,major,min_score,description from plan
+        where id = #{id,jdbcType=INTEGER}
+    </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.yjlhz.doademo.form;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author lhz
  * @title: PlanForm
@@ -25,6 +27,8 @@ public class PlanForm {
 
     private String description;
 
-    private String requirement;//逗号分隔
+    private List<String> requirement;//绑定指标点
+
+    private List<Integer> courseId;//绑定课程
 
 }

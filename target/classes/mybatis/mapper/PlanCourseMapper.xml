@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yjlhz.doademo.mapper.PlanCourseMapper" >
-
+    <select id="queryPlanCourseByPlanId" resultType="PlanCourse">
+        select id,plan_id,course_id,weight from plan_course
+        where plan_id = #{planId,jdbcType=INTEGER}
+    </select>
+    <insert id="addPlanCourse" parameterType="PlanCourse">
+        insert into plan_course (id,plan_id,course_id,weight)
+        value (#{id,jdbcType=INTEGER}, #{planId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER},#{weight,jdbcType=DOUBLE})
+    </insert>
+    <delete id="deletePlanCourseById" parameterType="java.lang.Integer">
+        delete from plan_course
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
 </mapper>
