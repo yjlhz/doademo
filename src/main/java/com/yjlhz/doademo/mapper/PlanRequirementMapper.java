@@ -1,7 +1,10 @@
 package com.yjlhz.doademo.mapper;
 
+import com.yjlhz.doademo.pojo.PlanRequirement;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author lhz
@@ -13,5 +16,13 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface PlanRequirementMapper {
+
+    List<Integer> queryRequirementByPlanId(Integer planId);
+
+    int addPlanRequirement(PlanRequirement planRequirement);
+
+    int updatePlanRequirement(PlanRequirement planRequirement);
+
+    int deletePlanRequirementById(Integer id);
 
 }

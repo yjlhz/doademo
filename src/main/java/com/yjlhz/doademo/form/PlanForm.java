@@ -13,6 +13,8 @@ import lombok.Data;
 @Data
 public class PlanForm {
 
+    private Integer id;
+
     private String name;
 
     private Integer grade;
@@ -22,5 +24,7 @@ public class PlanForm {
     private Double minScore;//最低毕业学分
 
     private String description;
+
+    private String requirement;//逗号分隔
 
 }

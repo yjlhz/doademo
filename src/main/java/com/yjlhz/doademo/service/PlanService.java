@@ -16,6 +16,8 @@ public interface PlanService {
 
     ResultVO addPlan(PlanForm planForm);
 
+    ResultVO updatePlan(PlanForm planForm);
+
     ResultVO deletePlan(Integer id);
 
 }
