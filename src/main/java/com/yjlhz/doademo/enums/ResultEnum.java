@@ -7,8 +7,9 @@ public enum ResultEnum {
 
     //service层
     SERVER_ERROR(1,"服务器错误!"),
-    CONFLICT_ERROR(2,"计划已存在!"),
+    CONFLICT_ERROR(2,"ID已存在!"),
     BINDING_ERROR(3,"关系未指定!"),
+    NOTHINGNESS_ERROR(4,"学生指定培养计划不存在!"),
 
     //controller层
     PARAMETER_ERROR(100,"参数不合法!"),

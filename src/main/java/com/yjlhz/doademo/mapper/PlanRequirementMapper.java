@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public interface PlanRequirementMapper {
 
-    List<Integer> queryRequirementByPlanId(Integer planId);
+    List<String> queryRequirementByPlanId(Integer planId);
 
     int addPlanRequirement(PlanRequirement planRequirement);
 

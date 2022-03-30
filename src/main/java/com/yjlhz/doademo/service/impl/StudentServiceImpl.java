@@ -1,15 +1,24 @@
 package com.yjlhz.doademo.service.impl;
 
+import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.StudentForm;
-import com.yjlhz.doademo.mapper.StudentMapper;
+import com.yjlhz.doademo.mapper.*;
+import com.yjlhz.doademo.pojo.Plan;
+import com.yjlhz.doademo.pojo.PlanCourse;
 import com.yjlhz.doademo.pojo.Student;
+import com.yjlhz.doademo.pojo.StudentCourse;
 import com.yjlhz.doademo.service.StudentService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author lhz
@@ -24,6 +33,21 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
+    @Autowired
+    private PlanMapper planMapper;
+
+    @Autowired
+    private PlanCourseMapper planCourseMapper;
+
+    @Autowired
+    private StudentCourseMapper studentCourseMapper;
+
+    @Autowired
+    private PlanRequirementMapper planRequirementMapper;
+
+    @Autowired
+    private SecondRequirementMapper secondRequirementMapper;
+
     @Override
     public ResultVO queryStudents() {
         List<Student> studentList = studentMapper.queryStudentList();
@@ -31,8 +55,59 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public ResultVO addStudent(StudentForm studentForm) {
-        return null;
+        if (studentMapper.queryStudentById(studentForm.getSNum())!=null){
+            return ResultVOUtil.error(ResultEnum.CONFLICT_ERROR);
+        }
+        Student student = new Student();
+        BeanUtils.copyProperties(studentForm,student);
+        //根据学生专业和年级绑定培养计划，培养计划要先存在
+        Plan plan = planMapper.queryPlanByMajorAndGrade(studentForm.getGrade(),studentForm.getMajor());
+        if (plan == null){
+            return ResultVOUtil.error(ResultEnum.NOTHINGNESS_ERROR);
+        }
+        int res = 1;
+        //绑定选课，先根据培养计划查询出来该培养计划绑定的课程
+        List<PlanCourse> planCourses = planCourseMapper.queryPlanCourseByPlanId(plan.getId());
+        for (PlanCourse planCourse : planCourses){
+            StudentCourse studentCourse = new StudentCourse();
+            studentCourse.setSNum(studentForm.getSNum());
+            studentCourse.setCourseId(planCourse.getCourseId());
+            res = studentCourseMapper.addStudentCourse(studentCourse);
+        }
+        //根据培养计划查询指标点，绑定给学生
+        List<String> secondRequirements = planRequirementMapper.queryRequirementByPlanId(plan.getId());
+        //根据二级指标点统计一级指标点
+        Set<Integer> firstRequirements = new HashSet<>();
+        for (String s : secondRequirements){
+            firstRequirements.add(secondRequirementMapper.querySecondRequirementByNo(s).getFirstRequirementNo());
+        }
+        int first = firstRequirements.size();
+        int second = secondRequirements.size();
+        StringBuffer fStr = new StringBuffer();
+        for (int i = 0;i<first;i++){
+            if (i!=first-1){
+                fStr.append("0,");
+            }else{
+                fStr.append("0");
+            }
+        }
+        StringBuffer sStr = new StringBuffer();
+        for (int i = 0;i<second;i++){
+            if (i!=second-1){
+                sStr.append("0,");
+            }else{
+                sStr.append("0");
+            }
+        }
+        student.setFirstAchieve(fStr.toString());
+        student.setSecondAchieve(sStr.toString());
+        res = studentMapper.addStudent(student);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
     }
 
     @Override

@@ -26,4 +26,6 @@ public interface PlanMapper {
 
     int deletePlanById(Integer planId);
 
+    Plan queryPlanByMajorAndGrade(Integer grade,String major);
+
 }

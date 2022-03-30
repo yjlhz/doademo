@@ -16,4 +16,9 @@
         select id,`name`,grade,major,min_score,description from plan
         where id = #{id,jdbcType=INTEGER}
     </select>
+    <select id="queryPlanByMajorAndGrade" resultType="Plan">
+        select id,`name`,grade,major,min_score,description from plan
+        where grade = #{grade,jdbcType=INTEGER}
+        and major = #{major,jdbcType=VARCHAR}
+    </select>
 </mapper>

@@ -1,7 +1,11 @@
 package com.yjlhz.doademo.mapper;
 
+import com.yjlhz.doademo.pojo.PlanRequirement;
+import com.yjlhz.doademo.pojo.StudentCourse;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author lhz
@@ -15,4 +19,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StudentCourseMapper {
 
+    List<Integer> queryCourseByStuId(Integer sNum);
+
+    int addStudentCourse(StudentCourse studentCourse);
+
+    List<Integer> queryStuByCourseId(Integer courseId);
+
+    int deleteStudentCourseById(Integer id);
 }
