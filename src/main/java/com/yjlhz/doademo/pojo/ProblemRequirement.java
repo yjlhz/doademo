@@ -25,7 +25,7 @@ public class ProblemRequirement implements Serializable {
 
     private Integer problemId;
 
-    private Integer secondRequirementNo;
+    private Integer requirementNo;
 
     private static final long serialVersionUID = 1L;
 
