@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yjlhz.doademo.mapper.ObjectiveMapper" >
-
+    <select id="queryByPlanIdAndCourseId" resultType="Objective">
+        select objective_id,objective_no,plan_id,course_id,description,requirement_no,achieve from objective
+        where plan_id = #{planId,jdbcType=INTEGER}
+        AND course_id = #{courseId,jdbcType=INTEGER}
+    </select>
+    <select id="queryById" resultType="Objective">
+        select objective_id,objective_no,plan_id,course_id,description,requirement_no,achieve from objective
+        where objective_id = #{objectiveId,jdbcType=INTEGER}
+    </select>
+    <insert id="addObjective" parameterType="Objective">
+        insert into objective (objective_id,objective_no,plan_id,course_id,description,requirement_no,achieve)
+        value (#{objectiveId,jdbcType=INTEGER}, #{objectiveNo,jdbcType=INTEGER},#{planId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER},#{description,jdbcType=VARCHAR},#{requirementNo,jdbcType=INTEGER},#{achieve,jdbcType=DOUBLE})
+    </insert>
+    <update id="updateObjective" parameterType="Objective">
+        update objective
+        set objective_no = #{objectiveNo,jdbcType=INTEGER},
+        plan_id = #{planId,jdbcType=INTEGER},
+        course_id = #{courseId,jdbcType=INTEGER},
+        description = #{description,jdbcType=VARCHAR},
+        requirement_no = #{requirementNo,jdbcType=INTEGER},
+        achieve = #{achieve,jdbcType=DOUBLE}
+        where objective_id = #{objectiveId,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteObjectiveById" parameterType="java.lang.Integer">
+        delete from objective
+        where objective_id = #{objectiveId,jdbcType=INTEGER}
+    </delete>
 </mapper>

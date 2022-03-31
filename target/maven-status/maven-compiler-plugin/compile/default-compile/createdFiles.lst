@@ -8,6 +8,7 @@ com\yjlhz\doademo\form\ExamineForm.class
 com\yjlhz\doademo\form\MajorForm.class
 com\yjlhz\doademo\mapper\CourseScoreMapper.class
 com\yjlhz\doademo\service\impl\RequirementServiceImpl.class
+com\yjlhz\doademo\service\ObjectiveService.class
 com\yjlhz\doademo\mapper\RequirementMapper.class
 com\yjlhz\doademo\form\ProblemForm.class
 com\yjlhz\doademo\listener\RequirementListener.class
@@ -25,7 +26,6 @@ com\yjlhz\doademo\pojo\StudentCourse.class
 com\yjlhz\doademo\pojo\Problem.class
 com\yjlhz\doademo\service\impl\CourseServiceImpl.class
 com\yjlhz\doademo\pojo\Plan.class
-com\yjlhz\doademo\pojo\Target.class
 com\yjlhz\doademo\service\RequirementService.class
 com\yjlhz\doademo\controller\testListener.class
 com\yjlhz\doademo\pojo\Requirement.class
@@ -46,7 +46,6 @@ com\yjlhz\doademo\service\ProblemService.class
 com\yjlhz\doademo\controller\StudentController.class
 com\yjlhz\doademo\service\impl\StudentServiceImpl.class
 com\yjlhz\doademo\DoademoApplication.class
-com\yjlhz\doademo\form\TargetForm.class
 com\yjlhz\doademo\mapper\ExamineMapper.class
 com\yjlhz\doademo\form\StudentForm.class
 com\yjlhz\doademo\pojo\Examine.class
@@ -56,11 +55,15 @@ com\yjlhz\doademo\service\impl\MajorServiceImpl.class
 com\yjlhz\doademo\dto\StudentDTO.class
 com\yjlhz\doademo\mapper\StudentCourseMapper.class
 com\yjlhz\doademo\service\StudentService.class
+com\yjlhz\doademo\mapper\ObjectiveMapper.class
 com\yjlhz\doademo\controller\PlanController.class
+com\yjlhz\doademo\form\ObjectiveForm.class
 com\yjlhz\doademo\config\MvcConfig.class
 com\yjlhz\doademo\service\impl\ExamineServiceImpl.class
+com\yjlhz\doademo\controller\ObjectiveController.class
 com\yjlhz\doademo\form\PlanForm.class
 com\yjlhz\doademo\dto\CourseDTO.class
+com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
 com\yjlhz\doademo\service\CourseService.class
 com\yjlhz\doademo\listener\CourseListener.class
 com\yjlhz\doademo\config\MybatisConfig.class
@@ -69,6 +72,7 @@ com\yjlhz\doademo\form\CourseForm.class
 com\yjlhz\doademo\mapper\CourseMapper.class
 com\yjlhz\doademo\utils\ResultVOUtil.class
 com\yjlhz\doademo\service\ExamineService.class
+com\yjlhz\doademo\pojo\Objective.class
 com\yjlhz\doademo\controller\test.class
 com\yjlhz\doademo\mapper\PlanRequirementMapper.class
 com\yjlhz\doademo\pojo\CourseScore.class

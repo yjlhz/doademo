@@ -15,7 +15,9 @@ public class ObjectiveForm {
 
     private Integer objectiveNo;
 
-    private Integer planCourseId;
+    private Integer planId;
+
+    private Integer courseId;
 
     private String description;
 
