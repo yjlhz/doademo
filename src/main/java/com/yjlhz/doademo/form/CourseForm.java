@@ -20,4 +20,7 @@ public class CourseForm {
     private String courseName;
 
     private Double courseCredit;
+
+    private String requirementNo;
+
 }

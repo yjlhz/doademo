@@ -22,6 +22,9 @@ public class Course implements Serializable {
     @ApiModelProperty("课程学分")
     private Double courseCredit;
 
+    @ApiModelProperty("课程支撑指标点")
+    private String requirementNo;//存储课程应该支撑的指标点，以逗号分隔
+
     private static final long serialVersionUID = 1L;
 
 }

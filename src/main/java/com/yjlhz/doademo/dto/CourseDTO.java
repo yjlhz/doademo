@@ -26,4 +26,7 @@ public class CourseDTO {
     @ExcelProperty(value = "课程学分",index = 2)
     private Double courseCredit;
 
+    @ExcelProperty(value = "课程支撑指标点",index = 3)
+    private String requirementNo;
+
 }

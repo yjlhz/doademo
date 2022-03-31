@@ -2,23 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yjlhz.doademo.mapper.CourseMapper" >
     <select id="queryCourseList" resultType="Course">
-        select course_id,course_name,course_credit from course
+        select course_id,course_name,course_credit,requirement_no from course
     </select>
     <select id="queryCourseById" resultType="Course" parameterType="java.lang.Integer">
-        select course_id,course_name,course_credit from course where course_id = #{courseId,jdbcType=INTEGER}
+        select course_id,course_name,course_credit,requirement_no from course where course_id = #{courseId,jdbcType=INTEGER}
     </select>
     <select id="queryCourserByName" resultType="Course" parameterType="java.lang.String">
-        select course_id,course_name,course_credit from course where course_name = #{courseName,jdbcType=VARCHAR}
+        select course_id,course_name,course_credit,requirement_no from course where course_name = #{courseName,jdbcType=VARCHAR}
     </select>
     <insert id="addCourse" parameterType="Course">
-        insert into course (course_id,course_name,course_credit)
-        value (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseCredit,jdbcType=DOUBLE})
+        insert into course (course_id,course_name,course_credit,requirement_no)
+        value (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseCredit,jdbcType=DOUBLE}, #{requirementNo,jdbcType=VARCHAR})
     </insert>
     <update id="updateCourseById" parameterType="Course">
         update course
         set course_credit = #{courseCredit,jdbcType=DOUBLE},
         course_name= #{courseName,jdbcType=VARCHAR},
-        course_id = #{courseId,jdbcType=INTEGER}
+        course_id = #{courseId,jdbcType=INTEGER},
+        requirement_no = #{requirementNo,jdbcType=VARCHAR}
         where course_id = #{courseId,jdbcType=INTEGER}
     </update>
     <delete id="deleteCourseById" parameterType="java.lang.Integer">
@@ -26,7 +27,7 @@
         where course_id = #{courseId,jdbcType=INTEGER}
     </delete>
     <insert id="upload" parameterType="com.yjlhz.doademo.dto.CourseDTO">
-    insert into course (course_id,course_name,course_credit)
-    value (#{courseId,jdbcType=INTEGER},#{courseName,jdbcType=VARCHAR}, #{courseCredit,jdbcType=DOUBLE})
+    insert into course (course_id,course_name,course_credit,requirement_no)
+    value (#{courseId,jdbcType=INTEGER},#{courseName,jdbcType=VARCHAR}, #{courseCredit,jdbcType=DOUBLE}, #{requirementNo,jdbcType=VARCHAR})
     </insert>
 </mapper>

@@ -109,6 +109,7 @@ public class CourseServiceImpl implements CourseService {
                 courseDTO.setCourseId(course.getCourseId());
                 courseDTO.setCourseName(course.getCourseName());
                 courseDTO.setCourseCredit(course.getCourseCredit());
+                courseDTO.setRequirementNo(course.getRequirementNo());
                 dataList.add(courseDTO);
             }
             WriteCellStyle headWriteCellStyle = new WriteCellStyle();
