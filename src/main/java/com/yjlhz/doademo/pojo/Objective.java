@@ -19,19 +19,19 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("课程目标实体类")
-public class Target implements Serializable {
+public class Objective implements Serializable {
 
-    private Integer targetId;
+    private Integer objectiveId;
 
-    private String targetName;
-
-    private Integer targetNo;
+    private Integer objectiveNo;
 
     private Integer planCourseId;
 
     private String description;
 
-    private Integer requirementId;
+    private Integer requirementNo;
+
+    private Double achieve;
 
     private static final long serialVersionUID = 1L;
 

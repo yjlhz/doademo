@@ -11,16 +11,14 @@ import lombok.Data;
  */
 
 @Data
-public class TargetForm {
+public class ObjectiveForm {
 
-    private String targetName;
-
-    private Integer targetNo;
+    private Integer objectiveNo;
 
     private Integer planCourseId;
 
     private String description;
 
-    private Integer secondRequirementId;
+    private Integer requirementNo;
 
 }
