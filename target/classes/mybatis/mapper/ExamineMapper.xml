@@ -2,11 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yjlhz.doademo.mapper.ExamineMapper" >
     <select id="queryExamineByPlanCourseId" resultType="Examine">
-        select id,plan_course_id,description,weight from examine
-        where plan_course_id = #{planCourseId,jdbcType=INTEGER}
+        select id,plan_id,course_id,description,weight from examine
+        where plan_id = #{planId,jdbcType=INTEGER}
+        AND course_id = #{courseId,jdbcType=INTEGER}
     </select>
     <insert id="addExamine" parameterType="Examine">
-        insert into examine (id,plan_course_id,description,weight)
-        value (#{id,jdbcType=INTEGER}, #{planCourseId,jdbcType=INTEGER},#{description,jdbcType=VARCHAR} ,#{weight,jdbcType=DOUBLE})
+        insert into examine (id,plan_id,course_id,description,weight)
+        value (#{id,jdbcType=INTEGER}, #{planId,jdbcType=INTEGER},#{courseId,jdbcType=INTEGER},#{description,jdbcType=VARCHAR} ,#{weight,jdbcType=DOUBLE})
     </insert>
 </mapper>

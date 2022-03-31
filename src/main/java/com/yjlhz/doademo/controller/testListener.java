@@ -4,6 +4,7 @@ import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.excel.util.ListUtils;
 import com.alibaba.fastjson.JSON;
+import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -50,20 +51,33 @@ public class testListener extends AnalysisEventListener<Map<Integer, String>> {
     private void saveData() {
         log.info("{}条数据，开始存储数据库！", cachedDataList.size());
         Iterator<Map<Integer,String>> iterator = cachedDataList.iterator();
-        int count = 0;
-        while(iterator.hasNext()){
+        int count = 0;//用于计数，前面五行为表头信息
+        List<Integer> examines = new ArrayList<>();//储存考核key值
+        List<Integer> maxScores = new ArrayList<>();//储存问题满分值
+        List<Integer> requirements = new ArrayList<>();//问题对应目标编号
+        while(iterator.hasNext() && count<5){
+            //获取一行数据
             Map<Integer,String> myData = iterator.next();
-            if (count<5){
-                for (Map.Entry entry : myData.entrySet()){
-                    Integer key = (Integer)entry.getKey();
-                    String value = (String)entry.getValue();
-                    System.out.println(key);
-                    System.out.println(value);
+            //解析分割数据
+            for (Map.Entry entry : myData.entrySet()) {
+                Integer key = (Integer) entry.getKey();//获取第几列
+                String value = (String) entry.getValue();//数据
+                //列数从0开始算，模板第三列为解释性文字，不需要处理
+                if (value != null && key != 3 && count == 0) {
+                    examines.add(key);
                 }
-            }else {
-
+                if (value != null && key != 3 && count == 3){
+                    maxScores.add(Integer.valueOf(value));
+                }
+                if (value != null && key > 3 && count == 4){
+                    requirements.add(Integer.valueOf(value));
+                }
             }
+            count++;
         }
+        System.out.println(examines);
+        System.out.println(maxScores);
+        System.out.println(requirements);
         log.info("存储数据库成功！");
     }
 }
