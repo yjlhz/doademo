@@ -1,5 +1,6 @@
 package com.yjlhz.doademo.form;
 
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 /**
@@ -12,7 +13,9 @@ import lombok.Data;
 @Data
 public class ExamineForm {
 
-    private Integer planCourseId;
+    private Integer planId;
+
+    private Integer courseId;
 
     private String description;
 

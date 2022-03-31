@@ -30,8 +30,8 @@ public class ExamineController {
     private ExamineService examineService;
 
     @GetMapping("/queryExamineById")
-    ResultVO queryExamineById(Integer id){
-        return examineService.queryExaminesByPlanCourseId(id);
+    ResultVO queryExamineById(Integer planId,Integer courseId){
+        return examineService.queryExaminesByPlanCourseId(planId, courseId);
     }
 
     @PostMapping("/addExamine")

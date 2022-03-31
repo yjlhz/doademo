@@ -12,7 +12,7 @@ import com.yjlhz.doademo.vo.ResultVO;
  */
 public interface ExamineService {
 
-    ResultVO queryExaminesByPlanCourseId(Integer id);
+    ResultVO queryExaminesByPlanCourseId(Integer planId,Integer courseId);
 
     ResultVO addExamine(ExamineForm examineForm);
 

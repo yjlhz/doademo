@@ -28,8 +28,8 @@ public class ExamineServiceImpl implements ExamineService {
     private ExamineMapper examineMapper;
 
     @Override
-    public ResultVO queryExaminesByPlanCourseId(Integer id) {
-        List<Examine> examineList = examineMapper.queryExamineByPlanCourseId(id);
+    public ResultVO queryExaminesByPlanCourseId(Integer planId,Integer courseId) {
+        List<Examine> examineList = examineMapper.queryExamineByPlanCourseId(planId, courseId);
         return ResultVOUtil.success(examineList);
     }
 

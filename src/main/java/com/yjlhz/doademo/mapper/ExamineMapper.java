@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public interface ExamineMapper {
 
-    List<Examine> queryExamineByPlanCourseId(Integer id);
+    List<Examine> queryExamineByPlanCourseId(Integer planId,Integer courseId);
 
     int addExamine(Examine examine);
 

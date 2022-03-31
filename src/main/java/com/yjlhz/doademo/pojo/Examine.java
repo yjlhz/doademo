@@ -1,6 +1,7 @@
 package com.yjlhz.doademo.pojo;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,9 @@ public class Examine implements Serializable {
 
     private Integer id;
 
-    private Integer planCourseId;
+    private Integer planId;
+
+    private Integer courseId;
 
     private String description;
 
