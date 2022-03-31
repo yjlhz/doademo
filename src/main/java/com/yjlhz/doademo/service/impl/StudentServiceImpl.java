@@ -45,9 +45,6 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private PlanRequirementMapper planRequirementMapper;
 
-    @Autowired
-    private SecondRequirementMapper secondRequirementMapper;
-
     @Override
     public ResultVO queryStudents() {
         List<Student> studentList = studentMapper.queryStudentList();
@@ -77,32 +74,17 @@ public class StudentServiceImpl implements StudentService {
             res = studentCourseMapper.addStudentCourse(studentCourse);
         }
         //根据培养计划查询指标点，绑定给学生
-        List<String> secondRequirements = planRequirementMapper.queryRequirementByPlanId(plan.getId());
-        //根据二级指标点统计一级指标点
-        Set<Integer> firstRequirements = new HashSet<>();
-        for (String s : secondRequirements){
-            firstRequirements.add(secondRequirementMapper.querySecondRequirementByNo(s).getFirstRequirementNo());
-        }
-        int first = firstRequirements.size();
-        int second = secondRequirements.size();
-        StringBuffer fStr = new StringBuffer();
-        for (int i = 0;i<first;i++){
-            if (i!=first-1){
-                fStr.append("0,");
+        List<Integer> requirements = planRequirementMapper.queryRequirementByPlanId(plan.getId());
+        StringBuffer str = new StringBuffer();
+        int size = requirements.size();
+        for (int i = 0;i<size;i++){
+            if (i!=size-1){
+                str.append("0,");
             }else{
-                fStr.append("0");
+                str.append("0");
             }
         }
-        StringBuffer sStr = new StringBuffer();
-        for (int i = 0;i<second;i++){
-            if (i!=second-1){
-                sStr.append("0,");
-            }else{
-                sStr.append("0");
-            }
-        }
-        student.setFirstAchieve(fStr.toString());
-        student.setSecondAchieve(sStr.toString());
+        student.setAchieve(str.toString());
         res = studentMapper.addStudent(student);
         if (res == -1){
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);

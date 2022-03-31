@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yjlhz.doademo.mapper.StudentMapper" >
     <select id="queryStudentList" resultType="Student">
-        select s_num,s_name,gender,major,grade,classes,phone,email,first_achieve,second_achieve from student
+        select s_num,s_name,gender,major,grade,classes,phone,email,achieve from student
     </select>
     <insert id="addStudent" parameterType="Student">
-        insert into student (s_num,s_name,gender,major,grade,classes,phone,email,first_achieve,second_achieve)
-        value (#{sNum,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{major,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER},#{classes,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{firstAchieve,jdbcType=VARCHAR},#{secondAchieve,jdbcType=VARCHAR})
+        insert into student (s_num,s_name,gender,major,grade,classes,phone,email,achieve)
+        value (#{sNum,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{major,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER},#{classes,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{achieve,jdbcType=VARCHAR})
     </insert>
     <select id="queryStudentById" resultType="Student">
-        select s_num,s_name,gender,major,grade,classes,phone,email,first_achieve,second_achieve from student
+        select s_num,s_name,gender,major,grade,classes,phone,email,achieve from student
         where s_num = #{sNum,jdbcType=VARCHAR}
     </select>
 </mapper>

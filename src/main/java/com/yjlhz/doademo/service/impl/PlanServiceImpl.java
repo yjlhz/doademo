@@ -31,7 +31,7 @@ public class PlanServiceImpl implements PlanService {
     private PlanRequirementMapper planRequirementMapper;
 
     @Autowired
-    private SecondRequirementMapper secondRequirementMapper;
+    private RequirementMapper requirementMapper;
 
     @Autowired
     private PlanCourseMapper planCourseMapper;
@@ -62,12 +62,12 @@ public class PlanServiceImpl implements PlanService {
         int res = planMapper.addPlan(plan);
         //如果不指定培养计划的指标点，就默认全选
         if (planForm.getRequirement() == null){
-            List<SecondRequirement> secondRequirements = secondRequirementMapper.querySecondRequirementList();
+            List<Requirement> requirements = requirementMapper.queryRequirementList();
             //绑定指标点
-            for (SecondRequirement secondRequirement : secondRequirements){
+            for (Requirement requirement : requirements){
                 PlanRequirement planRequirement = new PlanRequirement();
                 planRequirement.setPlanId(planForm.getId());
-                planRequirement.setRequirementNo(secondRequirement.getSecondRequirementNo());
+                planRequirement.setRequirementNo(requirement.getRequirementNo());
                 res = planRequirementMapper.addPlanRequirement(planRequirement);
             }
         }else {
@@ -75,7 +75,7 @@ public class PlanServiceImpl implements PlanService {
             for (String no : requirements){
                 PlanRequirement planRequirement = new PlanRequirement();
                 planRequirement.setPlanId(planForm.getId());
-                planRequirement.setRequirementNo(no);
+                planRequirement.setRequirementNo(Integer.valueOf(no));
                 res = planRequirementMapper.addPlanRequirement(planRequirement);
             }
         }

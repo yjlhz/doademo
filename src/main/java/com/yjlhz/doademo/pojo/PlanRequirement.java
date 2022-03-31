@@ -23,7 +23,7 @@ public class PlanRequirement implements Serializable {
 
     private Integer planId;
 
-    private String requirementNo;
+    private Integer requirementNo;
 
     private static final long serialVersionUID = 1L;
 

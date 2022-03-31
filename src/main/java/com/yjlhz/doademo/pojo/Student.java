@@ -35,9 +35,7 @@ public class Student implements Serializable {
 
     private String email;
 
-    private String firstAchieve;//以逗号分隔
-
-    private String secondAchieve;
+    private String achieve;//以逗号分隔
 
     private static final long serialVersionUID = 1L;
 

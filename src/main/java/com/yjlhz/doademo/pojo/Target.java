@@ -31,7 +31,7 @@ public class Target implements Serializable {
 
     private String description;
 
-    private Integer secondRequirementId;
+    private Integer requirementId;
 
     private static final long serialVersionUID = 1L;
 
