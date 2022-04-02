@@ -19,6 +19,8 @@ public interface ExamineMapper {
 
     List<Examine> queryExamineByPlanCourseId(Integer planId,Integer courseId);
 
+    Examine queryByPlanIdAndCourseIdAndDescription(Integer planId,Integer courseId,String description);
+
     int addExamine(Examine examine);
 
 }

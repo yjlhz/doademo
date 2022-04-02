@@ -6,6 +6,12 @@
         where plan_id = #{planId,jdbcType=INTEGER}
         AND course_id = #{courseId,jdbcType=INTEGER}
     </select>
+    <select id="queryByPlanIdAndCourseIdAndDescription" resultType="Examine">
+        select id,plan_id,course_id,description,weight from examine
+        where plan_id = #{planId,jdbcType=INTEGER}
+        AND course_id = #{courseId,jdbcType=INTEGER}
+        AND description = #{description,jdbcType=VARCHAR}
+    </select>
     <insert id="addExamine" parameterType="Examine">
         insert into examine (id,plan_id,course_id,description,weight)
         value (#{id,jdbcType=INTEGER}, #{planId,jdbcType=INTEGER},#{courseId,jdbcType=INTEGER},#{description,jdbcType=VARCHAR} ,#{weight,jdbcType=DOUBLE})
