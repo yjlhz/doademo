@@ -12,8 +12,10 @@ com\yjlhz\doademo\service\ObjectiveService.class
 com\yjlhz\doademo\mapper\RequirementMapper.class
 com\yjlhz\doademo\form\ProblemForm.class
 com\yjlhz\doademo\listener\RequirementListener.class
+com\yjlhz\doademo\controller\PlanCourseController.class
 com\yjlhz\doademo\service\MajorService.class
 com\yjlhz\doademo\controller\ExamineController.class
+com\yjlhz\doademo\listener\ExamineListener.class
 com\yjlhz\doademo\controller\CourseController.class
 com\yjlhz\doademo\mapper\ProblemRequirementMapper.class
 com\yjlhz\doademo\service\impl\PlanServiceImpl.class
@@ -27,13 +29,13 @@ com\yjlhz\doademo\pojo\Problem.class
 com\yjlhz\doademo\service\impl\CourseServiceImpl.class
 com\yjlhz\doademo\pojo\Plan.class
 com\yjlhz\doademo\service\RequirementService.class
-com\yjlhz\doademo\controller\testListener.class
 com\yjlhz\doademo\pojo\Requirement.class
 com\yjlhz\doademo\dto\MajorDTO.class
 com\yjlhz\doademo\pojo\ProblemTarget.class
 com\yjlhz\doademo\mapper\PlanMapper.class
 com\yjlhz\doademo\pojo\Major.class
 com\yjlhz\doademo\pojo\Student.class
+com\yjlhz\doademo\service\PlanCourseService.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
 com\yjlhz\doademo\config\UpLoadConfig.class
 com\yjlhz\doademo\pojo\PlanCourse.class
@@ -64,6 +66,7 @@ com\yjlhz\doademo\controller\ObjectiveController.class
 com\yjlhz\doademo\form\PlanForm.class
 com\yjlhz\doademo\dto\CourseDTO.class
 com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
+com\yjlhz\doademo\vo\ProblemVO.class
 com\yjlhz\doademo\service\CourseService.class
 com\yjlhz\doademo\listener\CourseListener.class
 com\yjlhz\doademo\config\MybatisConfig.class
@@ -73,8 +76,8 @@ com\yjlhz\doademo\mapper\CourseMapper.class
 com\yjlhz\doademo\utils\ResultVOUtil.class
 com\yjlhz\doademo\service\ExamineService.class
 com\yjlhz\doademo\pojo\Objective.class
-com\yjlhz\doademo\controller\test.class
 com\yjlhz\doademo\mapper\PlanRequirementMapper.class
+com\yjlhz\doademo\service\impl\PlanCourseServiceImpl.class
 com\yjlhz\doademo\pojo\CourseScore.class
 com\yjlhz\doademo\pojo\ProblemRequirement.class
 com\yjlhz\doademo\pojo\Course.class

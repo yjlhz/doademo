@@ -12,7 +12,7 @@ import com.yjlhz.doademo.vo.ResultVO;
  */
 public interface ProblemService {
 
-    ResultVO queryProblemsByExamineId(Integer id);
+    ResultVO queryProblemsByPlanIdAndCourseId(Integer planId,Integer CourseId);
 
     ResultVO addProblem(ProblemForm problemForm);
 

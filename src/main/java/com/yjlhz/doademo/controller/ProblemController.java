@@ -29,9 +29,9 @@ public class ProblemController {
     @Autowired
     private ProblemService problemService;
 
-    @GetMapping("/queryProblemsByExamineId")
-    ResultVO queryProblemsByExamineId(Integer id){
-        return problemService.queryProblemsByExamineId(id);
+    @GetMapping("/queryProblemsByPlanIdAndCourseId")
+    ResultVO queryProblemsByExamineId(Integer planId,Integer courseId){
+        return problemService.queryProblemsByPlanIdAndCourseId(planId, courseId);
     }
 
     @PostMapping("/addProblem")

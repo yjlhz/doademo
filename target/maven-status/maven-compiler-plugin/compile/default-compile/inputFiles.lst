@@ -45,9 +45,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\PlanCourse.
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\ProblemRequirement.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\RequirementListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\RequirementController.java
-C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\test.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\StudentController.java
-C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\testListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\CourseScoreMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\StudentCourseMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Examine.java
@@ -61,6 +59,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\PlanMappe
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\SwaggerConfig.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\MajorController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\MajorForm.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\ExamineListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\PlanRequirementMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\StudentListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\dto\CourseDTO.java
