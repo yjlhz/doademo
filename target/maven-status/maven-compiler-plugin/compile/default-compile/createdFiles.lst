@@ -2,6 +2,7 @@ com\yjlhz\doademo\mapper\StudentMapper.class
 com\yjlhz\doademo\vo\ResultVO.class
 com\yjlhz\doademo\mapper\ProblemMapper.class
 com\yjlhz\doademo\listener\MajorListener.class
+com\yjlhz\doademo\mapper\ProblemObjectiveMapper.class
 com\yjlhz\doademo\service\impl\ProblemServiceImpl.class
 com\yjlhz\doademo\pojo\PlanRequirement.class
 com\yjlhz\doademo\form\ExamineForm.class
@@ -9,6 +10,7 @@ com\yjlhz\doademo\form\MajorForm.class
 com\yjlhz\doademo\mapper\CourseScoreMapper.class
 com\yjlhz\doademo\service\impl\RequirementServiceImpl.class
 com\yjlhz\doademo\service\ObjectiveService.class
+com\yjlhz\doademo\service\MatrixService.class
 com\yjlhz\doademo\mapper\RequirementMapper.class
 com\yjlhz\doademo\form\ProblemForm.class
 com\yjlhz\doademo\listener\RequirementListener.class
@@ -31,15 +33,15 @@ com\yjlhz\doademo\pojo\Plan.class
 com\yjlhz\doademo\service\RequirementService.class
 com\yjlhz\doademo\pojo\Requirement.class
 com\yjlhz\doademo\dto\MajorDTO.class
-com\yjlhz\doademo\pojo\ProblemTarget.class
 com\yjlhz\doademo\mapper\PlanMapper.class
 com\yjlhz\doademo\pojo\Major.class
 com\yjlhz\doademo\pojo\Student.class
+com\yjlhz\doademo\pojo\Matrix.class
+com\yjlhz\doademo\pojo\ProblemObjective.class
 com\yjlhz\doademo\service\PlanCourseService.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
 com\yjlhz\doademo\config\UpLoadConfig.class
 com\yjlhz\doademo\pojo\PlanCourse.class
-com\yjlhz\doademo\mapper\ProblemTargetMapper.class
 com\yjlhz\doademo\controller\helloController.class
 com\yjlhz\doademo\controller\ProblemController.class
 com\yjlhz\doademo\dto\RequirementDTO.class
@@ -60,12 +62,14 @@ com\yjlhz\doademo\service\StudentService.class
 com\yjlhz\doademo\mapper\ObjectiveMapper.class
 com\yjlhz\doademo\controller\PlanController.class
 com\yjlhz\doademo\form\ObjectiveForm.class
+com\yjlhz\doademo\service\impl\MatrixServiceImpl.class
 com\yjlhz\doademo\config\MvcConfig.class
 com\yjlhz\doademo\service\impl\ExamineServiceImpl.class
 com\yjlhz\doademo\controller\ObjectiveController.class
 com\yjlhz\doademo\form\PlanForm.class
 com\yjlhz\doademo\dto\CourseDTO.class
 com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
+com\yjlhz\doademo\controller\MatrixController.class
 com\yjlhz\doademo\vo\ProblemVO.class
 com\yjlhz\doademo\service\CourseService.class
 com\yjlhz\doademo\listener\CourseListener.class
@@ -75,6 +79,7 @@ com\yjlhz\doademo\form\CourseForm.class
 com\yjlhz\doademo\mapper\CourseMapper.class
 com\yjlhz\doademo\utils\ResultVOUtil.class
 com\yjlhz\doademo\service\ExamineService.class
+com\yjlhz\doademo\form\MatrixForm.class
 com\yjlhz\doademo\pojo\Objective.class
 com\yjlhz\doademo\mapper\PlanRequirementMapper.class
 com\yjlhz\doademo\service\impl\PlanCourseServiceImpl.class
