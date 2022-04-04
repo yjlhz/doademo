@@ -1,5 +1,6 @@
 package com.yjlhz.doademo.mapper;
 
+import com.yjlhz.doademo.pojo.ProblemRequirement;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +15,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface ProblemRequirementMapper {
+
+    int addProblemRequirement(ProblemRequirement problemRequirement);
 
 }
