@@ -23,4 +23,8 @@ public interface ExamineMapper {
 
     int addExamine(Examine examine);
 
+    Examine queryExamineById(Integer id);
+
+    int updateExamine(Examine examine);
+
 }

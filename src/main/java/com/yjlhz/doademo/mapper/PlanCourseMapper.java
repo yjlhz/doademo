@@ -22,4 +22,6 @@ public interface PlanCourseMapper {
     int addPlanCourse(PlanCourse planCourse);
 
     int deletePlanCourseById(Integer planId);
+
+    PlanCourse queryByPlanIdAndCourseId(Integer planId,Integer courseId);
 }

@@ -2,12 +2,9 @@ package com.yjlhz.doademo.service.impl;
 
 import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.MatrixForm;
-import com.yjlhz.doademo.mapper.ObjectiveMapper;
-import com.yjlhz.doademo.mapper.ProblemObjectiveMapper;
-import com.yjlhz.doademo.mapper.ProblemRequirementMapper;
-import com.yjlhz.doademo.pojo.PlanRequirement;
-import com.yjlhz.doademo.pojo.ProblemObjective;
-import com.yjlhz.doademo.pojo.ProblemRequirement;
+import com.yjlhz.doademo.form.WeightForm;
+import com.yjlhz.doademo.mapper.*;
+import com.yjlhz.doademo.pojo.*;
 import com.yjlhz.doademo.service.MatrixService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
@@ -37,6 +34,12 @@ public class MatrixServiceImpl implements MatrixService {
     @Autowired
     private ProblemRequirementMapper problemRequirementMapper;
 
+    @Autowired
+    private ExamineMapper examineMapper;
+
+    @Autowired
+    private PlanCourseMapper planCourseMapper;
+
     @Override
     @Transactional
     public ResultVO addMatrix(List<MatrixForm> matrixForms) {
@@ -51,6 +54,20 @@ public class MatrixServiceImpl implements MatrixService {
             problemRequirement.setProblemId(matrixForm.getProblemId());
             problemRequirement.setRequirementNo(no);
             res = problemRequirementMapper.addProblemRequirement(problemRequirement);
+        }
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
+
+    @Override
+    public ResultVO addWeight(List<WeightForm> weightForms) {
+        int res = -1;
+        for (WeightForm weightForm : weightForms){
+            Examine examine = examineMapper.queryExamineById(weightForm.getExamineId());
+            examine.setWeight(weightForm.getWeight());//存储用户指定的权重
+            res = examineMapper.updateExamine(examine);
         }
         if (res == -1){
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);

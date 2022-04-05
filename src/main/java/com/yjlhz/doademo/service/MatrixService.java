@@ -1,6 +1,7 @@
 package com.yjlhz.doademo.service;
 
 import com.yjlhz.doademo.form.MatrixForm;
+import com.yjlhz.doademo.form.WeightForm;
 import com.yjlhz.doademo.vo.ResultVO;
 
 import java.util.List;
@@ -15,5 +16,7 @@ import java.util.List;
 public interface MatrixService {
 
     ResultVO addMatrix(List<MatrixForm> matrixForms);
+
+    ResultVO addWeight(List<WeightForm> weightForms);
 
 }

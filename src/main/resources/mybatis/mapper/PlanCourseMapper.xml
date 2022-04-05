@@ -5,6 +5,11 @@
         select id,plan_id,course_id,weight from plan_course
         where plan_id = #{planId,jdbcType=INTEGER}
     </select>
+    <select id="queryByPlanIdAndCourseId" resultType="PlanCourse">
+        select id,plan_id,course_id,weight from plan_course
+        where plan_id = #{planId,jdbcType=INTEGER}
+        AND course_id = #{courseId,jdbcType=INTEGER}
+    </select>
     <insert id="addPlanCourse" parameterType="PlanCourse">
         insert into plan_course (id,plan_id,course_id,weight)
         value (#{id,jdbcType=INTEGER}, #{planId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER},#{weight,jdbcType=DOUBLE})
