@@ -21,4 +21,6 @@ public interface ProblemMapper {
 
     int addProblem(Problem problem);
 
+    Problem queryById(Integer id);
+
 }

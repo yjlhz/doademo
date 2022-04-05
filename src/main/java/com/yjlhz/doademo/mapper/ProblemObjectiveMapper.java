@@ -4,6 +4,8 @@ import com.yjlhz.doademo.pojo.ProblemObjective;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author lhz
  * @title: ProblemTargetMapper
@@ -17,5 +19,7 @@ import org.springframework.stereotype.Repository;
 public interface ProblemObjectiveMapper {
 
     int addProblemObjective(ProblemObjective problemObjective);
+
+    List<ProblemObjective> queryByObjectiveId(Integer id);
 
 }

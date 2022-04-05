@@ -4,6 +4,8 @@ import com.yjlhz.doademo.pojo.StudentProblem;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author lhz
  * @title: StudentProblemMapper
@@ -17,5 +19,7 @@ import org.springframework.stereotype.Repository;
 public interface StudentProblemMapper {
 
     int addStudentProblem(StudentProblem studentProblem);
+
+    List<StudentProblem> queryStudentProblemsByProblemId(Integer id);
 
 }

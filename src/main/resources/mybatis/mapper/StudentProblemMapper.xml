@@ -5,4 +5,8 @@
         insert into student_problem (s_num,problem_id,score)
         value (#{sNum,jdbcType=VARCHAR}, #{problemId,jdbcType=INTEGER},#{score,jdbcType=DOUBLE})
     </insert>
+    <select id="queryStudentProblemsByProblemId" resultType="StudentProblem">
+        select s_num,problem_id,score from student_problem
+        where problem_id = #{problemId,jdbcType=INTEGER}
+    </select>
 </mapper>

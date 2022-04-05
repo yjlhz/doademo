@@ -12,6 +12,18 @@
         AND course_id = #{courseId,jdbcType=INTEGER}
         AND description = #{description,jdbcType=VARCHAR}
     </select>
+    <select id="queryExamineById" resultType="Examine">
+        select id,plan_id,course_id,description,weight from examine
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <update id="updateExamine" parameterType="Examine">
+        update examine
+        set plan_id = #{planId,jdbcType=DOUBLE},
+        course_id= #{planId,jdbcType=INTEGER},
+        description = #{description,jdbcType=VARCHAR},
+        weight = #{weight,jdbcType=DOUBLE}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <insert id="addExamine" parameterType="Examine">
         insert into examine (id,plan_id,course_id,description,weight)
         value (#{id,jdbcType=INTEGER}, #{planId,jdbcType=INTEGER},#{courseId,jdbcType=INTEGER},#{description,jdbcType=VARCHAR} ,#{weight,jdbcType=DOUBLE})

@@ -24,14 +24,17 @@ com\yjlhz\doademo\service\impl\PlanServiceImpl.class
 com\yjlhz\doademo\mapper\MajorMapper.class
 com\yjlhz\doademo\service\PlanService.class
 com\yjlhz\doademo\enums\ResultEnum.class
+com\yjlhz\doademo\form\WeightForm.class
 com\yjlhz\doademo\config\SwaggerConfig.class
 com\yjlhz\doademo\listener\StudentListener.class
 com\yjlhz\doademo\pojo\StudentCourse.class
 com\yjlhz\doademo\pojo\Problem.class
+com\yjlhz\doademo\service\CalculateService.class
 com\yjlhz\doademo\service\impl\CourseServiceImpl.class
 com\yjlhz\doademo\pojo\Plan.class
 com\yjlhz\doademo\service\RequirementService.class
 com\yjlhz\doademo\pojo\Requirement.class
+com\yjlhz\doademo\utils\ArithUtil.class
 com\yjlhz\doademo\dto\MajorDTO.class
 com\yjlhz\doademo\mapper\PlanMapper.class
 com\yjlhz\doademo\pojo\Major.class
@@ -61,6 +64,7 @@ com\yjlhz\doademo\mapper\StudentCourseMapper.class
 com\yjlhz\doademo\service\StudentService.class
 com\yjlhz\doademo\mapper\ObjectiveMapper.class
 com\yjlhz\doademo\controller\PlanController.class
+com\yjlhz\doademo\controller\CalculateController.class
 com\yjlhz\doademo\form\ObjectiveForm.class
 com\yjlhz\doademo\service\impl\MatrixServiceImpl.class
 com\yjlhz\doademo\config\MvcConfig.class
@@ -70,6 +74,7 @@ com\yjlhz\doademo\form\PlanForm.class
 com\yjlhz\doademo\dto\CourseDTO.class
 com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
 com\yjlhz\doademo\controller\MatrixController.class
+com\yjlhz\doademo\service\impl\CalculateServiceImpl.class
 com\yjlhz\doademo\vo\ProblemVO.class
 com\yjlhz\doademo\service\CourseService.class
 com\yjlhz\doademo\listener\CourseListener.class

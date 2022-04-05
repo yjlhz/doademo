@@ -9,4 +9,8 @@
         insert into problem (id,problem_no,examine_id,max_score,weight)
         value (#{id,jdbcType=INTEGER}, #{problemNo,jdbcType=INTEGER},#{examineId,jdbcType=INTEGER} ,#{maxScore,jdbcType=DOUBLE},#{weight,jdbcType=DOUBLE})
     </insert>
+    <select id="queryById" resultType="Problem">
+        select id,problem_no,examine_id,max_score,weight from problem
+        where id = #{id,jdbcType=INTEGER}
+    </select>
 </mapper>

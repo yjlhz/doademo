@@ -5,4 +5,8 @@
         insert into problem_objective (id,problem_id,objective_id)
         value (#{id,jdbcType=INTEGER}, #{problemId,jdbcType=INTEGER},#{objectiveId,jdbcType=INTEGER})
     </insert>
+    <select id="queryByObjectiveId" resultType="ProblemObjective">
+        select id,problem_id,objective_id from problem_objective
+        where objective_id = #{objectiveId,jdbcType=INTEGER}
+    </select>
 </mapper>
