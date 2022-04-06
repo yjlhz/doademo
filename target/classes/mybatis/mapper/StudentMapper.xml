@@ -12,4 +12,22 @@
         select s_num,s_name,gender,major,grade,classes,phone,email,achieve from student
         where s_num = #{sNum,jdbcType=VARCHAR}
     </select>
+    <select id="queryStudentByPlanId" resultType="Student">
+        select s_num,s_name,gender,major,grade,classes,phone,email,achieve from student
+        where major = #{major,jdbcType=VARCHAR}
+        AND grade = #{grade,jdbcType=INTEGER}
+    </select>
+    <update id="updateStudentById" parameterType="Student">
+        update student
+        set s_num = #{sNum,jdbcType=VARCHAR},
+        s_name= #{sName,jdbcType=VARCHAR},
+        gender = #{gender,jdbcType=INTEGER},
+        major = #{major,jdbcType=VARCHAR},
+        grade = #{grade,jdbcType=INTEGER},
+        classes = #{classes,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        achieve = #{achieve,jdbcType=VARCHAR}
+        where s_num = #{sNum,jdbcType=VARCHAR}
+    </update>
 </mapper>

@@ -178,10 +178,9 @@ public class CalculateServiceImpl implements CalculateService {
             for (StudentProblem studentProblem : studentProblems){
                 //获取问题
                 Problem problem = problemMapper.queryById(studentProblem.getProblemId());
-                if (problemRequirementMapper.queryProblemRequirementByProblemId(problem.getId()) == null){
+                if (problemRequirementMapper.queryProblemRequirementByProblemId(problem.getId()).isEmpty()){
                     continue;
                 }
-
                 List<ProblemRequirement> problemRequirements = problemRequirementMapper.queryProblemRequirementByProblemId(problem.getId());
                 for (ProblemRequirement problemRequirement : problemRequirements){
                     Set<Integer> list = map.getOrDefault(problemRequirement.getRequirementNo(), new HashSet<>());
@@ -201,6 +200,9 @@ public class CalculateServiceImpl implements CalculateService {
                 for (Integer v : value){
                     Problem problem = problemMapper.queryById(v);
                     sumMax = ArithUtil.add(sumMax,problem.getMaxScore());
+                    if (studentProblemMapper.queryStudentProblemsBySNumAndProblemId(student.getSNum(), v) == null){
+                        continue;
+                    }
                     StudentProblem studentProblem = studentProblemMapper.queryStudentProblemsBySNumAndProblemId(student.getSNum(), v);
                     StuScore = ArithUtil.add(StuScore,studentProblem.getScore());
                 }
@@ -226,6 +228,6 @@ public class CalculateServiceImpl implements CalculateService {
         if (res == -1){
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
         }
-        return ResultVOUtil.success();
+        return ResultVOUtil.success(studentList);
     }
 }
