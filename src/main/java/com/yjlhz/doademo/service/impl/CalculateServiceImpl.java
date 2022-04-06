@@ -9,12 +9,11 @@ import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.DecimalFormat;
+import java.util.*;
 
 /**
  * @author lhz
@@ -41,6 +40,18 @@ public class CalculateServiceImpl implements CalculateService {
 
     @Autowired
     private ProblemObjectiveMapper problemObjectiveMapper;
+
+    @Autowired
+    private PlanMapper planMapper;
+
+    @Autowired
+    private StudentMapper studentMapper;
+
+    @Autowired
+    private PlanRequirementMapper planRequirementMapper;
+
+    @Autowired
+    private ProblemRequirementMapper problemRequirementMapper;
 
     @Override
     public ResultVO calculate(Integer planId, Integer courseId) {
@@ -143,5 +154,78 @@ public class CalculateServiceImpl implements CalculateService {
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
         }
         return ResultVOUtil.success(objectives);
+    }
+
+    @Override
+    @Transactional
+    public ResultVO updateStudent(Integer planId) {
+        int res = -1;
+        //获取培养计划
+        Plan plan = planMapper.queryPlanById(planId);
+        //根据培养计划获取应该达成的指标点
+        List<Integer> requirementNos = planRequirementMapper.queryRequirementByPlanId(planId);
+        //根据培养计划的专业年级找到适用该培养计划的学生
+        List<Student> studentList = studentMapper.queryStudentByPlanId(plan.getMajor(), plan.getGrade());
+        Map<Integer, Set<Integer>> map = new HashMap<>();//指标点对应的问题列表
+        for (Integer no : requirementNos) {
+            map.put(no, map.getOrDefault(no, new HashSet<>()));
+        }
+        //更新每个学生指标点达成度情况
+        for (Student student : studentList){
+            //根据学生学号获取所作答过的所有问题id
+            List<StudentProblem> studentProblems = studentProblemMapper.queryStudentProblemsBySNum(student.getSNum());
+            //遍历问题id，根据支撑的指标点分类
+            for (StudentProblem studentProblem : studentProblems){
+                //获取问题
+                Problem problem = problemMapper.queryById(studentProblem.getProblemId());
+                if (problemRequirementMapper.queryProblemRequirementByProblemId(problem.getId()) == null){
+                    continue;
+                }
+
+                List<ProblemRequirement> problemRequirements = problemRequirementMapper.queryProblemRequirementByProblemId(problem.getId());
+                for (ProblemRequirement problemRequirement : problemRequirements){
+                    Set<Integer> list = map.getOrDefault(problemRequirement.getRequirementNo(), new HashSet<>());
+                    list.add(problem.getId());
+                    map.put(problemRequirement.getRequirementNo(),list);
+                }
+            }
+            //查询学生需要完成的指标点
+            String achieve = student.getAchieve();
+            String[] strings = achieve.split(",");
+            //更新每个指标点的达成度
+            for (Map.Entry entry : map.entrySet()){
+                Integer key = (Integer) entry.getKey();
+                Set<Integer> value = (Set<Integer>) entry.getValue();
+                double sumMax = 0;
+                double StuScore = 0;
+                for (Integer v : value){
+                    Problem problem = problemMapper.queryById(v);
+                    sumMax = ArithUtil.add(sumMax,problem.getMaxScore());
+                    StudentProblem studentProblem = studentProblemMapper.queryStudentProblemsBySNumAndProblemId(student.getSNum(), v);
+                    StuScore = ArithUtil.add(StuScore,studentProblem.getScore());
+                }
+                double ach = 0.00;
+                if (sumMax != 0.0){
+                    ach = ArithUtil.div(StuScore,sumMax);
+                    DecimalFormat df = new DecimalFormat("#.00");
+                    df.format(ach);
+                }
+                strings[key - 1] = String.valueOf(ach);
+            }
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0;i<strings.length;i++){
+                if (i!=strings.length-1){
+                    sb.append(strings[i]+",");
+                }else {
+                    sb.append(strings[i]);
+                }
+            }
+            student.setAchieve(sb.toString());
+            res = studentMapper.updateStudentById(student);
+        }
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
     }
 }

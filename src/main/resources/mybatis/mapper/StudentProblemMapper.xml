@@ -9,4 +9,13 @@
         select s_num,problem_id,score from student_problem
         where problem_id = #{problemId,jdbcType=INTEGER}
     </select>
+    <select id="queryStudentProblemsBySNum" resultType="StudentProblem">
+        select s_num,problem_id,score from student_problem
+        where s_num = #{sNum,jdbcType=VARCHAR}
+    </select>
+    <select id="queryStudentProblemsBySNumAndProblemId" resultType="StudentProblem">
+        select s_num,problem_id,score from student_problem
+        where s_num = #{sNum,jdbcType=VARCHAR}
+        AND problem_id = #{problemId,jdbcType=INTEGER}
+    </select>
 </mapper>

@@ -22,6 +22,8 @@ public interface StudentMapper {
 
     int addStudent(Student student);
 
+    List<Student> queryStudentByPlanId(String major,Integer grade);
+
     int updateStudentById(Student student);
 
     int deleteStudentById(String sNum);

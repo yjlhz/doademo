@@ -4,6 +4,8 @@ import com.yjlhz.doademo.pojo.ProblemRequirement;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author lhz
  * @title: ProblemRequirementMapper
@@ -17,5 +19,7 @@ import org.springframework.stereotype.Repository;
 public interface ProblemRequirementMapper {
 
     int addProblemRequirement(ProblemRequirement problemRequirement);
+
+    List<ProblemRequirement> queryProblemRequirementByProblemId(Integer problemId);
 
 }

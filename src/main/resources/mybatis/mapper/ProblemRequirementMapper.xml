@@ -5,4 +5,8 @@
         insert into problem_requirement (id,problem_id,requirement_no)
         value (#{id,jdbcType=INTEGER}, #{problemId,jdbcType=INTEGER},#{requirementNo,jdbcType=INTEGER})
     </insert>
+    <select id="queryProblemRequirementByProblemId" resultType="ProblemRequirement">
+        select id,problem_id,requirement_no from problem_requirement
+        where problem_id = #{problemId,jdbcType=INTEGER}
+    </select>
 </mapper>

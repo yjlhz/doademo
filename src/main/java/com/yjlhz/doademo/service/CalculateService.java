@@ -13,4 +13,6 @@ public interface CalculateService {
 
     ResultVO calculate(Integer planId,Integer courseId);
 
+    ResultVO updateStudent(Integer planId);
+
 }

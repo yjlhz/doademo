@@ -27,4 +27,9 @@ public class CalculateController {
         return calculateService.calculate(planId, courseId);
     }
 
+    @GetMapping("/updateStudent")
+    ResultVO updateStudent(Integer planId){
+        return calculateService.updateStudent(planId);
+    }
+
 }

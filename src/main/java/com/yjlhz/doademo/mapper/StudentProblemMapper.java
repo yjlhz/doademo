@@ -22,4 +22,8 @@ public interface StudentProblemMapper {
 
     List<StudentProblem> queryStudentProblemsByProblemId(Integer id);
 
+    List<StudentProblem> queryStudentProblemsBySNum(String sNum);
+
+    StudentProblem queryStudentProblemsBySNumAndProblemId(String sNum,Integer problemId);
+
 }
