@@ -40,6 +40,7 @@ com\yjlhz\doademo\mapper\PlanMapper.class
 com\yjlhz\doademo\pojo\Major.class
 com\yjlhz\doademo\pojo\Student.class
 com\yjlhz\doademo\pojo\Matrix.class
+com\yjlhz\doademo\utils\ExportWordUtil.class
 com\yjlhz\doademo\pojo\ProblemObjective.class
 com\yjlhz\doademo\service\PlanCourseService.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
@@ -71,6 +72,7 @@ com\yjlhz\doademo\config\MvcConfig.class
 com\yjlhz\doademo\service\impl\ExamineServiceImpl.class
 com\yjlhz\doademo\controller\ObjectiveController.class
 com\yjlhz\doademo\form\PlanForm.class
+com\yjlhz\doademo\utils\PoiWordTools.class
 com\yjlhz\doademo\dto\CourseDTO.class
 com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
 com\yjlhz\doademo\controller\MatrixController.class

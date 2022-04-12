@@ -5,12 +5,17 @@ import com.yjlhz.doademo.mapper.*;
 import com.yjlhz.doademo.pojo.*;
 import com.yjlhz.doademo.service.CalculateService;
 import com.yjlhz.doademo.utils.ArithUtil;
+import com.yjlhz.doademo.utils.ExportWordUtil;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -53,6 +58,9 @@ public class CalculateServiceImpl implements CalculateService {
     @Autowired
     private ProblemRequirementMapper problemRequirementMapper;
 
+    @Autowired
+    private CourseMapper courseMapper;
+
     @Override
     public ResultVO calculate(Integer planId, Integer courseId) {
         int res = -1;
@@ -79,6 +87,8 @@ public class CalculateServiceImpl implements CalculateService {
                 }
                 Problem problem = problemMapper.queryById(problemObjective.getProblemId());
                 double achieve = ArithUtil.div(sum,ArithUtil.mul(count,problem.getMaxScore()));
+                problem.setAchieve(achieve);
+                problemMapper.updateProblem(problem);
                 achieve = ArithUtil.mul(achieve,ArithUtil.div(problem.getMaxScore(),sumMax));;
                 data.put(problem.getExamineId(),data.getOrDefault(problem.getExamineId(),new ArrayList<>()));
                 List<Double> doubles = data.get(problem.getExamineId());
@@ -229,5 +239,40 @@ public class CalculateServiceImpl implements CalculateService {
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
         }
         return ResultVOUtil.success(studentList);
+    }
+
+    @Override
+    public void downloadCourse(HttpServletRequest request, HttpServletResponse response, Integer planId, Integer courseId) {
+        Map<String,String> map = new HashMap<>();
+        String templateUrl = "C:/Users/Lenovo/Desktop/doademo/src/main/resources/test.docx";
+        String returnUrl = "C:/Users/Lenovo/Desktop/doademo/src/main/resources/test1.docx";
+        XWPFDocument doc = new XWPFDocument();
+        try {
+            InputStream is = new FileInputStream(new File(templateUrl));
+             doc = new XWPFDocument(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Course course = courseMapper.queryCourseById(courseId);
+        Plan plan = planMapper.queryPlanById(planId);
+        map.put("courseName",course.getCourseName());
+        map.put("courseId", String.valueOf(courseId));
+        map.put("major",plan.getMajor());
+        map.put("planId", String.valueOf(planId));
+        ExportWordUtil exportWordUtil = new ExportWordUtil();
+        exportWordUtil.doParagraphs(doc,map,planId,courseId);
+        // 保存结果文件
+        try {
+            File file = new File(returnUrl);
+            if (file.exists()) {
+                file.delete();
+            }
+            FileOutputStream fos = new FileOutputStream(returnUrl);
+            doc.write(fos);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

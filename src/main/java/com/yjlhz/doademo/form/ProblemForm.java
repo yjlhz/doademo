@@ -18,6 +18,6 @@ public class ProblemForm {
 
     private Double maxScore;//满分分数(根据 学生得分/满分 得到达成度)
 
-    private Double weight;//根据课程所占权重和本题所占分数算出本题权重，作为二级指标点的数据支撑
+    private Double achieve;//根据课程所占权重和本题所占分数算出本题权重，作为二级指标点的数据支撑
 
 }

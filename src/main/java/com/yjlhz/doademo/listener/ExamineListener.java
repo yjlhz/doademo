@@ -114,7 +114,7 @@ public class ExamineListener extends AnalysisEventListener<Map<Integer, String>>
                 problem.setExamineId(examineId);
                 problem.setProblemNo(no++);
                 problem.setMaxScore(Double.valueOf(maxScores.get(maxIndex++)));
-                problem.setWeight(0.0);
+                problem.setAchieve(0.0);
                 problemMapper.addProblem(problem);
             }else if (index > 3){
                 String description = (String) entry.getValue();
@@ -124,7 +124,7 @@ public class ExamineListener extends AnalysisEventListener<Map<Integer, String>>
                 problem.setExamineId(examine.getId());
                 problem.setProblemNo(no++);
                 problem.setMaxScore(Double.valueOf(maxScores.get(maxIndex++)));
-                problem.setWeight(0.0);
+                problem.setAchieve(0.0);
                 examineId = examine.getId();
                 problemMapper.addProblem(problem);
             }

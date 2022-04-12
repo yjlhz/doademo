@@ -49,6 +49,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\PlanCourse.
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\ProblemRequirement.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\RequirementListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\RequirementController.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\utils\ExportWordUtil.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\PlanCourseController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\vo\ProblemVO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\StudentController.java
@@ -79,6 +80,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\StudentCour
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ProblemServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\PlanRequirement.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\MatrixForm.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\utils\PoiWordTools.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\MajorMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\StudentProblemMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\RequirementServiceImpl.java

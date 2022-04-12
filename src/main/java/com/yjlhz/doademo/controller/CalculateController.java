@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author lhz
  * @title: CalculateController
@@ -30,6 +33,11 @@ public class CalculateController {
     @GetMapping("/updateStudent")
     ResultVO updateStudent(Integer planId){
         return calculateService.updateStudent(planId);
+    }
+
+    @GetMapping("/downloadCourse")
+    void downloadCourse(HttpServletRequest request, HttpServletResponse response,Integer planId,Integer courseId){
+        calculateService.downloadCourse(request, response, planId, courseId);
     }
 
 }

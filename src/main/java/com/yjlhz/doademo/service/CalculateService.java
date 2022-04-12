@@ -2,6 +2,9 @@ package com.yjlhz.doademo.service;
 
 import com.yjlhz.doademo.vo.ResultVO;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author lhz
  * @title: CalculateService
@@ -14,5 +17,7 @@ public interface CalculateService {
     ResultVO calculate(Integer planId,Integer courseId);
 
     ResultVO updateStudent(Integer planId);
+
+    void downloadCourse(HttpServletRequest request, HttpServletResponse response, Integer planId, Integer courseId);
 
 }
