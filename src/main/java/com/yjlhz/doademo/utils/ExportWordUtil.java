@@ -187,7 +187,7 @@ public class ExportWordUtil {
                                 int countRow = 3;//标记合并单元格起始位置
                                 Map<Integer,Integer> mergeMap = new HashMap<>();
                                 if (!CollectionUtils.isEmpty(examineList)) {
-                                    int start = 4,end = 4;
+                                    int start = 4,end = 4;//记录合并单元格位置
                                     for (Map.Entry entry : classifyMap.entrySet()){
                                         Integer oId = (Integer) entry.getKey();
                                         Set<Problem> problems = (Set<Problem>) entry.getValue();
