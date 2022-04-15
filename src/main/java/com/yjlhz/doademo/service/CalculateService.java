@@ -4,6 +4,7 @@ import com.yjlhz.doademo.vo.ResultVO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
 
 /**
  * @author lhz
@@ -18,6 +19,6 @@ public interface CalculateService {
 
     ResultVO updateStudent(Integer planId);
 
-    void downloadCourse(HttpServletRequest request, HttpServletResponse response, Integer planId, Integer courseId);
+    void downloadCourse(HttpServletRequest request, HttpServletResponse response, Integer planId, Integer courseId) throws FileNotFoundException;
 
 }

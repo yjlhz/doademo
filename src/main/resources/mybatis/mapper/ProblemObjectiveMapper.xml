@@ -9,4 +9,8 @@
         select id,problem_id,objective_id from problem_objective
         where objective_id = #{objectiveId,jdbcType=INTEGER}
     </select>
+    <select id="queryByProblemId" resultType="ProblemObjective">
+        select id,problem_id,objective_id from problem_objective
+        where problem_id = #{problemId,jdbcType=INTEGER}
+    </select>
 </mapper>

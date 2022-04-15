@@ -2,15 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yjlhz.doademo.mapper.ProblemMapper" >
     <select id="queryProblemByExamineId" resultType="Problem">
-        select id,problem_no,examine_id,max_score,weight from problem
+        select id,problem_no,examine_id,max_score,achieve from problem
         where examine_id = #{examineId,jdbcType=INTEGER}
     </select>
     <insert id="addProblem" parameterType="Problem">
-        insert into problem (id,problem_no,examine_id,max_score,weight)
-        value (#{id,jdbcType=INTEGER}, #{problemNo,jdbcType=INTEGER},#{examineId,jdbcType=INTEGER} ,#{maxScore,jdbcType=DOUBLE},#{weight,jdbcType=DOUBLE})
+        insert into problem (id,problem_no,examine_id,max_score,achieve)
+        value (#{id,jdbcType=INTEGER}, #{problemNo,jdbcType=INTEGER},#{examineId,jdbcType=INTEGER} ,#{maxScore,jdbcType=DOUBLE},#{achieve,jdbcType=DOUBLE})
     </insert>
     <select id="queryById" resultType="Problem">
-        select id,problem_no,examine_id,max_score,weight from problem
+        select id,problem_no,examine_id,max_score,achieve from problem
         where id = #{id,jdbcType=INTEGER}
     </select>
+    <update id="updateProblem" parameterType="Problem">
+        update problem
+        set problem_no = #{problemNo,jdbcType=INTEGER},
+        examine_id= #{examineId,jdbcType=INTEGER},
+        max_score = #{maxScore,jdbcType=DOUBLE},
+        achieve = #{achieve,jdbcType=DOUBLE}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

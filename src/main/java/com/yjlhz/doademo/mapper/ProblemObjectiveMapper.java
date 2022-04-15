@@ -22,4 +22,6 @@ public interface ProblemObjectiveMapper {
 
     List<ProblemObjective> queryByObjectiveId(Integer id);
 
+    List<ProblemObjective> queryByProblemId(Integer problemId);
+
 }

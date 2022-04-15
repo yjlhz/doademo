@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
 
 /**
  * @author lhz
@@ -37,7 +38,11 @@ public class CalculateController {
 
     @GetMapping("/downloadCourse")
     void downloadCourse(HttpServletRequest request, HttpServletResponse response,Integer planId,Integer courseId){
-        calculateService.downloadCourse(request, response, planId, courseId);
+        try {
+            calculateService.downloadCourse(request, response, planId, courseId);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -242,7 +241,7 @@ public class CalculateServiceImpl implements CalculateService {
     }
 
     @Override
-    public void downloadCourse(HttpServletRequest request, HttpServletResponse response, Integer planId, Integer courseId) {
+    public void downloadCourse(HttpServletRequest request, HttpServletResponse response, Integer planId, Integer courseId) throws FileNotFoundException {
         Map<String,String> map = new HashMap<>();
         String templateUrl = "C:/Users/Lenovo/Desktop/doademo/src/main/resources/test.docx";
         String returnUrl = "C:/Users/Lenovo/Desktop/doademo/src/main/resources/test1.docx";
@@ -261,6 +260,7 @@ public class CalculateServiceImpl implements CalculateService {
         map.put("planId", String.valueOf(planId));
         ExportWordUtil exportWordUtil = new ExportWordUtil();
         exportWordUtil.doParagraphs(doc,map,planId,courseId);
+//        exportWordUtil.doCharts(doc,map);
         // 保存结果文件
         try {
             File file = new File(returnUrl);
