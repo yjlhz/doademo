@@ -184,8 +184,10 @@ public class ExportWordUtil {
                                         }
                                     }
                                 }
-                                int countRow = 0;//标记合并单元格起始位置
+                                int countRow = 3;//标记合并单元格起始位置
+                                Map<Integer,Integer> mergeMap = new HashMap<>();
                                 if (!CollectionUtils.isEmpty(examineList)) {
+                                    int start = 4,end = 4;
                                     for (Map.Entry entry : classifyMap.entrySet()){
                                         Integer oId = (Integer) entry.getKey();
                                         Set<Problem> problems = (Set<Problem>) entry.getValue();
@@ -210,6 +212,7 @@ public class ExportWordUtil {
                                                 new PoiWordTools().setWordCellSelfStyle(tableOneRowFive.getCell(8), "微软雅黑", "9", 0, "left", "top", "#000000", "#ffffff", 30, df.format(exportWordUtil.objectiveMapper.queryById(oId).getAchieve()));
                                                 flag = 1;
                                                 countRow++;
+                                                end++;
                                             }else {
                                                 Objective temp =  exportWordUtil.objectiveMapper.queryById(oId);
                                                 DecimalFormat df = new DecimalFormat("#0.000");
@@ -223,9 +226,13 @@ public class ExportWordUtil {
                                                 new PoiWordTools().setWordCellSelfStyle(tableOneRowFive.getCell(7), "微软雅黑", "9", 0, "left", "top", "#000000", "#ffffff", 30, df.format(problem.getAchieve()));
                                                 new PoiWordTools().setWordCellSelfStyle(tableOneRowFive.getCell(8), "微软雅黑", "9", 0, "left", "top", "#000000", "#ffffff", 30, "");
                                                 countRow++;
+                                                end++;
                                             }
                                         }
+                                        mergeMap.put(start,end);
+                                        start = end;
                                     }
+
                                 }
                                 //平均达成度
                                 XWPFTableRow tableOneRowSix = tableOne.createRow();//行
@@ -272,6 +279,17 @@ public class ExportWordUtil {
                                 mergeCellsHorizontal(tableOne,1,3,8);
                                 mergeCellsHorizontal(tableOne,2,2,5);
                                 mergeCellsHorizontal(tableOne,2,6,7);
+                                mergeCellsHorizontal(tableOne,countRow+1,1,8);
+                                mergeCellsHorizontal(tableOne,countRow+2,1,8);
+
+                                for (Map.Entry entry : mergeMap.entrySet()){
+                                    int key = (int) entry.getKey();
+                                    int value = (int) entry.getValue();
+                                    mergeCellsVertically(tableOne,0,key,value-1);
+                                    mergeCellsVertically(tableOne,1,key,value-1);
+                                    mergeCellsVertically(tableOne,8,key,value);
+                                }
+
                             }
 
                             //输出成绩单
