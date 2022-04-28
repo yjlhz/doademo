@@ -8,7 +8,21 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
 
 mybatis:
   type-aliases-package: com.yjlhz.doademo.pojo
   mapper-locations: classpath:mybatis/mapper/*.xml
+server:
+  servlet:
+    context-path: /doademo
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.yjlhz.doademo: debug

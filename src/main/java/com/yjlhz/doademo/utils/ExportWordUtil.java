@@ -441,16 +441,19 @@ public class ExportWordUtil {
         Map<String, String> base1 = new HashMap<String, String>();
         base1.put("item1", "材料费用");
         base1.put("item2", "500");
+        base1.put("item3", "600");
 
         // 第二行数据
         Map<String, String> base2 = new HashMap<String, String>();
         base2.put("item1", "出差费用");
         base2.put("item2", "300");
+        base2.put("item3", "500");
 
         // 第三行数据
         Map<String, String> base3 = new HashMap<String, String>();
         base3.put("item1", "住宿费用");
         base3.put("item2", "300");
+        base3.put("item3", "500");
 
         listItemsByType.add(base1);
         listItemsByType.add(base2);
@@ -478,26 +481,26 @@ public class ExportWordUtil {
         System.out.println("\n图表数量：" + chartsMap.size() + "\n");
 
 
-        // 第一个图表-条形图
-        POIXMLDocumentPart poixmlDocumentPart0 = chartsMap.get("/word/charts/chart1.xml");
-        new PoiWordTools().replaceBarCharts(poixmlDocumentPart0, titleArr, fldNameArr, listItemsByType);
-
-        // 第二个-柱状图
-        POIXMLDocumentPart poixmlDocumentPart1 = chartsMap.get("/word/charts/chart2.xml");
-        new PoiWordTools().replaceBarCharts(poixmlDocumentPart1, titleArr, fldNameArr, listItemsByType);
+//        // 第一个图表-条形图
+//        POIXMLDocumentPart poixmlDocumentPart0 = chartsMap.get("/word/charts/chart1.xml");
+//        new PoiWordTools().replaceBarCharts(poixmlDocumentPart0, titleArr, fldNameArr, listItemsByType);
+//
+//        // 第二个-柱状图
+//        POIXMLDocumentPart poixmlDocumentPart1 = chartsMap.get("/word/charts/chart2.xml");
+//        new PoiWordTools().replaceBarCharts(poixmlDocumentPart1, titleArr, fldNameArr, listItemsByType);
 
         // 第三个图表-多列柱状图
         doCharts3(chartsMap);
+//
+//        // 第四个图表-折线图
+//        doCharts4(chartsMap);
+//
+//        // 第五个图表-饼图
+//        POIXMLDocumentPart poixmlDocumentPart4 = chartsMap.get("/word/charts/chart5.xml");
+//        new PoiWordTools().replacePieCharts(poixmlDocumentPart4, titleArr, fldNameArr, listItemsByType);
 
-        // 第四个图表-折线图
-        doCharts4(chartsMap);
-
-        // 第五个图表-饼图
-        POIXMLDocumentPart poixmlDocumentPart4 = chartsMap.get("/word/charts/chart5.xml");
-        new PoiWordTools().replacePieCharts(poixmlDocumentPart4, titleArr, fldNameArr, listItemsByType);
-
-
-        doCharts6(chartsMap);
+//
+//        doCharts6(chartsMap);
     }
 
     public void doCharts3(Map<String, POIXMLDocumentPart> chartsMap) {
@@ -538,7 +541,7 @@ public class ExportWordUtil {
         listItemsByType.add(base2);
         listItemsByType.add(base3);
 
-        POIXMLDocumentPart poixmlDocumentPart2 = chartsMap.get("/word/charts/chart3.xml");
+        POIXMLDocumentPart poixmlDocumentPart2 = chartsMap.get("/word/charts/chart1.xml");
         new PoiWordTools().replaceBarCharts(poixmlDocumentPart2, titleArr, fldNameArr, listItemsByType);
     }
 
