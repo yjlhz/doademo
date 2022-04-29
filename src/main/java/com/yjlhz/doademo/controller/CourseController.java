@@ -50,7 +50,7 @@ public class CourseController {
     @GetMapping("/queryCourseList")
     public String queryCourseList(Model model,
                                   @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
-                                  @RequestParam(defaultValue="2",value="pageSize")Integer pageSize){
+                                  @RequestParam(defaultValue="10",value="pageSize")Integer pageSize){
         //为了程序的严谨性，判断非空：
         //设置默认当前页
         if(pageNum==null || pageNum<=0){
