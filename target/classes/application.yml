@@ -21,6 +21,12 @@ server:
   servlet:
     context-path: /doademo
 
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
 # 日志配置
 logging:
   level:
