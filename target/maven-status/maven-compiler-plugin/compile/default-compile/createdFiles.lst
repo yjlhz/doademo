@@ -50,7 +50,6 @@ com\yjlhz\doademo\service\PlanCourseService.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
 com\yjlhz\doademo\config\UpLoadConfig.class
 com\yjlhz\doademo\pojo\PlanCourse.class
-com\yjlhz\doademo\controller\helloController.class
 com\yjlhz\doademo\controller\ProblemController.class
 com\yjlhz\doademo\dto\RequirementDTO.class
 com\yjlhz\doademo\mapper\PlanCourseMapper.class

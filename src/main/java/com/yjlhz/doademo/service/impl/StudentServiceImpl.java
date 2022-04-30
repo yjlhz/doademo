@@ -99,7 +99,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResultVO deleteStudent(String sNum) {
-        return null;
+        int res = studentMapper.deleteStudentById(sNum);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
     }
 
     @Override
