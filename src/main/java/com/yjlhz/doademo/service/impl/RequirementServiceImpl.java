@@ -76,6 +76,21 @@ public class RequirementServiceImpl implements RequirementService {
     }
 
     @Override
+    public ResultVO deleteRequirementById(Integer id) {
+        int res = requirementMapper.deleteRequirementById(id);
+        if (res == -1){
+            ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
+
+    @Override
+    public ResultVO queryRequirementById(Integer id) {
+        Requirement requirement = requirementMapper.queryRequirementById(id);
+        return ResultVOUtil.success(requirement);
+    }
+
+    @Override
     public ResultVO uploadRequirement(MultipartFile multipartFile) {
         try {
             EasyExcel.read(multipartFile.getInputStream(), RequirementDTO.class, new RequirementListener(requirementMapper)).sheet().doRead();

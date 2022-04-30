@@ -8,6 +8,10 @@
         select id,requirement_no,description from requirement
         where requirement_no = #{requirementNo,jdbcType=INTEGER}
     </select>
+    <select id="queryRequirementById" resultType="Requirement">
+        select id,requirement_no,description from requirement
+        where id = #{id,jdbcType=INTEGER}
+    </select>
     <insert id="addRequirement" parameterType="Requirement">
         insert into requirement (id,requirement_no,description)
         value (#{id,jdbcType=INTEGER}, #{requirementNo,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
@@ -21,6 +25,10 @@
     <delete id="deleteRequirementByNo" parameterType="java.lang.Integer">
         delete from requirement
         where requirement_no = #{requirementNo,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteRequirementById" parameterType="java.lang.Integer">
+        delete from requirement
+        where id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="uploadRequirement" parameterType="com.yjlhz.doademo.dto.RequirementDTO">
     insert into requirement (requirement_no,description)

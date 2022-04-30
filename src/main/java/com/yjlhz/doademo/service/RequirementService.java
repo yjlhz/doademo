@@ -23,6 +23,10 @@ public interface RequirementService {
 
     ResultVO deleteRequirementByNo(Integer no);
 
+    ResultVO deleteRequirementById(Integer id);
+
+    ResultVO queryRequirementById(Integer id);
+
     /**
      * 通过文件新增一级指标点
      * @param multipartFile

@@ -28,6 +28,10 @@ public interface RequirementMapper {
 
     int deleteRequirementByNo(Integer no);
 
+    int deleteRequirementById(Integer id);
+
+    Requirement queryRequirementById(Integer id);
+
     /**
      * 通过文件新增一级指标点
      * @param record
