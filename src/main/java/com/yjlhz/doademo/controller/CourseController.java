@@ -6,7 +6,9 @@ import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.CourseForm;
 import com.yjlhz.doademo.mapper.CourseMapper;
 import com.yjlhz.doademo.pojo.Course;
+import com.yjlhz.doademo.pojo.Requirement;
 import com.yjlhz.doademo.service.CourseService;
+import com.yjlhz.doademo.service.RequirementService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,6 +38,9 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    private RequirementService requirementService;
+
     @GetMapping("/export")
     @ApiOperation("批量导出课程")
     void exportCourse(HttpServletResponse response){
@@ -43,8 +49,14 @@ public class CourseController {
 
     @PostMapping("/upload")
     @ApiOperation("批量上传课程")
-    ResultVO uploadCourse(@RequestParam(value = "file", required = false) MultipartFile file) {
-        return courseService.uploadCourse(file);
+    String uploadCourse(@RequestParam(value = "file", required = false) MultipartFile file) {
+        courseService.uploadCourse(file);
+        return "redirect:/course/queryCourseList";
+    }
+
+    @GetMapping("/toUpload")
+    public String toUpload(){
+        return "uploadCourse";
     }
 
     @GetMapping("/queryCourseList")
@@ -77,30 +89,41 @@ public class CourseController {
             //清理 ThreadLocal 存储的分页参数,保证线程安全
             PageHelper.clearPage();
         }
-        return "list";
+        return "courseList";
     }
 
     @PostMapping("/addCourse")
-    public ResultVO addCourse(@Valid CourseForm courseForm, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return ResultVOUtil.error(ResultEnum.PARAMETER_ERROR);
-        }
-        return courseService.addCourse(courseForm);
+    public String addCourse(CourseForm courseForm){
+        courseService.addCourse(courseForm);
+        return "redirect:/course/queryCourseList";
+    }
+
+    @GetMapping("/toAdd")
+    public String toAdd(Model model){
+        List<Requirement> requirementList = (List<Requirement>) requirementService.queryRequirements().getData();
+        model.addAttribute("requirementList",requirementList);
+        return "addCourse";
     }
 
     @PostMapping("/updateCourse")
-    public ResultVO updateCourseById(@Valid CourseForm courseForm,BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return ResultVOUtil.error(ResultEnum.PARAMETER_ERROR);
-        }
-        return courseService.updateCourse(courseForm);
+    public String updateCourseById(CourseForm courseForm){
+        courseService.updateCourse(courseForm);
+        return "redirect:/course/queryCourseList";
     }
 
-    @GetMapping("/deleteCourse")
-    public String deleteCourse(Integer courseId){
-        ResultVO resultVO = courseService.deleteCourse(courseId);
+    @GetMapping("/toUpdate/{id}")
+    public String toUpdate(@PathVariable("id")Integer id,Model model){
+        Course course = (Course) courseService.queryCourseById(id).getData();
+        model.addAttribute("course",course);
+        List<Requirement> requirementList = (List<Requirement>) requirementService.queryRequirements().getData();
+        model.addAttribute("requirementList",requirementList);
+        return "updateCourse";
+    }
 
-        return "";
+    @GetMapping("/deleteCourse/{id}")
+    public String deleteCourse(@PathVariable Integer id){
+        courseService.deleteCourse(id);
+        return "redirect:/course/queryCourseList";
     }
 
     @GetMapping("/queryCourserByName")
