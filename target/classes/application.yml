@@ -19,7 +19,7 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 server:
   servlet:
-    context-path: /doademo
+    context-path:
 
 pagehelper:
   helper-dialect: mysql

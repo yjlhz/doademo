@@ -1,0 +1,16 @@
+package com.yjlhz.doademo.service;
+
+import com.yjlhz.doademo.vo.ResultVO;
+
+/**
+ * @author lhz
+ * @title: UserService
+ * @projectName doademo
+ * @description: 登录
+ * @date 2022/4/30 10:39
+ */
+public interface UserService {
+
+    ResultVO Login(String name,String password);
+
+}

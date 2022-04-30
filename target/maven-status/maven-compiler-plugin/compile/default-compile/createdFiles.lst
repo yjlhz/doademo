@@ -26,16 +26,20 @@ com\yjlhz\doademo\service\PlanService.class
 com\yjlhz\doademo\enums\ResultEnum.class
 com\yjlhz\doademo\form\WeightForm.class
 com\yjlhz\doademo\config\SwaggerConfig.class
+com\yjlhz\doademo\pojo\User.class
 com\yjlhz\doademo\listener\StudentListener.class
+com\yjlhz\doademo\config\LoginHandlerInterceptor.class
 com\yjlhz\doademo\pojo\StudentCourse.class
 com\yjlhz\doademo\pojo\Problem.class
 com\yjlhz\doademo\service\CalculateService.class
 com\yjlhz\doademo\service\impl\CourseServiceImpl.class
 com\yjlhz\doademo\pojo\Plan.class
+com\yjlhz\doademo\service\impl\UserServiceImpl.class
 com\yjlhz\doademo\service\RequirementService.class
 com\yjlhz\doademo\pojo\Requirement.class
 com\yjlhz\doademo\utils\ArithUtil.class
 com\yjlhz\doademo\dto\MajorDTO.class
+com\yjlhz\doademo\mapper\UserMapper.class
 com\yjlhz\doademo\mapper\PlanMapper.class
 com\yjlhz\doademo\pojo\Major.class
 com\yjlhz\doademo\pojo\Student.class
@@ -51,6 +55,7 @@ com\yjlhz\doademo\controller\ProblemController.class
 com\yjlhz\doademo\dto\RequirementDTO.class
 com\yjlhz\doademo\mapper\PlanCourseMapper.class
 com\yjlhz\doademo\service\ProblemService.class
+com\yjlhz\doademo\service\UserService.class
 com\yjlhz\doademo\controller\StudentController.class
 com\yjlhz\doademo\service\impl\StudentServiceImpl.class
 com\yjlhz\doademo\DoademoApplication.class
@@ -60,6 +65,7 @@ com\yjlhz\doademo\pojo\Examine.class
 com\yjlhz\doademo\pojo\StudentProblem.class
 com\yjlhz\doademo\mapper\StudentProblemMapper.class
 com\yjlhz\doademo\service\impl\MajorServiceImpl.class
+com\yjlhz\doademo\controller\LoginController.class
 com\yjlhz\doademo\dto\StudentDTO.class
 com\yjlhz\doademo\mapper\StudentCourseMapper.class
 com\yjlhz\doademo\service\StudentService.class
