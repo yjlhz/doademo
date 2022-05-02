@@ -30,4 +30,8 @@
         achieve = #{achieve,jdbcType=VARCHAR}
         where s_num = #{sNum,jdbcType=VARCHAR}
     </update>
+    <delete id="deleteStudentById" parameterType="java.lang.String">
+        delete from student
+        where s_num = #{sNum,jdbcType=VARCHAR}
+    </delete>
 </mapper>

@@ -60,40 +60,40 @@ public class PlanServiceImpl implements PlanService {
         plan.setMajor(planForm.getMajor());
         plan.setMinScore(planForm.getMinScore());
         int res = planMapper.addPlan(plan);
-        //如果不指定培养计划的指标点，就默认全选
-        if (planForm.getRequirement() == null){
-            List<Requirement> requirements = requirementMapper.queryRequirementList();
-            //绑定指标点
-            for (Requirement requirement : requirements){
-                PlanRequirement planRequirement = new PlanRequirement();
-                planRequirement.setPlanId(planForm.getId());
-                planRequirement.setRequirementNo(requirement.getRequirementNo());
-                res = planRequirementMapper.addPlanRequirement(planRequirement);
-            }
-        }else {
-            List<String> requirements = planForm.getRequirement();
-            for (String no : requirements){
-                PlanRequirement planRequirement = new PlanRequirement();
-                planRequirement.setPlanId(planForm.getId());
-                planRequirement.setRequirementNo(Integer.valueOf(no));
-                res = planRequirementMapper.addPlanRequirement(planRequirement);
-            }
-        }
-        if (planForm.getCourseId() == null){
-            return ResultVOUtil.error(ResultEnum.BINDING_ERROR);
-        }
-        //绑定专业课程，确定课程占计划权重
-        List<Integer> courseIds = planForm.getCourseId();
-        for (Integer courseId : courseIds){
-            PlanCourse planCourse = new PlanCourse();
-            planCourse.setPlanId(planForm.getId());
-            planCourse.setCourseId(courseId);
-            Course course = courseMapper.queryCourseById(courseId);
-            double credit = course.getCourseCredit();
-            double weight = credit / planForm.getMinScore();
-            planCourse.setWeight(weight);
-            res = planCourseMapper.addPlanCourse(planCourse);
-        }
+//        //如果不指定培养计划的指标点，就默认全选
+//        if (planForm.getRequirement() == null){
+//            List<Requirement> requirements = requirementMapper.queryRequirementList();
+//            //绑定指标点
+//            for (Requirement requirement : requirements){
+//                PlanRequirement planRequirement = new PlanRequirement();
+//                planRequirement.setPlanId(planForm.getId());
+//                planRequirement.setRequirementNo(requirement.getRequirementNo());
+//                res = planRequirementMapper.addPlanRequirement(planRequirement);
+//            }
+//        }else {
+//            List<String> requirements = planForm.getRequirement();
+//            for (String no : requirements){
+//                PlanRequirement planRequirement = new PlanRequirement();
+//                planRequirement.setPlanId(planForm.getId());
+//                planRequirement.setRequirementNo(Integer.valueOf(no));
+//                res = planRequirementMapper.addPlanRequirement(planRequirement);
+//            }
+//        }
+//        if (planForm.getCourseId() == null){
+//            return ResultVOUtil.error(ResultEnum.BINDING_ERROR);
+//        }
+//        //绑定专业课程，确定课程占计划权重
+//        List<Integer> courseIds = planForm.getCourseId();
+//        for (Integer courseId : courseIds){
+//            PlanCourse planCourse = new PlanCourse();
+//            planCourse.setPlanId(planForm.getId());
+//            planCourse.setCourseId(courseId);
+//            Course course = courseMapper.queryCourseById(courseId);
+//            double credit = course.getCourseCredit();
+//            double weight = credit / planForm.getMinScore();
+//            planCourse.setWeight(weight);
+//            res = planCourseMapper.addPlanCourse(planCourse);
+//        }
         if (res == -1){
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
         }

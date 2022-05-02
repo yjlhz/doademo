@@ -97,11 +97,11 @@
 						</table>
 
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-6" align="right">
 								当前第[[${pageInfo.pageNum}]]页，共[[${pageInfo.pages}]]页，共[[${pageInfo.total}]]条记录 </div>
 						</div>
 						<!-- 分页导航条 -->
-						<div class="pagenation">
+						<div class="pagenation" align="right">
 							<a th:href="@{/course/queryCourseList/}"><span class="btn-page btn-default">首页</span></a>
 							<a th:href="@{/course/queryCourseList/(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"><span
 									class="btn-page btn-default">上一页</span></a>

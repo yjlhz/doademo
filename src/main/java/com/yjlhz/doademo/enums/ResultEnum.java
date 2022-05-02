@@ -9,7 +9,7 @@ public enum ResultEnum {
     SERVER_ERROR(1,"服务器错误!"),
     CONFLICT_ERROR(2,"ID已存在!"),
     BINDING_ERROR(3,"关系未指定!"),
-    NOTHINGNESS_ERROR(4,"学生指定培养计划不存在!"),
+    NOTHINGNESS_ERROR(4,"学生指定培养计划不存在，请填写能与培养计划匹配的专业和年级!"),
     USER_DOESNOT_EXIST(5,"用户不存在!"),
     PASSWORD_ERROR(6,"用户密码错误!"),
 

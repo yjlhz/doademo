@@ -43,6 +43,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a th:class="${active=='plan.html'?'nav-link active':'nav-link'}" th:href="@{/plan/queryPlanList}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                        培养计划管理
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a th:class="${active=='student.html'?'nav-link active':'nav-link'}" th:href="@{/student/queryStudentList}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -76,7 +86,44 @@
             </ul>
         </div>
     </nav>
+    <!-- 多选下拉 -->
+    <div id="id_div">
+        <input id="id_select" readonly onclick="show_options();">
+        <ul id="id_select_options">
+            <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="000000"/>000000</li>
+            <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="111111"/>111111</li>
+            <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="222222"/>222222</li>
+            <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="333333"/>333333</li>
+            <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="444444"/>444444</li>
+        </ul>
+    </div>
+    <script>
+        //显示 - 隐藏下拉列表
+        $("#id_div").mouseleave( function(){
+            $("#id_select_options").hide();
+        } );
 
+        function show_options()
+        {
+            if( $("#id_select_options").is(":hidden") )
+                $("#id_select_options").show();
+            else
+                $("#id_select_options").hide();
+        }
+
+        //复选框勾选，更新显示
+        function chk_changed()
+        {
+            var str_selected = "";
+            var lstChk = document.getElementsByName( "select_checkbox" );
+            for( var n = 0; n < lstChk.length; n++ )
+            {
+                if( lstChk[n].checked )
+                    str_selected = str_selected + "/" + lstChk[n].value;
+            }
+            $("#id_select").val( str_selected.substring( 1, str_selected.length ) );
+        }
+    </script>
     <!-- form样式 -->
     <form action="">
         <div class="form-group">

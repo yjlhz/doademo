@@ -10,6 +10,7 @@ import com.yjlhz.doademo.form.StudentForm;
 import com.yjlhz.doademo.listener.CourseListener;
 import com.yjlhz.doademo.listener.StudentListener;
 import com.yjlhz.doademo.pojo.Course;
+import com.yjlhz.doademo.pojo.Requirement;
 import com.yjlhz.doademo.pojo.Student;
 import com.yjlhz.doademo.service.StudentService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
@@ -77,11 +78,18 @@ public class StudentController {
     }
 
     @PostMapping("/addStudent")
-    ResultVO addStudent(@Valid StudentForm studentForm, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return ResultVOUtil.error(ResultEnum.PARAMETER_ERROR);
+    String addStudent(StudentForm studentForm,Model model){
+        ResultVO resultVO = studentService.addStudent(studentForm);
+        if (resultVO.getCode() == 4){
+            model.addAttribute("msg",resultVO.getMsg());
+            return "notExistStudent";
         }
-        return studentService.addStudent(studentForm);
+        return "redirect:/student/queryStudentList";
+    }
+
+    @GetMapping("/toAdd")
+    public String toAdd(){
+        return "addStudent";
     }
 
     @PostMapping("/uploadStudent")
