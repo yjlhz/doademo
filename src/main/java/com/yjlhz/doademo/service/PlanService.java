@@ -20,4 +20,6 @@ public interface PlanService {
 
     ResultVO deletePlan(Integer id);
 
+    ResultVO queryPlanById(Integer planId);
+
 }

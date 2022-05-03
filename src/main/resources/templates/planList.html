@@ -92,7 +92,7 @@
 									<td th:text="${plan.minScore}"></td>
 									<td th:text="${plan.description}"></td>
 									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{/plan/toUpdate/}+${plan.id}">编辑</a>
+										<a class="btn btn-sm btn-primary" th:href="@{/plan/toDetail/}+${plan.id}">查看详细</a>
 										<a class="btn btn-sm btn-danger" href="javascript:;" th:onclick="'deletePlan('+${plan.id}+')'">删除</a>
 									</td>
 								</tr>
@@ -173,7 +173,7 @@
 			});
 			function deletePlan(id) {
 				if (window.confirm('确定要删除该培养计划吗？')){
-					location.href='@{/plan/deletePlan/}]]'+id;
+					location.href='[[@{/plan/deletePlan/}]]'+id;
 				}
 			}
 		</script>

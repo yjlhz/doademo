@@ -113,4 +113,9 @@ public class PlanServiceImpl implements PlanService {
         }
         return ResultVOUtil.success();
     }
+
+    @Override
+    public ResultVO queryPlanById(Integer planId) {
+        return ResultVOUtil.success(planMapper.queryPlanById(planId));
+    }
 }

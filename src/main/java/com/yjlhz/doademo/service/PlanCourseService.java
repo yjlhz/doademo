@@ -1,5 +1,6 @@
 package com.yjlhz.doademo.service;
 
+import com.yjlhz.doademo.pojo.PlanCourse;
 import com.yjlhz.doademo.vo.ResultVO;
 
 /**
@@ -12,5 +13,12 @@ import com.yjlhz.doademo.vo.ResultVO;
 public interface PlanCourseService {
 
     ResultVO queryPlanCourseByPlanId(Integer planId);
+
+    ResultVO addPlanCourse(PlanCourse planCourse);
+
+    ResultVO deletePlanCourseByPlanId(Integer planId);
+
+    ResultVO queryCourseByPlanId(Integer planId);
+
 
 }

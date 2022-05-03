@@ -25,4 +25,6 @@ public interface PlanRequirementMapper {
 
     int deletePlanRequirementById(Integer id);
 
+    int deletePlanRequirementByPlanId(Integer planId);
+
 }

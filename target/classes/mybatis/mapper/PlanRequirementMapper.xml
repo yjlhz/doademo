@@ -19,4 +19,8 @@
         delete from plan_requirement
         where id = #{id,jdbcType=INTEGER}
     </delete>
+    <delete id="deletePlanRequirementByPlanId" parameterType="java.lang.Integer">
+        delete from plan_requirement
+        where plan_id = #{planId,jdbcType=INTEGER}
+    </delete>
 </mapper>

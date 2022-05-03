@@ -18,4 +18,8 @@
         delete from plan_course
         where id = #{id,jdbcType=INTEGER}
     </delete>
+    <delete id="deletePlanCourseByPlanId" parameterType="java.lang.Integer">
+        delete from plan_course
+        where plan_id = #{planId,jdbcType=INTEGER}
+    </delete>
 </mapper>

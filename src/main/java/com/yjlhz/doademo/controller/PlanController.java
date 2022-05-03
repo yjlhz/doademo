@@ -5,16 +5,14 @@ import com.github.pagehelper.PageInfo;
 import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.CourseForm;
 import com.yjlhz.doademo.form.PlanForm;
-import com.yjlhz.doademo.pojo.Plan;
-import com.yjlhz.doademo.pojo.Requirement;
-import com.yjlhz.doademo.pojo.Student;
-import com.yjlhz.doademo.service.PlanService;
-import com.yjlhz.doademo.service.RequirementService;
+import com.yjlhz.doademo.pojo.*;
+import com.yjlhz.doademo.service.*;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +40,15 @@ public class PlanController {
 
     @Autowired
     private RequirementService requirementService;
+
+    @Autowired
+    private PlanRequirementService planRequirementService;
+
+    @Autowired
+    private CourseService courseService;
+
+    @Autowired
+    private PlanCourseService planCourseService;
 
     @GetMapping("/queryPlanList")
     String queryPlanList(Model model,
@@ -90,10 +97,20 @@ public class PlanController {
         return "bindingRequirement";
     }
 
-    @PostMapping("/bindingRequirement")
-    String bindingRequirement(){
-
-        return "bindingCourse";
+    @PostMapping("/bindingCourse/{planId}")
+    String bindingRequirement(@PathVariable("planId")Integer planId,HttpServletRequest request,Model model){
+        String[] checkItems = request.getParameterValues("checkItem");
+        for (String s : checkItems){
+            PlanCourse planCourse = new PlanCourse();
+            planCourse.setPlanId(planId);
+            planCourse.setCourseId(Integer.valueOf(s));
+            ResultVO resultVO = planCourseService.addPlanCourse(planCourse);
+            if (resultVO.getCode() == 1){
+                model.addAttribute("msg",resultVO.getMsg());
+                return "IDAlreadyExists";
+            }
+        }
+        return "redirect:/plan/queryPlanList";
     }
 
     @GetMapping("/toAdd")
@@ -101,12 +118,44 @@ public class PlanController {
         return "addPlan";
     }
 
-    @PostMapping("/binding/{planId}")
-    public String binding(@PathVariable("planId")Integer planId,HttpServletRequest request){
+    @PostMapping("/bindingRequirement/{planId}")
+    @Transactional
+    public String binding(@PathVariable("planId")Integer planId,HttpServletRequest request,Model model){
         String[] checkItems = request.getParameterValues("checkItem");
-        System.out.println(checkItems);
-        System.out.println(planId);
-        return "bindingRequirement";
+        for (String s : checkItems){
+            PlanRequirement planRequirement = new PlanRequirement();
+            planRequirement.setPlanId(planId);
+            planRequirement.setRequirementNo(Integer.valueOf(s));
+            ResultVO resultVO = planRequirementService.addPlanRequirement(planRequirement);
+            if (resultVO.getCode() == 1){
+                model.addAttribute("msg",resultVO.getMsg());
+                return "IDAlreadyExists";
+            }
+        }
+        List<Course> courseList = (List<Course>) courseService.queryCourses().getData();
+        model.addAttribute("courseList",courseList);
+        model.addAttribute("planId",planId);
+        return "bindingCourse";
+    }
+
+    @GetMapping("/deletePlan/{id}")
+    @Transactional
+    public String deleteCourse(@PathVariable Integer id){
+        planService.deletePlan(id);
+        planRequirementService.deletePlanRequirementByPlanId(id);
+        planCourseService.deletePlanCourseByPlanId(id);
+        return "redirect:/plan/queryPlanList";
+    }
+
+    @GetMapping("/toDetail/{planId}")
+    public String toDetail(@PathVariable("planId")Integer planId,Model model){
+        Plan plan = (Plan) planService.queryPlanById(planId).getData();
+        List<Requirement> requirementList = (List<Requirement>) planRequirementService.queryRequirementByPlanId(planId).getData();
+        List<Course> courseList = (List<Course>) planCourseService.queryCourseByPlanId(planId).getData();
+        model.addAttribute("plan",plan);
+        model.addAttribute("requirementList",requirementList);
+        model.addAttribute("courseList",courseList);
+        return "planDetail";
     }
 
 }

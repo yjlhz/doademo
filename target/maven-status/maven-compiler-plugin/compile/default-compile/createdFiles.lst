@@ -59,6 +59,7 @@ com\yjlhz\doademo\controller\StudentController.class
 com\yjlhz\doademo\service\impl\StudentServiceImpl.class
 com\yjlhz\doademo\DoademoApplication.class
 com\yjlhz\doademo\mapper\ExamineMapper.class
+com\yjlhz\doademo\service\PlanRequirementService.class
 com\yjlhz\doademo\form\StudentForm.class
 com\yjlhz\doademo\pojo\Examine.class
 com\yjlhz\doademo\pojo\StudentProblem.class
@@ -78,6 +79,7 @@ com\yjlhz\doademo\service\impl\ExamineServiceImpl.class
 com\yjlhz\doademo\controller\ObjectiveController.class
 com\yjlhz\doademo\form\PlanForm.class
 com\yjlhz\doademo\utils\PoiWordTools.class
+com\yjlhz\doademo\service\impl\PlanRequirementServiceImpl.class
 com\yjlhz\doademo\dto\CourseDTO.class
 com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
 com\yjlhz\doademo\controller\MatrixController.class
