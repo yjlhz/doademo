@@ -4,13 +4,12 @@ import com.alibaba.excel.EasyExcel;
 import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.ExamineForm;
 import com.yjlhz.doademo.listener.ExamineListener;
-import com.yjlhz.doademo.mapper.ExamineMapper;
-import com.yjlhz.doademo.mapper.ProblemMapper;
-import com.yjlhz.doademo.mapper.StudentProblemMapper;
+import com.yjlhz.doademo.mapper.*;
 import com.yjlhz.doademo.pojo.Course;
 import com.yjlhz.doademo.pojo.Examine;
 import com.yjlhz.doademo.service.ExamineService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
+import com.yjlhz.doademo.vo.ExamineVO;
 import com.yjlhz.doademo.vo.ResultVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,6 +38,12 @@ public class ExamineServiceImpl implements ExamineService {
 
     @Autowired
     private StudentProblemMapper studentProblemMapper;
+
+    @Autowired
+    private PlanMapper planMapper;
+
+    @Autowired
+    private CourseMapper courseMapper;
 
     @Override
     public ResultVO uploadExamineData(MultipartFile file, Integer planId, Integer courseId) {
@@ -64,5 +70,21 @@ public class ExamineServiceImpl implements ExamineService {
             ResultVOUtil.error(ResultEnum.SERVER_ERROR);
         }
         return ResultVOUtil.success();
+    }
+
+    @Override
+    public ResultVO queryExamines() {
+        List<Examine> examineList = examineMapper.queryExamines();
+        List<ExamineVO> examineVOList = new ArrayList<>();
+        for (Examine examine : examineList){
+            ExamineVO examineVO = new ExamineVO();
+            examineVO.setId(examine.getId());
+            examineVO.setPlanName(planMapper.queryPlanById(examine.getPlanId()).getName());
+            examineVO.setCourseName(courseMapper.queryCourseById(examine.getCourseId()).getCourseName());
+            examineVO.setDescription(examine.getDescription());
+            examineVO.setWeight(examine.getWeight());
+            examineVOList.add(examineVO);
+        }
+        return ResultVOUtil.success(examineVOList);
     }
 }

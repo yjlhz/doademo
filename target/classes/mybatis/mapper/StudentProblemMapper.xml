@@ -18,4 +18,8 @@
         where s_num = #{sNum,jdbcType=VARCHAR}
         AND problem_id = #{problemId,jdbcType=INTEGER}
     </select>
+    <delete id="deleteStudentProblemBysNum" parameterType="java.lang.String">
+        delete from student_problem
+        where s_num = #{sNum,jdbcType=VARCHAR}
+    </delete>
 </mapper>

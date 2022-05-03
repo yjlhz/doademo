@@ -17,4 +17,8 @@
         delete from student_course
         where id = #{id,jdbcType=INTEGER}
     </delete>
+    <delete id="deleteStudentCourseBysNum" parameterType="java.lang.String">
+        delete from student_course
+        where s_num = #{sNum,jdbcType=VARCHAR}
+    </delete>
 </mapper>

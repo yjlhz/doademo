@@ -56,6 +56,7 @@ com\yjlhz\doademo\mapper\PlanCourseMapper.class
 com\yjlhz\doademo\service\ProblemService.class
 com\yjlhz\doademo\service\UserService.class
 com\yjlhz\doademo\controller\StudentController.class
+com\yjlhz\doademo\form\QueryExamineForm.class
 com\yjlhz\doademo\service\impl\StudentCourseServiceImpl.class
 com\yjlhz\doademo\service\impl\StudentServiceImpl.class
 com\yjlhz\doademo\DoademoApplication.class
@@ -64,6 +65,7 @@ com\yjlhz\doademo\mapper\ExamineMapper.class
 com\yjlhz\doademo\service\PlanRequirementService.class
 com\yjlhz\doademo\form\StudentForm.class
 com\yjlhz\doademo\pojo\Examine.class
+com\yjlhz\doademo\vo\ExamineVO.class
 com\yjlhz\doademo\pojo\StudentProblem.class
 com\yjlhz\doademo\mapper\StudentProblemMapper.class
 com\yjlhz\doademo\service\StudentCourseService.class

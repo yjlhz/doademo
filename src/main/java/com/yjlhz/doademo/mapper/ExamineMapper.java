@@ -27,4 +27,6 @@ public interface ExamineMapper {
 
     int updateExamine(Examine examine);
 
+    List<Examine> queryExamines();
+
 }

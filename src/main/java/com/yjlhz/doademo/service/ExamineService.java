@@ -19,4 +19,6 @@ public interface ExamineService {
 
     ResultVO addExamine(ExamineForm examineForm);
 
+    ResultVO queryExamines();
+
 }

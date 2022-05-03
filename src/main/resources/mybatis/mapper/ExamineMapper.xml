@@ -6,6 +6,9 @@
         where plan_id = #{planId,jdbcType=INTEGER}
         AND course_id = #{courseId,jdbcType=INTEGER}
     </select>
+    <select id="queryExamines" resultType="Examine">
+        select id,plan_id,course_id,description,weight from examine
+    </select>
     <select id="queryByPlanIdAndCourseIdAndDescription" resultType="Examine">
         select id,plan_id,course_id,description,weight from examine
         where plan_id = #{planId,jdbcType=INTEGER}
