@@ -69,27 +69,27 @@
 					<form th:action="@{/plan/addPlan}" method="post">
 						<div class="form-group">
 							<label>ID</label>
-							<input type="number" name="id" class="form-control" placeholder="培养计划编号（唯一）">
+							<input type="number" name="id" class="form-control" placeholder="培养计划编号（唯一）" required="required">
 						</div>
 						<div class="form-group">
 							<label>名称</label>
-							<input type="text" name="name" class="form-control" placeholder="培养计划名称">
+							<input type="text" name="name" class="form-control" placeholder="培养计划名称" required="required">
 						</div>
 						<div class="form-group">
 							<label>年级</label>
-							<input type="number" name="grade" class="form-control" placeholder="年级">
+							<input type="number" name="grade" class="form-control" placeholder="年级" required="required">
 						</div>
 						<div class="form-group">
 							<label>专业</label>
-							<input type="text" name="major" class="form-control" placeholder="专业">
+							<input type="text" name="major" class="form-control" placeholder="专业" required="required">
 						</div>
 						<div class="form-group">
 							<label>毕业要求最低学分</label>
-							<input type="number" name="minScore" class="form-control" placeholder="毕业要求最低学分">
+							<input type="number" name="minScore" class="form-control" placeholder="毕业要求最低学分" required="required">
 						</div>
 						<div class="form-group">
 							<label>描述</label>
-							<input type="text" name="description" class="form-control" placeholder="描述">
+							<input type="text" name="description" class="form-control" placeholder="描述" required="required">
 						</div>
 						<button type="submit" class="btn btn-primary">添加</button>
 					</form>

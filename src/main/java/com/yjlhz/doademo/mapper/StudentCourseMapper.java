@@ -26,4 +26,6 @@ public interface StudentCourseMapper {
     List<Integer> queryStuByCourseId(Integer courseId);
 
     int deleteStudentCourseById(Integer id);
+
+    int deleteStudentCourseBysNum(String sNum);
 }

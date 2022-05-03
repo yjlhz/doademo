@@ -26,4 +26,6 @@ public interface StudentProblemMapper {
 
     StudentProblem queryStudentProblemsBySNumAndProblemId(String sNum,Integer problemId);
 
+    int deleteStudentProblemBysNum(String sNum);
+
 }

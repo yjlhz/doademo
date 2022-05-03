@@ -6,12 +6,13 @@ import com.github.pagehelper.PageInfo;
 import com.yjlhz.doademo.dto.CourseDTO;
 import com.yjlhz.doademo.dto.StudentDTO;
 import com.yjlhz.doademo.enums.ResultEnum;
+import com.yjlhz.doademo.form.CourseForm;
 import com.yjlhz.doademo.form.StudentForm;
 import com.yjlhz.doademo.listener.CourseListener;
 import com.yjlhz.doademo.listener.StudentListener;
-import com.yjlhz.doademo.pojo.Course;
-import com.yjlhz.doademo.pojo.Requirement;
-import com.yjlhz.doademo.pojo.Student;
+import com.yjlhz.doademo.pojo.*;
+import com.yjlhz.doademo.service.StudentCourseService;
+import com.yjlhz.doademo.service.StudentProblemService;
 import com.yjlhz.doademo.service.StudentService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
@@ -43,6 +44,12 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private StudentCourseService studentCourseService;
+
+    @Autowired
+    private StudentProblemService studentProblemService;
 
     @GetMapping("/queryStudentList")
     public String queryStudentList(Model model,
@@ -82,7 +89,7 @@ public class StudentController {
         ResultVO resultVO = studentService.addStudent(studentForm);
         if (resultVO.getCode() == 4){
             model.addAttribute("msg",resultVO.getMsg());
-            return "notExistStudent";
+            return "notExistPlan";
         }
         return "redirect:/student/queryStudentList";
     }
@@ -94,19 +101,39 @@ public class StudentController {
 
     @PostMapping("/uploadStudent")
     @ApiOperation("批量上传学生信息")
-    ResultVO uploadCourse(@RequestParam(value = "file", required = false) MultipartFile file) {
+    String uploadStudent(@RequestParam(value = "file", required = false) MultipartFile file) {
         try {
             EasyExcel.read(file.getInputStream(), StudentDTO.class, new StudentListener(studentService)).sheet().doRead();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return ResultVOUtil.success();
+        return "redirect:/student/queryStudentList";
+    }
+
+    @GetMapping("/toUpload")
+    public String toUpload(){
+        return "uploadStudent";
     }
 
     @GetMapping("/deleteStudent/{id}")
     public String deleteStudent(@PathVariable("id") String id){
         studentService.deleteStudent(id);
+        studentCourseService.deleteBysNum(id);
+        studentProblemService.deleteBysNum(id);
         return "redirect:/student/queryStudentList";
+    }
+
+    @PostMapping("/updateStudent")
+    public String updateStudentById(StudentForm studentForm){
+        studentService.updateStudent(studentForm);
+        return "redirect:/student/queryStudentList";
+    }
+
+    @GetMapping("/toUpdate/{sNum}")
+    public String toUpdate(@PathVariable("sNum")String sNum,Model model){
+        Student student = (Student) studentService.queryStudentByNum(sNum).getData();
+        model.addAttribute("student",student);
+        return "updateStudent";
     }
 
 }

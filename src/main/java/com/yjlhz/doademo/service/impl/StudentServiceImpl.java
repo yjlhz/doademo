@@ -94,7 +94,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResultVO updateStudent(StudentForm studentForm) {
-        return null;
+        Student student = studentMapper.queryStudentById(studentForm.getSNum());
+        BeanUtils.copyProperties(studentForm,student);
+        int res = studentMapper.updateStudentById(student);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
     }
 
     @Override
@@ -108,6 +114,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResultVO queryStudentByNum(String sNum) {
-        return null;
+        Student student = studentMapper.queryStudentById(sNum);
+        return ResultVOUtil.success(student);
     }
 }

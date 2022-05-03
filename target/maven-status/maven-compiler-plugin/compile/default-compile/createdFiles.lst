@@ -56,14 +56,17 @@ com\yjlhz\doademo\mapper\PlanCourseMapper.class
 com\yjlhz\doademo\service\ProblemService.class
 com\yjlhz\doademo\service\UserService.class
 com\yjlhz\doademo\controller\StudentController.class
+com\yjlhz\doademo\service\impl\StudentCourseServiceImpl.class
 com\yjlhz\doademo\service\impl\StudentServiceImpl.class
 com\yjlhz\doademo\DoademoApplication.class
+com\yjlhz\doademo\service\StudentProblemService.class
 com\yjlhz\doademo\mapper\ExamineMapper.class
 com\yjlhz\doademo\service\PlanRequirementService.class
 com\yjlhz\doademo\form\StudentForm.class
 com\yjlhz\doademo\pojo\Examine.class
 com\yjlhz\doademo\pojo\StudentProblem.class
 com\yjlhz\doademo\mapper\StudentProblemMapper.class
+com\yjlhz\doademo\service\StudentCourseService.class
 com\yjlhz\doademo\service\impl\MajorServiceImpl.class
 com\yjlhz\doademo\controller\LoginController.class
 com\yjlhz\doademo\dto\StudentDTO.class
@@ -79,6 +82,7 @@ com\yjlhz\doademo\service\impl\ExamineServiceImpl.class
 com\yjlhz\doademo\controller\ObjectiveController.class
 com\yjlhz\doademo\form\PlanForm.class
 com\yjlhz\doademo\utils\PoiWordTools.class
+com\yjlhz\doademo\service\impl\StudentProblemServiceImpl.class
 com\yjlhz\doademo\service\impl\PlanRequirementServiceImpl.class
 com\yjlhz\doademo\dto\CourseDTO.class
 com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
