@@ -52,8 +52,18 @@ public class ExamineController {
     private CourseService courseService;
 
     @PostMapping("/uploadExamineData")
-    ResultVO uploadExamineData(@RequestParam(value = "file", required = false) MultipartFile file,Integer planId,Integer courseId){
-        return examineService.uploadExamineData(file,planId,courseId);
+    String uploadExamineData(@RequestParam(value = "file", required = false) MultipartFile file,Integer planId,Integer courseId){
+        examineService.uploadExamineData(file,planId,courseId);
+        return "redirect:/examine/queryExamineList";
+    }
+
+    @GetMapping("/toUpload")
+    public String toUpload(Model model){
+        List<Plan> planList = (List<Plan>) planService.queryPlans().getData();
+        List<Course> courseList = (List<Course>) courseService.queryCourses().getData();
+        model.addAttribute("planList",planList);
+        model.addAttribute("courseList",courseList);
+        return "uploadExamine";
     }
 
     @GetMapping("/queryExamineById")
