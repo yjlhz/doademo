@@ -13,6 +13,7 @@ import com.yjlhz.doademo.service.ObjectiveService;
 import com.yjlhz.doademo.service.PlanService;
 import com.yjlhz.doademo.service.RequirementService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
+import com.yjlhz.doademo.vo.ObjectiveVO;
 import com.yjlhz.doademo.vo.ResultVO;
 import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,11 +62,9 @@ public class ObjectiveController {
     }
 
     @PostMapping("/addObjective")
-    ResultVO addObjective(@Valid ObjectiveForm objectiveForm, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return ResultVOUtil.error(ResultEnum.PARAMETER_ERROR);
-        }
-        return objectiveService.addObjective(objectiveForm);
+    String addObjective(ObjectiveForm objectiveForm){
+        objectiveService.addObjective(objectiveForm);
+        return "redirect:/objective/toObjective";
     }
 
     @GetMapping("/toAdd")
@@ -75,7 +75,7 @@ public class ObjectiveController {
         model.addAttribute("planList",planList);
         model.addAttribute("courseList",courseList);
         model.addAttribute("requirementList",requirementList);
-        return "objective";
+        return "addObjective";
     }
 
     @GetMapping("/toObjective")
@@ -87,10 +87,33 @@ public class ObjectiveController {
         return "objective";
     }
 
-    @GetMapping("/toQuery")
-    public String toObjective(QueryExamineForm queryExamineForm){
-
-        return "objective";
+    @PostMapping("/toQuery")
+    public String toObjective(QueryExamineForm queryExamineForm,Model model){
+        List<Plan> planList = (List<Plan>) planService.queryPlans().getData();
+        List<Course> courseList = (List<Course>) courseService.queryCourses().getData();
+        List<Objective> objectives = (List<Objective>) objectiveService.queryByPlanIdAndCourseId(queryExamineForm.getPlanId(),queryExamineForm.getCourseId()).getData();
+        List<ObjectiveVO> objectiveList = new ArrayList<>();
+        for (Objective objective : objectives){
+            Plan plan = (Plan) planService.queryPlanById(objective.getPlanId()).getData();
+            Course course = (Course) courseService.queryCourseById(objective.getCourseId()).getData();
+            ObjectiveVO objectiveVO = new ObjectiveVO();
+            objectiveVO.setObjectiveId(objective.getObjectiveId());
+            objectiveVO.setObjectiveNo(objective.getObjectiveNo());
+            objectiveVO.setPlanName(plan.getName());
+            objectiveVO.setCourseName(course.getCourseName());
+            objectiveVO.setDescription(objective.getDescription());
+            objectiveVO.setAchieve(objective.getAchieve());
+            objectiveVO.setRequirementNo(objective.getRequirementNo());
+            objectiveList.add(objectiveVO);
+        }
+        Plan plan = (Plan) planService.queryPlanById(queryExamineForm.getPlanId()).getData();
+        Course course = (Course) courseService.queryCourseById(queryExamineForm.getCourseId()).getData();
+        model.addAttribute("planList",planList);
+        model.addAttribute("courseList",courseList);
+        model.addAttribute("objectiveList",objectiveList);
+        model.addAttribute("planName",plan.getName());
+        model.addAttribute("courseName",course.getCourseName());
+        return "queryObjectiveByPlanIdAndCourseId";
     }
 
     @PostMapping("/updateObjective")
