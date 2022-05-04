@@ -90,9 +90,10 @@ public class CalculateController {
         return "calculate";
     }
 
-    @GetMapping("/updateStudent")
-    ResultVO updateStudent(Integer planId){
-        return calculateService.updateStudent(planId);
+    @PostMapping("/updateStudent")
+    String updateStudent(@Param("planId") Integer planId,Model model){
+        calculateService.updateStudent(planId);
+        return "redirect:/calculate/toAchieve";
     }
 
     @PostMapping("/downloadResult")
@@ -141,6 +142,13 @@ public class CalculateController {
         model.addAttribute("planList",planList);
         model.addAttribute("courseList",courseList);
         return "download";
+    }
+
+    @GetMapping("/toAchieve")
+    public String toAchieve(Model model){
+        List<Plan> planList = (List<Plan>) planService.queryPlans().getData();
+        model.addAttribute("planList",planList);
+        return "achieve";
     }
 
 }

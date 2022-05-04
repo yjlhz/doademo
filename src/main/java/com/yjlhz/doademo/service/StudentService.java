@@ -22,4 +22,6 @@ public interface StudentService {
 
     ResultVO queryStudentByNum(String sNum);
 
+    ResultVO queryStudentByPlan(Integer grade,String major);
+
 }

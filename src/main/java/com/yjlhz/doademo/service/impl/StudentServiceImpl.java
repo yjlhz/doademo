@@ -117,4 +117,9 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentMapper.queryStudentById(sNum);
         return ResultVOUtil.success(student);
     }
+
+    @Override
+    public ResultVO queryStudentByPlan(Integer grade, String major) {
+        return ResultVOUtil.success(studentMapper.queryStudentByPlanId(major,grade));
+    }
 }
