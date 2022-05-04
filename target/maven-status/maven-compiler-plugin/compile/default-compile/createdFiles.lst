@@ -51,6 +51,7 @@ com\yjlhz\doademo\service\PlanCourseService.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
 com\yjlhz\doademo\config\UpLoadConfig.class
 com\yjlhz\doademo\pojo\PlanCourse.class
+com\yjlhz\doademo\service\ProblemObjectiveService.class
 com\yjlhz\doademo\controller\ProblemController.class
 com\yjlhz\doademo\dto\RequirementDTO.class
 com\yjlhz\doademo\mapper\PlanCourseMapper.class
@@ -89,6 +90,7 @@ com\yjlhz\doademo\service\impl\StudentProblemServiceImpl.class
 com\yjlhz\doademo\service\impl\PlanRequirementServiceImpl.class
 com\yjlhz\doademo\dto\CourseDTO.class
 com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
+com\yjlhz\doademo\service\impl\ProblemObjectiveServiceImpl.class
 com\yjlhz\doademo\controller\MatrixController.class
 com\yjlhz\doademo\service\impl\CalculateServiceImpl.class
 com\yjlhz\doademo\vo\ProblemVO.class

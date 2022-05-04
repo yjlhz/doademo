@@ -6,6 +6,7 @@ import com.yjlhz.doademo.service.ProblemObjectiveService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author lhz
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @description: ProblemObjectiveServiceImpl
  * @date 2022/5/4 9:35
  */
+
+@Service
 public class ProblemObjectiveServiceImpl implements ProblemObjectiveService {
 
     @Autowired
