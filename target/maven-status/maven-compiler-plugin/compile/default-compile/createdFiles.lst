@@ -38,7 +38,6 @@ com\yjlhz\doademo\service\impl\StudentServiceImpl.class
 com\yjlhz\doademo\DoademoApplication.class
 com\yjlhz\doademo\service\StudentProblemService.class
 com\yjlhz\doademo\mapper\ExamineMapper.class
-com\yjlhz\doademo\form\ProblemListForm.class
 com\yjlhz\doademo\pojo\Examine.class
 com\yjlhz\doademo\vo\ExamineVO.class
 com\yjlhz\doademo\pojo\StudentProblem.class
@@ -114,4 +113,3 @@ com\yjlhz\doademo\listener\CourseListener.class
 com\yjlhz\doademo\pojo\ProblemRequirement.class
 com\yjlhz\doademo\pojo\Course.class
 com\yjlhz\doademo\controller\MajorController.class
-com\yjlhz\doademo\form\ProblemObjectiveForm.class
