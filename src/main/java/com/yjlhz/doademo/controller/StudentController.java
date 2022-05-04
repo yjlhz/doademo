@@ -16,6 +16,7 @@ import com.yjlhz.doademo.service.StudentCourseService;
 import com.yjlhz.doademo.service.StudentProblemService;
 import com.yjlhz.doademo.service.StudentService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
+import com.yjlhz.doademo.vo.CharVO;
 import com.yjlhz.doademo.vo.ResultVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -211,6 +213,28 @@ public class StudentController {
         List<Plan> planList = (List<Plan>) planService.queryPlans().getData();
         model.addAttribute("planList",planList);
         return "toStudentList";
+    }
+
+    @GetMapping("/toDetail/{sNum}")
+    public String toDetail(@PathVariable("sNum")String sNum,Model model){
+        Student student = (Student) studentService.queryStudentByNum(sNum).getData();
+        model.addAttribute("student",student);
+        String achieve = student.getAchieve();
+        String[] split = achieve.split(",");
+        List<CharVO> charVOList = new ArrayList<>();
+        for (int i = 0;i<split.length;i++){
+            StringBuffer sb = new StringBuffer("no");
+            sb.append(i+1);
+            String ss = sb.toString();
+            Double ach = Double.valueOf(split[i])*100;
+            CharVO charVO = new CharVO();
+            charVO.setNo(ss);
+            charVO.setAchieve(ach);
+            charVOList.add(charVO);
+        }
+
+        model.addAttribute("charVOList",charVOList);
+        return "detailStudent";
     }
 
 }

@@ -1,5 +1,6 @@
 com\yjlhz\doademo\vo\ResultVO.class
 com\yjlhz\doademo\mapper\ProblemMapper.class
+com\yjlhz\doademo\vo\CharVO.class
 com\yjlhz\doademo\listener\MajorListener.class
 com\yjlhz\doademo\mapper\ProblemObjectiveMapper.class
 com\yjlhz\doademo\service\impl\ProblemServiceImpl.class
