@@ -21,4 +21,8 @@ public interface ObjectiveService {
 
     ResultVO deleteObjective(Integer id);
 
+    ResultVO queryById(Integer Id);
+
+    ResultVO queryObjectives();
+
 }

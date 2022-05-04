@@ -21,6 +21,7 @@ com\yjlhz\doademo\listener\ExamineListener.class
 com\yjlhz\doademo\controller\CourseController.class
 com\yjlhz\doademo\mapper\ProblemRequirementMapper.class
 com\yjlhz\doademo\service\impl\PlanServiceImpl.class
+com\yjlhz\doademo\vo\ObjectiveVO.class
 com\yjlhz\doademo\mapper\MajorMapper.class
 com\yjlhz\doademo\service\PlanService.class
 com\yjlhz\doademo\enums\ResultEnum.class

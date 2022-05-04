@@ -6,6 +6,9 @@
         where plan_id = #{planId,jdbcType=INTEGER}
         AND course_id = #{courseId,jdbcType=INTEGER}
     </select>
+    <select id="queryObjectives" resultType="Objective">
+        select objective_id,objective_no,plan_id,course_id,description,requirement_no,achieve from objective
+    </select>
     <select id="queryById" resultType="Objective">
         select objective_id,objective_no,plan_id,course_id,description,requirement_no,achieve from objective
         where objective_id = #{objectiveId,jdbcType=INTEGER}

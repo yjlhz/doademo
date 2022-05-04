@@ -63,4 +63,14 @@ public class ObjectiveServiceImpl implements ObjectiveService {
         }
         return ResultVOUtil.success();
     }
+
+    @Override
+    public ResultVO queryById(Integer Id) {
+        return ResultVOUtil.success(objectiveMapper.queryById(Id));
+    }
+
+    @Override
+    public ResultVO queryObjectives() {
+        return ResultVOUtil.success(objectiveMapper.queryObjectives());
+    }
 }

@@ -1,18 +1,18 @@
 package com.yjlhz.doademo.controller;
 
 import com.alibaba.druid.sql.visitor.functions.Bin;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.ObjectiveForm;
 import com.yjlhz.doademo.form.QueryExamineForm;
-import com.yjlhz.doademo.pojo.Course;
-import com.yjlhz.doademo.pojo.Objective;
-import com.yjlhz.doademo.pojo.Plan;
-import com.yjlhz.doademo.pojo.Requirement;
+import com.yjlhz.doademo.pojo.*;
 import com.yjlhz.doademo.service.CourseService;
 import com.yjlhz.doademo.service.ObjectiveService;
 import com.yjlhz.doademo.service.PlanService;
 import com.yjlhz.doademo.service.RequirementService;
 import com.yjlhz.doademo.utils.ResultVOUtil;
+import com.yjlhz.doademo.vo.ExamineVO;
 import com.yjlhz.doademo.vo.ObjectiveVO;
 import com.yjlhz.doademo.vo.ResultVO;
 import io.swagger.models.auth.In;
@@ -21,10 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.awt.*;
@@ -56,11 +53,6 @@ public class ObjectiveController {
     @Autowired
     private RequirementService requirementService;
 
-    @GetMapping("/queryObjective")
-    ResultVO queryObjective(Integer planId,Integer courseId){
-        return objectiveService.queryByPlanIdAndCourseId(planId,courseId);
-    }
-
     @PostMapping("/addObjective")
     String addObjective(ObjectiveForm objectiveForm){
         objectiveService.addObjective(objectiveForm);
@@ -79,7 +71,49 @@ public class ObjectiveController {
     }
 
     @GetMapping("/toObjective")
-    public String toObjective(Model model){
+    public String toObjective(Model model,
+                              @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
+                              @RequestParam(defaultValue="10",value="pageSize")Integer pageSize){
+        //为了程序的严谨性，判断非空：
+        //设置默认当前页
+        if(pageNum==null || pageNum<=0){
+            pageNum = 1;
+        }
+        //设置默认每页显示的数据数
+        if(pageSize == null){
+            pageSize = 1;
+        }
+        System.out.println("当前页是："+pageNum+"显示条数是："+pageSize);
+
+        //1.引入分页插件,pageNum是第几页，pageSize是每页显示多少条,默认查询总数count
+        PageHelper.startPage(pageNum,pageSize);
+        //2.紧跟的查询就是一个分页查询-必须紧跟.后面的其他查询不会被分页，除非再次调用PageHelper.startPage
+        try {
+            List<Objective> objectiveList1 = (List<Objective>) objectiveService.queryObjectives().getData();
+            List<ObjectiveVO> objectiveList = new ArrayList<>();
+            for (Objective objective : objectiveList1){
+                Plan plan = (Plan) planService.queryPlanById(objective.getPlanId()).getData();
+                Course course = (Course) courseService.queryCourseById(objective.getCourseId()).getData();
+                ObjectiveVO objectiveVO = new ObjectiveVO();
+                objectiveVO.setObjectiveId(objective.getObjectiveId());
+                objectiveVO.setObjectiveNo(objective.getObjectiveNo());
+                objectiveVO.setPlanName(plan.getName());
+                objectiveVO.setCourseName(course.getCourseName());
+                objectiveVO.setDescription(objective.getDescription());
+                objectiveVO.setAchieve(objective.getAchieve());
+                objectiveVO.setRequirementNo(objective.getRequirementNo());
+                objectiveList.add(objectiveVO);
+            }
+            System.out.println("分页数据："+objectiveList);
+            //3.使用PageInfo包装查询后的结果,5是连续显示的条数,结果list类型是Page<E>
+            PageInfo<ObjectiveVO> pageInfo = new PageInfo<ObjectiveVO>(objectiveList,pageSize);
+            //4.使用model传参数回前端
+            model.addAttribute("pageInfo",pageInfo);
+            model.addAttribute("objectiveList",objectiveList);
+        }finally {
+            //清理 ThreadLocal 存储的分页参数,保证线程安全
+            PageHelper.clearPage();
+        }
         List<Plan> planList = (List<Plan>) planService.queryPlans().getData();
         List<Course> courseList = (List<Course>) courseService.queryCourses().getData();
         model.addAttribute("planList",planList);
@@ -116,17 +150,29 @@ public class ObjectiveController {
         return "queryObjectiveByPlanIdAndCourseId";
     }
 
-    @PostMapping("/updateObjective")
-    ResultVO updateObjective(@Valid ObjectiveForm objectiveForm,Integer id,BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return ResultVOUtil.error(ResultEnum.PARAMETER_ERROR);
-        }
-        return objectiveService.updateObjective(objectiveForm,id);
+    @PostMapping("/updateObjective/{id}")
+    String updateObjective(ObjectiveForm objectiveForm,@PathVariable("id")Integer id){
+        objectiveService.updateObjective(objectiveForm,id);
+        return "redirect:/objective/toObjective";
     }
 
-    @GetMapping("/deleteObjective")
-    ResultVO deleteObjective(Integer id){
-        return objectiveService.deleteObjective(id);
+    @GetMapping("/toUpdate/{id}")
+    public String toUpdate(@PathVariable("id")Integer id, Model model){
+        Objective objective = (Objective) objectiveService.queryById(id).getData();
+        Plan plan = (Plan) planService.queryPlanById(objective.getPlanId()).getData();
+        Course course = (Course) courseService.queryCourseById(objective.getCourseId()).getData();
+        List<Requirement> requirementList = (List<Requirement>) requirementService.queryRequirements().getData();
+        model.addAttribute("objective",objective);
+        model.addAttribute("requirementList",requirementList);
+        model.addAttribute("planName",plan.getName());
+        model.addAttribute("courseName",course.getCourseName());
+        return "updateObjective";
+    }
+
+    @GetMapping("/deleteObjective/{id}")
+    String deleteObjective(@PathVariable("id")Integer id){
+        objectiveService.deleteObjective(id);
+        return "redirect:/objective/toObjective";
     }
 
 }

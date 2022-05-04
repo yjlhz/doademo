@@ -94,6 +94,7 @@
 									<th>描述</th>
 									<th>支撑指标点序号</th>
 									<th>达成度</th>
+									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -105,6 +106,10 @@
 									<td th:text="${objective.description}"></td>
 									<td th:text="${objective.requirementNo}"></td>
 									<td th:text="${objective.achieve}"></td>
+									<td>
+										<a class="btn btn-sm btn-primary" th:href="@{/objective/toUpdate/}+${objective.objectiveId}">编辑</a>
+										<a class="btn btn-sm btn-danger" href="javascript:;" th:onclick="'deleteObjective('+${objective.objectiveId}+')'">删除</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -156,9 +161,9 @@
 					}
 				}
 			});
-			function deleteExamine(id) {
-				if (window.confirm('确定要删除该课程吗？')){
-					location.href='[[@{/examine/deleteExamine/}]]'+id;
+			function deleteObjective(id) {
+				if (window.confirm('确定要删除该课程目标吗？')){
+					location.href='[[@{/objective/deleteObjective/}]]'+id;
 				}
 			}
 		</script>

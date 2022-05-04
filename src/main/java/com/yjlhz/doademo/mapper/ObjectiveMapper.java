@@ -29,4 +29,6 @@ public interface ObjectiveMapper {
 
     int deleteObjectiveById(Integer id);
 
+    List<Objective> queryObjectives();
+
 }

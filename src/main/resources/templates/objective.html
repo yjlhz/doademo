@@ -82,6 +82,63 @@
 						<button type="submit" class="btn btn-primary">查询</button>
 					</form>
 					<a class="btn btn-sm btn-primary" th:href="@{/objective/toAdd}">添加课程培养目标</a>
+					<h2>全部课程培养目标信息</h2>
+					<div class="table-responsive">
+						<table class="table table-striped table-sm">
+							<thead>
+							<tr>
+								<th>ID</th>
+								<th>培养目标序号</th>
+								<th>所属培养计划</th>
+								<th>所属课程名称</th>
+								<th>描述</th>
+								<th>支撑指标点序号</th>
+								<th>达成度</th>
+								<th>操作</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="objective:${objectiveList}">
+								<td th:text="${objective.objectiveId}"></td>
+								<td th:text="${objective.objectiveNo}"></td>
+								<td th:text="${objective.planName}"></td>
+								<td th:text="${objective.courseName}"></td>
+								<td th:text="${objective.description}"></td>
+								<td th:text="${objective.requirementNo}"></td>
+								<td th:text="${objective.achieve}"></td>
+								<td>
+									<a class="btn btn-sm btn-primary" th:href="@{/objective/toUpdate/}+${objective.objectiveId}">编辑</a>
+									<a class="btn btn-sm btn-danger" href="javascript:;" th:onclick="'deleteObjective('+${objective.objectiveId}+')'">删除</a>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+						<div class="row">
+							<div class="col-md-6" align="right">
+								当前第[[${pageInfo.pageNum}]]页，共[[${pageInfo.pages}]]页，共[[${pageInfo.total}]]条记录 </div>
+						</div>
+						<!-- 分页导航条 -->
+						<div class="pagenation" align="right">
+							<a th:href="@{/objective/toObjective/}"><span class="btn-page btn-default">首页</span></a>
+							<a th:href="@{/objective/toObjective/(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"><span
+									class="btn-page btn-default">上一页</span></a>
+							<!-- 遍历导航页 -->
+							<a th:each="page,pageStat:${pageInfo.navigatepageNums}"
+							   th:href="@{/objective/toObjective/(pageNum=${page})}">
+                                        <span th:if="${page}==${pageInfo.pageNum}">
+                                            <span class="btn-page btn-active" th:text="${page}"></span>
+                                        </span>
+								<span th:if="${page}!=${pageInfo.pageNum}">
+                                            <span class="btn-page btn-default" th:text="${page}"></span>
+                                        </span>
+							</a>
+							<!-- 导航页 -->
+
+							<a th:href="@{/objective/toObjective/(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}"><span
+									class="btn-page btn-default">下一页</span></a>
+							<a th:href="@{/objective/toObjective/(pageNum=${pageInfo.pages})}"><span class="btn-page btn-default">尾页</span></a>
+						</div>
+					</div>
 				</main>
 			</div>
 		</div>
@@ -129,9 +186,9 @@
 					}
 				}
 			});
-			function deleteExamine(id) {
-				if (window.confirm('确定要删除该课程吗？')){
-					location.href='[[@{/examine/deleteExamine/}]]'+id;
+			function deleteObjective(id) {
+				if (window.confirm('确定要删除该课程目标吗？')){
+					location.href='[[@{/objective/deleteObjective/}]]'+id;
 				}
 			}
 		</script>
