@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.PanelUI;
-import java.io.FileNotFoundException;
+import java.awt.*;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,13 +95,52 @@ public class CalculateController {
         return calculateService.updateStudent(planId);
     }
 
-    @GetMapping("/downloadResult")
-    void downloadCourse(HttpServletRequest request, HttpServletResponse response,Integer planId,Integer courseId){
+    @PostMapping("/downloadResult")
+    void downloadCourse(HttpServletRequest request, HttpServletResponse response,
+                        @Param("planId") Integer planId,@Param("courseId") Integer courseId){
         try {
             calculateService.downloadCourse(request, response, planId, courseId);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        try {
+            Course course = (Course) courseService.queryCourseById(courseId).getData();
+            String fileName = course.getCourseName()+".rtf";
+            //获取model路径
+            String realPath = "C:/Users/Lenovo/Desktop/doademo/src/main/resources"+ File.separator + fileName;
+
+            // 以流的形式下载文件。
+            InputStream fis = new BufferedInputStream(new FileInputStream(realPath));
+            byte[] buffer = new byte[fis.available()];
+            fis.read(buffer);
+            fis.close();
+
+            //清空response
+            response.reset();
+            //设置response响应头
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("multipart/form-data");
+            response.setContentType("application/x-download");
+            response.setHeader("Accept-Ranges", "bytes");
+            response.setHeader("Content-Disposition","attachment;fileName="+ URLEncoder.encode(URLEncoder.encode(fileName,"UTF-8"),"ISO-8859-1"));
+
+            OutputStream outputStream = new BufferedOutputStream(response.getOutputStream());
+            response.setContentType("application/octet-stream");
+            outputStream.write(buffer);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @GetMapping("/toDownload")
+    String toDownload(Model model){
+        List<Plan> planList = (List<Plan>) planService.queryPlans().getData();
+        List<Course> courseList = (List<Course>) courseService.queryCourses().getData();
+        model.addAttribute("planList",planList);
+        model.addAttribute("courseList",courseList);
+        return "download";
     }
 
 }

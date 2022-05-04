@@ -244,7 +244,8 @@ public class CalculateServiceImpl implements CalculateService {
     public void downloadCourse(HttpServletRequest request, HttpServletResponse response, Integer planId, Integer courseId) throws FileNotFoundException {
         Map<String,String> map = new HashMap<>();
         String templateUrl = "C:/Users/Lenovo/Desktop/doademo/src/main/resources/test.docx";
-        String returnUrl = "C:/Users/Lenovo/Desktop/doademo/src/main/resources/test1.rtf";
+        String name = courseMapper.queryCourseById(courseId).getCourseName();
+        String returnUrl = "C:/Users/Lenovo/Desktop/doademo/src/main/resources/"+name+".rtf";
         XWPFDocument doc = new XWPFDocument();
         try {
             InputStream is = new FileInputStream(new File(templateUrl));
