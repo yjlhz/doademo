@@ -82,7 +82,6 @@
 						<button type="submit" class="btn btn-primary">查询</button>
 					</form>
 					<h2 th:text="${planName}+'中'+${courseName}+'课程的考核信息'"></h2>
-					<a class="btn btn-sm btn-success" th:href="@{/examine/toAdd}">新增课程</a>
 					<a class="btn btn-sm btn-success" th:href="@{/examine/toUpload}">上传考核成绩</a>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
@@ -93,6 +92,7 @@
 									<th>所属课程名称</th>
 									<th>描述</th>
 									<th>占课程考核比重</th>
+									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -102,6 +102,9 @@
 									<td th:text="${examine.courseName}"></td>
 									<td th:text="${examine.description}"></td>
 									<td th:text="${examine.weight}"></td>
+									<td>
+										<a class="btn btn-sm btn-danger" href="javascript:;" th:onclick="'deleteExamine('+${examine.id}+')'">删除</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -180,7 +183,7 @@
 				}
 			});
 			function deleteExamine(id) {
-				if (window.confirm('确定要删除该课程吗？')){
+				if (window.confirm('确定要删除该课程考核项吗？')){
 					location.href='[[@{/examine/deleteExamine/}]]'+id;
 				}
 			}

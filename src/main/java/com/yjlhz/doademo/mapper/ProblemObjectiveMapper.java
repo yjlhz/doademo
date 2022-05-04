@@ -24,4 +24,8 @@ public interface ProblemObjectiveMapper {
 
     List<ProblemObjective> queryByProblemId(Integer problemId);
 
+    int deleteByObjectiveId(Integer objectiveId);
+
+    int deleteByProblemId(Integer problemId);
+
 }

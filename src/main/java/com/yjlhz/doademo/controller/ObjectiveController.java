@@ -7,10 +7,7 @@ import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.ObjectiveForm;
 import com.yjlhz.doademo.form.QueryExamineForm;
 import com.yjlhz.doademo.pojo.*;
-import com.yjlhz.doademo.service.CourseService;
-import com.yjlhz.doademo.service.ObjectiveService;
-import com.yjlhz.doademo.service.PlanService;
-import com.yjlhz.doademo.service.RequirementService;
+import com.yjlhz.doademo.service.*;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ExamineVO;
 import com.yjlhz.doademo.vo.ObjectiveVO;
@@ -52,6 +49,9 @@ public class ObjectiveController {
 
     @Autowired
     private RequirementService requirementService;
+
+    @Autowired
+    private ProblemObjectiveService problemObjectiveService;
 
     @PostMapping("/addObjective")
     String addObjective(ObjectiveForm objectiveForm){
@@ -172,6 +172,7 @@ public class ObjectiveController {
     @GetMapping("/deleteObjective/{id}")
     String deleteObjective(@PathVariable("id")Integer id){
         objectiveService.deleteObjective(id);
+        problemObjectiveService.deleteByObjectiveId(id);
         return "redirect:/objective/toObjective";
     }
 

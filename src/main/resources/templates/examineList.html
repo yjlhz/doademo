@@ -92,6 +92,7 @@
 									<th>所属课程名称</th>
 									<th>描述</th>
 									<th>占课程考核比重</th>
+									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -101,6 +102,9 @@
 									<td th:text="${examine.courseName}"></td>
 									<td th:text="${examine.description}"></td>
 									<td th:text="${examine.weight}"></td>
+									<td>
+										<a class="btn btn-sm btn-danger" href="javascript:;" th:onclick="'deleteExamine('+${examine.id}+')'">删除</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -179,7 +183,7 @@
 				}
 			});
 			function deleteExamine(id) {
-				if (window.confirm('确定要删除该课程吗？')){
+				if (window.confirm('确定要删除该课程考核项吗？')){
 					location.href='[[@{/examine/deleteExamine/}]]'+id;
 				}
 			}

@@ -13,4 +13,12 @@
         select id,problem_id,objective_id from problem_objective
         where problem_id = #{problemId,jdbcType=INTEGER}
     </select>
+    <delete id="deleteByObjectiveId" parameterType="java.lang.Integer">
+        delete from problem_objective
+        where objective_id = #{objectiveId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByProblemId" parameterType="java.lang.Integer">
+        delete from problem_objective
+        where problem_id = #{problemId,jdbcType=INTEGER}
+    </delete>
 </mapper>
