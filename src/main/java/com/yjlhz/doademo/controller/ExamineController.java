@@ -22,8 +22,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.IOException;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +91,37 @@ public class ExamineController {
         model.addAttribute("problemList",problemList);
         model.addAttribute("objectiveList",objectiveList);
         return "bindingObjective";
+    }
+
+    @GetMapping("/download")
+    void download(HttpServletRequest request, HttpServletResponse response){
+        try {
+            //获取model路径
+            String realPath = "C:/Users/Lenovo/Desktop/doademo/src/main/resources"+ File.separator + "examineTemplate.xlsx";
+
+            // 以流的形式下载文件。
+            InputStream fis = new BufferedInputStream(new FileInputStream(realPath));
+            byte[] buffer = new byte[fis.available()];
+            fis.read(buffer);
+            fis.close();
+
+            //清空response
+            response.reset();
+            //设置response响应头
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("multipart/form-data");
+            response.setContentType("application/x-download");
+            response.setHeader("Accept-Ranges", "bytes");
+            response.setHeader("Content-Disposition","attachment;fileName="+ URLEncoder.encode(URLEncoder.encode("examineTemplate.xlsx","UTF-8"),"ISO-8859-1"));
+
+            OutputStream outputStream = new BufferedOutputStream(response.getOutputStream());
+            response.setContentType("application/octet-stream");
+            outputStream.write(buffer);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @GetMapping("/toUpload")
