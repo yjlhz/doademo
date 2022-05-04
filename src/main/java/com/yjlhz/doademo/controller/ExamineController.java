@@ -11,6 +11,7 @@ import com.yjlhz.doademo.pojo.*;
 import com.yjlhz.doademo.service.*;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ExamineVO;
+import com.yjlhz.doademo.vo.ProblemVO;
 import com.yjlhz.doademo.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,10 +61,33 @@ public class ExamineController {
     @Autowired
     private StudentProblemService studentProblemService;
 
+    @Autowired
+    private ObjectiveService objectiveService;
+
     @PostMapping("/uploadExamineData")
-    String uploadExamineData(@RequestParam(value = "file", required = false) MultipartFile file,Integer planId,Integer courseId){
+    String uploadExamineData(@RequestParam(value = "file", required = false) MultipartFile file,Integer planId,Integer courseId,Model model){
         examineService.uploadExamineData(file,planId,courseId);
-        return "redirect:/examine/queryExamineList";
+        List<Examine> examineList = (List<Examine>) examineService.queryExaminesByPlanCourseId(planId, courseId).getData();
+        List<ProblemVO> problemList = new ArrayList<>();
+        for (Examine examine : examineList){
+            List<Problem> problems = ((List<Problem>) problemService.queryProblemsByExamineId(examine.getId()).getData());
+            for (Problem problem : problems){
+                ProblemVO problemVO = new ProblemVO();
+                problemVO.setExamineId(examine.getId());
+                problemVO.setExamineName(examine.getDescription());
+                problemVO.setId(problem.getId());
+                problemVO.setNo(problem.getProblemNo());
+                problemList.add(problemVO);
+            }
+        }
+        Plan plan = (Plan) planService.queryPlanById(planId).getData();
+        Course course = (Course) courseService.queryCourseById(courseId).getData();
+        List<Objective> objectiveList = (List<Objective>) objectiveService.queryByPlanIdAndCourseId(planId, courseId).getData();
+        model.addAttribute("plan",plan);
+        model.addAttribute("course",course);
+        model.addAttribute("problemList",problemList);
+        model.addAttribute("objectiveList",objectiveList);
+        return "bindingObjective";
     }
 
     @GetMapping("/toUpload")
