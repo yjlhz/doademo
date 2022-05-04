@@ -7,18 +7,15 @@ import com.yjlhz.doademo.enums.ResultEnum;
 import com.yjlhz.doademo.form.ExamineForm;
 import com.yjlhz.doademo.form.QueryExamineForm;
 import com.yjlhz.doademo.listener.ExamineListener;
-import com.yjlhz.doademo.pojo.Course;
-import com.yjlhz.doademo.pojo.Examine;
-import com.yjlhz.doademo.pojo.Plan;
-import com.yjlhz.doademo.service.CourseService;
-import com.yjlhz.doademo.service.ExamineService;
-import com.yjlhz.doademo.service.PlanService;
+import com.yjlhz.doademo.pojo.*;
+import com.yjlhz.doademo.service.*;
 import com.yjlhz.doademo.utils.ResultVOUtil;
 import com.yjlhz.doademo.vo.ExamineVO;
 import com.yjlhz.doademo.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +47,18 @@ public class ExamineController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private ProblemService problemService;
+
+    @Autowired
+    private ProblemObjectiveService problemObjectiveService;
+
+    @Autowired
+    private ProblemRequirementService problemRequirementService;
+
+    @Autowired
+    private StudentProblemService studentProblemService;
 
     @PostMapping("/uploadExamineData")
     String uploadExamineData(@RequestParam(value = "file", required = false) MultipartFile file,Integer planId,Integer courseId){
@@ -171,6 +180,18 @@ public class ExamineController {
         return "queryExamineByPlanIdAndCourseId";
     }
 
-
+    @GetMapping("/deleteExamine/{id}")
+    @Transactional
+    public String deleteExamine(@PathVariable Integer id){
+        examineService.deleteExamineById(id);
+        List<Problem> problemList = (List<Problem>) problemService.queryProblemsByExamineId(id).getData();
+        for (Problem problem : problemList){
+            problemService.deleteById(problem.getId());
+            problemObjectiveService.deleteByProblemId(problem.getId());
+            problemRequirementService.deleteByProblemId(problem.getId());
+            studentProblemService.deleteByProblemId(problem.getId());
+        }
+        return "redirect:/examine/queryExamineList";
+    }
 
 }

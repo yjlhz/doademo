@@ -61,4 +61,18 @@ public class ProblemServiceImpl implements ProblemService {
         }
         return ResultVOUtil.success();
     }
+
+    @Override
+    public ResultVO queryProblemsByExamineId(Integer examineId) {
+        return ResultVOUtil.success(problemMapper.queryProblemByExamineId(examineId));
+    }
+
+    @Override
+    public ResultVO deleteById(Integer id) {
+        int res = problemMapper.deleteById(id);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
 }

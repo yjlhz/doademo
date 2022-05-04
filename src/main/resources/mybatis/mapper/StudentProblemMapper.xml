@@ -22,4 +22,8 @@
         delete from student_problem
         where s_num = #{sNum,jdbcType=VARCHAR}
     </delete>
+    <delete id="deleteByProblemId" parameterType="java.lang.Integer">
+        delete from student_problem
+        where problem_id = #{problemId,jdbcType=INTEGER}
+    </delete>
 </mapper>

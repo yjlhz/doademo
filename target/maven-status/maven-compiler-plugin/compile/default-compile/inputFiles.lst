@@ -1,6 +1,7 @@
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\PlanServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\PlanService.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ProblemRequirementServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\MajorServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\MvcConfig.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\dto\StudentDTO.java
@@ -27,6 +28,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\Requi
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\utils\ExportWordUtil.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\PlanCourseController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\vo\ProblemVO.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\ProblemObjectiveService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\StudentController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\StudentServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\ProblemObjectiveMapper.java
@@ -37,6 +39,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\Calcu
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\StudentProblem.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\PlanRequirementService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\PlanForm.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\ProblemRequirementService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\LoginController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\WeightForm.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\PlanMapper.java
@@ -44,6 +47,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\Major
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\vo\ExamineVO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\ExamineListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\RequirementMapper.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ProblemObjectiveServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ProblemServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\PlanRequirement.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\MatrixForm.java

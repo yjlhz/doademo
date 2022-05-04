@@ -87,4 +87,13 @@ public class ExamineServiceImpl implements ExamineService {
         }
         return ResultVOUtil.success(examineVOList);
     }
+
+    @Override
+    public ResultVO deleteExamineById(Integer id) {
+        int res = examineMapper.deleteExamineById(id);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
 }

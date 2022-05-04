@@ -21,4 +21,8 @@
         achieve = #{achieve,jdbcType=DOUBLE}
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from problem
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
 </mapper>

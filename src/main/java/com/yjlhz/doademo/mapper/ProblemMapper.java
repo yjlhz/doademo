@@ -25,4 +25,6 @@ public interface ProblemMapper {
 
     int updateProblem(Problem problem);
 
+    int deleteById(Integer id);
+
 }

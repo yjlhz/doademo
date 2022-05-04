@@ -28,4 +28,6 @@ public interface StudentProblemMapper {
 
     int deleteStudentProblemBysNum(String sNum);
 
+    int deleteByProblemId(Integer id);
+
 }

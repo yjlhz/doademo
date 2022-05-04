@@ -9,4 +9,8 @@
         select id,problem_id,requirement_no from problem_requirement
         where problem_id = #{problemId,jdbcType=INTEGER}
     </select>
+    <delete id="deleteByProblemId" parameterType="java.lang.Integer">
+        delete from problem_requirement
+        where problem_id = #{problemId,jdbcType=INTEGER}
+    </delete>
 </mapper>

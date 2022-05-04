@@ -16,4 +16,8 @@ public interface ProblemService {
 
     ResultVO addProblem(ProblemForm problemForm);
 
+    ResultVO queryProblemsByExamineId(Integer examineId);
+
+    ResultVO deleteById(Integer id);
+
 }

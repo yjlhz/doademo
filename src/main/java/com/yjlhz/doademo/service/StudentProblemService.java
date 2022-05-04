@@ -15,4 +15,6 @@ public interface StudentProblemService {
 
     ResultVO deleteBysNum(String sNum);
 
+    ResultVO deleteByProblemId(Integer id);
+
 }

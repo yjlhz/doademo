@@ -35,4 +35,13 @@ public class StudentProblemServiceImpl implements StudentProblemService {
         }
         return ResultVOUtil.success();
     }
+
+    @Override
+    public ResultVO deleteByProblemId(Integer id) {
+        int res = studentProblemMapper.deleteByProblemId(id);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
 }

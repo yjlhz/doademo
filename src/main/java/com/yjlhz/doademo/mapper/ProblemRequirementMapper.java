@@ -22,4 +22,6 @@ public interface ProblemRequirementMapper {
 
     List<ProblemRequirement> queryProblemRequirementByProblemId(Integer problemId);
 
+    int deleteByProblemId(Integer id);
+
 }

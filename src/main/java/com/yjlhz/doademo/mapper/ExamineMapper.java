@@ -29,4 +29,6 @@ public interface ExamineMapper {
 
     List<Examine> queryExamines();
 
+    int deleteExamineById(Integer id);
+
 }

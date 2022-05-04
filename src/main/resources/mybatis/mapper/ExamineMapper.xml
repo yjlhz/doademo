@@ -31,4 +31,8 @@
         insert into examine (id,plan_id,course_id,description,weight)
         value (#{id,jdbcType=INTEGER}, #{planId,jdbcType=INTEGER},#{courseId,jdbcType=INTEGER},#{description,jdbcType=VARCHAR} ,#{weight,jdbcType=DOUBLE})
     </insert>
+    <delete id="deleteExamineById" parameterType="java.lang.Integer">
+        delete from examine
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
 </mapper>
