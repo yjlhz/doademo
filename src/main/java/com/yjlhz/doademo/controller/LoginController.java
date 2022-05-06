@@ -1,5 +1,6 @@
 package com.yjlhz.doademo.controller;
 
+import com.yjlhz.doademo.pojo.User;
 import com.yjlhz.doademo.service.UserService;
 import com.yjlhz.doademo.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class LoginController {
             model.addAttribute("msg",info.getMsg());
             return "index";
         }
+        User user = (User) userService.queryUserByName(username).getData();
+        session.setAttribute("role",user.getRole());
         session.setAttribute("loginUser",username);
         return "redirect:/main";
     }

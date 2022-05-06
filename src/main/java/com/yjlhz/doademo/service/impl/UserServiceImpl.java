@@ -34,4 +34,10 @@ public class UserServiceImpl implements UserService {
         }
         return ResultVOUtil.success();
     }
+
+    @Override
+    public ResultVO queryUserByName(String name) {
+        User user = userMapper.queryByName(name);
+        return ResultVOUtil.success(user);
+    }
 }

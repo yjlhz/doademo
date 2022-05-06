@@ -22,7 +22,7 @@
     <update id="updateExamine" parameterType="Examine">
         update examine
         set plan_id = #{planId,jdbcType=DOUBLE},
-        course_id= #{planId,jdbcType=INTEGER},
+        course_id= #{courseId,jdbcType=INTEGER},
         description = #{description,jdbcType=VARCHAR},
         weight = #{weight,jdbcType=DOUBLE}
         where id = #{id,jdbcType=INTEGER}

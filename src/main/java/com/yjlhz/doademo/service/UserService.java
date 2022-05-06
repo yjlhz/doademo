@@ -13,4 +13,6 @@ public interface UserService {
 
     ResultVO Login(String name,String password);
 
+    ResultVO queryUserByName(String name);
+
 }
