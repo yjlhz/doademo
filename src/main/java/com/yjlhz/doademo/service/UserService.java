@@ -15,4 +15,6 @@ public interface UserService {
 
     ResultVO queryUserByName(String name);
 
+    ResultVO queryUserList();
+
 }

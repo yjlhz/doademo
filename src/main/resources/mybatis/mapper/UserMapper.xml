@@ -5,4 +5,7 @@
         select user_name,password,role from `user`
         where user_name=#{userName,jdbcType=VARCHAR}
     </select>
+    <select id="queryUserList" resultType="User">
+        select user_name,password,role from `user`
+    </select>
 </mapper>

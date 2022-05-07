@@ -4,6 +4,8 @@ import com.yjlhz.doademo.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author lhz
  * @title: UserMapper
@@ -17,5 +19,7 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper {
 
     User queryByName(String name);
+
+    List<User> queryUserList();
 
 }

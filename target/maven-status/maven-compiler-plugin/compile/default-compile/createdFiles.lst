@@ -1,5 +1,6 @@
 com\yjlhz\doademo\vo\ResultVO.class
 com\yjlhz\doademo\mapper\ProblemMapper.class
+com\yjlhz\doademo\service\impl\RoleServiceImpl.class
 com\yjlhz\doademo\vo\CharVO.class
 com\yjlhz\doademo\listener\MajorListener.class
 com\yjlhz\doademo\mapper\ProblemObjectiveMapper.class
@@ -11,6 +12,7 @@ com\yjlhz\doademo\service\impl\RequirementServiceImpl.class
 com\yjlhz\doademo\service\ObjectiveService.class
 com\yjlhz\doademo\listener\RequirementListener.class
 com\yjlhz\doademo\controller\PlanCourseController.class
+com\yjlhz\doademo\pojo\Role.class
 com\yjlhz\doademo\mapper\ProblemRequirementMapper.class
 com\yjlhz\doademo\vo\ObjectiveVO.class
 com\yjlhz\doademo\service\PlanService.class
@@ -21,6 +23,7 @@ com\yjlhz\doademo\config\LoginHandlerInterceptor.class
 com\yjlhz\doademo\pojo\StudentCourse.class
 com\yjlhz\doademo\pojo\Problem.class
 com\yjlhz\doademo\service\impl\CourseServiceImpl.class
+com\yjlhz\doademo\service\RoleService.class
 com\yjlhz\doademo\pojo\Plan.class
 com\yjlhz\doademo\pojo\Requirement.class
 com\yjlhz\doademo\utils\ArithUtil.class
@@ -31,6 +34,7 @@ com\yjlhz\doademo\utils\ExportWordUtil.class
 com\yjlhz\doademo\pojo\ProblemObjective.class
 com\yjlhz\doademo\config\UpLoadConfig.class
 com\yjlhz\doademo\pojo\PlanCourse.class
+com\yjlhz\doademo\vo\UserVO.class
 com\yjlhz\doademo\controller\ProblemController.class
 com\yjlhz\doademo\dto\RequirementDTO.class
 com\yjlhz\doademo\controller\StudentController.class
@@ -49,6 +53,7 @@ com\yjlhz\doademo\controller\PlanController.class
 com\yjlhz\doademo\form\ObjectiveForm.class
 com\yjlhz\doademo\service\impl\MatrixServiceImpl.class
 com\yjlhz\doademo\controller\ObjectiveController.class
+com\yjlhz\doademo\mapper\RoleMapper.class
 com\yjlhz\doademo\form\PlanForm.class
 com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.class
 com\yjlhz\doademo\service\impl\ProblemObjectiveServiceImpl.class
