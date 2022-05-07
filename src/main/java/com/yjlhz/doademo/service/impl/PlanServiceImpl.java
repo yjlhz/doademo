@@ -118,4 +118,9 @@ public class PlanServiceImpl implements PlanService {
     public ResultVO queryPlanById(Integer planId) {
         return ResultVOUtil.success(planMapper.queryPlanById(planId));
     }
+
+    @Override
+    public ResultVO queryByMajorAndGrade(String major, Integer grade) {
+        return ResultVOUtil.success(planMapper.queryPlanByMajorAndGrade(grade, major));
+    }
 }

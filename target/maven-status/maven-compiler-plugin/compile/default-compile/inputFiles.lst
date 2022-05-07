@@ -2,6 +2,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\Pla
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ObjectiveServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\PlanService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ProblemRequirementServiceImpl.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\vo\StudentObjectiveVO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\MajorServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\MvcConfig.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\dto\StudentDTO.java
@@ -68,11 +69,13 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\CourseScore
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\CourseController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\CourseService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Requirement.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\PersonController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\ObjectiveForm.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\PlanController.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Matrix.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\ExamineServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\dto\MajorDTO.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\dto\UserDTO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\ExamineService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Student.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\controller\MatrixController.java
@@ -88,6 +91,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\User.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\CalculateService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\RoleMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Problem.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\vo\StudentProblemVO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\utils\ResultVOUtil.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Plan.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\PlanCourse.java
@@ -101,10 +105,12 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Examine.jav
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\ObjectiveMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\MajorListener.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\SwaggerConfig.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\impl\PersonServiceImpl.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\vo\UserVO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\MajorForm.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\mapper\PlanRequirementMapper.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\StudentListener.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\PersonService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\dto\CourseDTO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\form\CourseForm.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\StudentCourse.java
@@ -116,5 +122,7 @@ C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\pojo\Major.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\vo\CharVO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\config\LoginHandlerInterceptor.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\utils\ArithUtil.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\vo\PersonVO.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\StudentProblemService.java
 C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\service\PlanCourseService.java
+C:\Users\Lenovo\Desktop\doademo\src\main\java\com\yjlhz\doademo\listener\UserListener.java

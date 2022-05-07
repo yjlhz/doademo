@@ -22,4 +22,6 @@ public interface PlanService {
 
     ResultVO queryPlanById(Integer planId);
 
+    ResultVO queryByMajorAndGrade(String major,Integer grade);
+
 }
