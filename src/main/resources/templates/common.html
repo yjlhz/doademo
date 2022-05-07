@@ -92,7 +92,7 @@
                         课程达成度计算
                     </a>
                 </li>
-                <li class="nav-item" th:hidden="${session.role==2 or session.role==4}">
+                <li class="nav-item" th:hidden="${session.role==1 or session.role==2 or session.role==4}">
                     <a th:class="${active=='person.html'?'nav-link active':'nav-link'}" th:href="@{/person/toPerson}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2">
                             <line x1="18" y1="20" x2="18" y2="10"></line>

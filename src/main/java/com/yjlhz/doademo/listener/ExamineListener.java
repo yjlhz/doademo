@@ -155,6 +155,7 @@ public class ExamineListener extends AnalysisEventListener<Map<Integer, String>>
                     studentProblemMapper.addStudentProblem(studentProblem);
                 }
             }
+            problemIdx = 0;
         }
         System.out.println("planId:"+planId);
         System.out.println("courseId:"+courseId);

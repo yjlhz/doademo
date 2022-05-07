@@ -43,6 +43,7 @@ public class MatrixController {
             MatrixForm matrixForm = new MatrixForm();
             matrixForm.setProblemId(problemId[i]);
             matrixForm.setObjectiveId(objectiveId[i]);
+            matrixForms.add(matrixForm);
         }
         matrixService.addMatrix(matrixForms);
         List<Examine> examineList = (List<Examine>) examineService.queryExaminesByPlanCourseId(planId, courseId).getData();
