@@ -23,4 +23,8 @@
         delete from `user`
         where user_name = #{userName,jdbcType=VARCHAR}
     </delete>
+    <insert id="upload" parameterType="com.yjlhz.doademo.dto.UserDTO">
+    insert into `user` (user_name,password,role)
+    value (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{role,jdbcType=INTEGER})
+    </insert>
 </mapper>

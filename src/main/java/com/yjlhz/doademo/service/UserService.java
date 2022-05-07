@@ -2,6 +2,9 @@ package com.yjlhz.doademo.service;
 
 import com.yjlhz.doademo.pojo.User;
 import com.yjlhz.doademo.vo.ResultVO;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author lhz
@@ -23,5 +26,9 @@ public interface UserService {
     ResultVO deleteUser(String name);
 
     ResultVO updateUser(User user);
+
+    ResultVO uploadUser(MultipartFile multipartFile);
+
+    void exportUser(HttpServletResponse response);
 
 }

@@ -89,12 +89,14 @@ com\yjlhz\doademo\service\CalculateService.class
 com\yjlhz\doademo\service\impl\UserServiceImpl.class
 com\yjlhz\doademo\service\RequirementService.class
 com\yjlhz\doademo\dto\MajorDTO.class
+com\yjlhz\doademo\listener\UserListener.class
 com\yjlhz\doademo\mapper\PlanMapper.class
 com\yjlhz\doademo\pojo\Student.class
 com\yjlhz\doademo\service\PlanCourseService.class
 com\yjlhz\doademo\config\MybatisConfig$1.class
 com\yjlhz\doademo\service\ProblemObjectiveService.class
 com\yjlhz\doademo\mapper\PlanCourseMapper.class
+com\yjlhz\doademo\dto\UserDTO.class
 com\yjlhz\doademo\service\ProblemService.class
 com\yjlhz\doademo\service\UserService.class
 com\yjlhz\doademo\service\impl\StudentCourseServiceImpl.class

@@ -1,5 +1,7 @@
 package com.yjlhz.doademo.mapper;
 
+import com.yjlhz.doademo.dto.CourseDTO;
+import com.yjlhz.doademo.dto.UserDTO;
 import com.yjlhz.doademo.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -27,5 +29,7 @@ public interface UserMapper {
     int updateUser(User user);
 
     int deleteUser(String name);
+
+    int upload(UserDTO record);
 
 }
