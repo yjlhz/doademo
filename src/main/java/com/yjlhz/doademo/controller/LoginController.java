@@ -2,7 +2,9 @@ package com.yjlhz.doademo.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.yjlhz.doademo.form.CourseForm;
 import com.yjlhz.doademo.pojo.Course;
+import com.yjlhz.doademo.pojo.Requirement;
 import com.yjlhz.doademo.pojo.Role;
 import com.yjlhz.doademo.pojo.User;
 import com.yjlhz.doademo.service.RoleService;
@@ -115,6 +117,27 @@ public class LoginController {
             return "addUser";
         }
         userService.addUser(user);
+        return "redirect:/user/queryUserList";
+    }
+
+    @GetMapping("/toUpdate/{name}")
+    public String toUpdate(@PathVariable("name")String name,Model model){
+        User user = (User) userService.queryUserByName(name).getData();
+        List<Role> roleList = (List<Role>) roleService.queryRoleList().getData();
+        model.addAttribute("user",user);
+        model.addAttribute("roleList",roleList);
+        return "updateUser";
+    }
+
+    @PostMapping("/updateUser")
+    public String updateUserByName(User user){
+        userService.updateUser(user);
+        return "redirect:/user/queryUserList";
+    }
+
+    @GetMapping("/deleteUser/{name}")
+    public String deleteCourse(@PathVariable String name){
+        userService.deleteUser(name);
         return "redirect:/user/queryUserList";
     }
 
