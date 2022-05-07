@@ -45,4 +45,35 @@ public class UserServiceImpl implements UserService {
     public ResultVO queryUserList() {
         return ResultVOUtil.success(userMapper.queryUserList());
     }
+
+    @Override
+    public ResultVO addUser(User user) {
+        User user1 = userMapper.queryByName(user.getUserName());
+        if (user1 != null){
+            return ResultVOUtil.error(ResultEnum.USER_EXIST);
+        }
+        int res = userMapper.addUser(user);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
+
+    @Override
+    public ResultVO deleteUser(String name) {
+        int res = userMapper.deleteUser(name);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
+
+    @Override
+    public ResultVO updateUser(User user) {
+        int res = userMapper.updateUser(user);
+        if (res == -1){
+            return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
+        }
+        return ResultVOUtil.success();
+    }
 }

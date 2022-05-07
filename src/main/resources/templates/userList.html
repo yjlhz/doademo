@@ -83,13 +83,13 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="user:${userList}" th:hidden="${user.userName == '管理员'}">
+								<tr th:each="user:${userList}">
 									<td th:text="${user.userName}"></td>
 									<td th:text="${user.password}"></td>
 									<td th:text="${user.role}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/user/toUpdate/}+${user.userName}">编辑</a>
-<!--										<a class="btn btn-sm btn-danger" href="javascript:;" th:onclick="'deleteUser('+${user.userName}+')'">删除</a>-->
+										<a class="btn btn-sm btn-danger" th:href="@{/user/deleteUser/}+${user.userName}">删除</a>
 									</td>
 								</tr>
 							</tbody>

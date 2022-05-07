@@ -8,4 +8,19 @@
     <select id="queryUserList" resultType="User">
         select user_name,password,role from `user`
     </select>
+    <insert id="addUser" parameterType="User">
+        insert into `user` (user_name,password,role)
+        value (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{role,jdbcType=INTEGER})
+    </insert>
+    <update id="updateUser" parameterType="User">
+        update `user`
+        set user_name = #{userName,jdbcType=VARCHAR},
+        password= #{password,jdbcType=VARCHAR},
+        role = #{role,jdbcType=INTEGER}
+        where user_name = #{userName,jdbcType=VARCHAR}
+    </update>
+    <delete id="deleteUser" parameterType="java.lang.String">
+        delete from `user`
+        where user_name = #{userName,jdbcType=VARCHAR}
+    </delete>
 </mapper>

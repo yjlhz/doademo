@@ -1,5 +1,6 @@
 package com.yjlhz.doademo.service;
 
+import com.yjlhz.doademo.pojo.User;
 import com.yjlhz.doademo.vo.ResultVO;
 
 /**
@@ -16,5 +17,11 @@ public interface UserService {
     ResultVO queryUserByName(String name);
 
     ResultVO queryUserList();
+
+    ResultVO addUser(User user);
+
+    ResultVO deleteUser(String name);
+
+    ResultVO updateUser(User user);
 
 }

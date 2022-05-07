@@ -12,9 +12,7 @@ import com.yjlhz.doademo.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -98,6 +96,26 @@ public class LoginController {
             PageHelper.clearPage();
         }
         return "userList";
+    }
+
+    @GetMapping("/toAdd")
+    public String toAdd(Model model){
+        List<Role> roleList = (List<Role>) roleService.queryRoleList().getData();
+        model.addAttribute("roleList",roleList);
+        return "addUser";
+    }
+
+    @PostMapping("/addUser")
+    public String addUser(User user,Model model){
+        ResultVO resultVO = userService.addUser(user);
+        if (resultVO.getCode() == 7){
+            List<Role> roleList = (List<Role>) roleService.queryRoleList().getData();
+            model.addAttribute("roleList",roleList);
+            model.addAttribute("msg",resultVO.getMsg());
+            return "addUser";
+        }
+        userService.addUser(user);
+        return "redirect:/user/queryUserList";
     }
 
 }
