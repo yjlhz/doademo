@@ -252,4 +252,12 @@ public class ExamineController {
         return "redirect:/examine/queryExamineList";
     }
 
+    @GetMapping("/toAddWeight/{id}")
+    public String toAddWeight(@PathVariable Integer id,Model model){
+        Examine examine = (Examine) examineService.queryExamineById(id).getData();
+        List<Examine> examineList = (List<Examine>) examineService.queryExaminesByPlanCourseId(examine.getPlanId(), examine.getCourseId()).getData();
+        model.addAttribute("examineList",examineList);
+        return "addWeight";
+    }
+
 }

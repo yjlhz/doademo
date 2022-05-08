@@ -104,6 +104,7 @@
 									<td th:text="${examine.description}"></td>
 									<td th:text="${examine.weight}"></td>
 									<td>
+										<a class="btn btn-sm btn-primary" th:href="@{/examine/toAddWeight/}+${examine.id}">更改权重</a>
 										<a class="btn btn-sm btn-danger" href="javascript:;" th:onclick="'deleteExamine('+${examine.id}+')'">删除</a>
 									</td>
 								</tr>

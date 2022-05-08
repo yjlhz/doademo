@@ -23,4 +23,6 @@ public interface ExamineService {
 
     ResultVO deleteExamineById(Integer id);
 
+    ResultVO queryExamineById(Integer id);
+
 }

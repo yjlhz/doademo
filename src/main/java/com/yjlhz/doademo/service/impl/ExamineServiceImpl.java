@@ -96,4 +96,9 @@ public class ExamineServiceImpl implements ExamineService {
         }
         return ResultVOUtil.success();
     }
+
+    @Override
+    public ResultVO queryExamineById(Integer id) {
+        return ResultVOUtil.success(examineMapper.queryExamineById(id));
+    }
 }
