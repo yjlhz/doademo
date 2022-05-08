@@ -71,44 +71,49 @@ public class MatrixServiceImpl implements MatrixService {
     @Override
     public ResultVO addWeight(List<WeightForm> weightForms) {
         int res = -1;
-        List<Examine> examineList = null;
-        Map<Integer,Integer> map = new HashMap<>();
         for (WeightForm weightForm : weightForms){
             Examine examine = examineMapper.queryExamineById(weightForm.getExamineId());
-            examine.setWeight(weightForm.getWeight());//存储用户指定的权重
+            examine.setWeight(weightForm.getWeight());
             res = examineMapper.updateExamine(examine);
-            examineList = examineMapper.queryExamineByPlanCourseId(examine.getPlanId(),examine.getCourseId());
-            map.put(weightForm.getExamineId(),1);
         }
-        double nowWight = 0.0;
-        for (Examine examine : examineList){
-            if (map.getOrDefault(examine.getId(),0)==1){
-                nowWight = ArithUtil.add(nowWight,examine.getWeight());
-            }
-        }
-        nowWight = ArithUtil.sub(1,nowWight);
-        double sum = 0.0;
-        for (Examine examine : examineList){
-            if (map.getOrDefault(examine.getId(),0) != 1){
-                List<Problem> problemList = problemMapper.queryProblemByExamineId(examine.getId());
-                for (Problem problem : problemList){
-                    sum = ArithUtil.add(sum,problem.getMaxScore());
-                }
-            }
-        }
-        for (Examine examine : examineList){
-            if (map.getOrDefault(examine.getId(),0) != 1){
-                double examineSum = 0.0;
-                List<Problem> problemList = problemMapper.queryProblemByExamineId(examine.getId());
-                for (Problem problem : problemList){
-                    examineSum = ArithUtil.add(examineSum,problem.getMaxScore());
-                }
-                double weight = ArithUtil.div(examineSum,sum);
-                weight = ArithUtil.mul(weight,nowWight);
-                examine.setWeight(weight);
-                res = examineMapper.updateExamine(examine);
-            }
-        }
+//        List<Examine> examineList = null;
+//        Map<Integer,Integer> map = new HashMap<>();
+//        for (WeightForm weightForm : weightForms){
+//            Examine examine = examineMapper.queryExamineById(weightForm.getExamineId());
+//            examine.setWeight(weightForm.getWeight());//存储用户指定的权重
+//            res = examineMapper.updateExamine(examine);
+//            examineList = examineMapper.queryExamineByPlanCourseId(examine.getPlanId(),examine.getCourseId());
+//            map.put(weightForm.getExamineId(),1);
+//        }
+//        double nowWight = 0.0;
+//        for (Examine examine : examineList){
+//            if (map.getOrDefault(examine.getId(),0)==1){
+//                nowWight = ArithUtil.add(nowWight,examine.getWeight());
+//            }
+//        }
+//        nowWight = ArithUtil.sub(1,nowWight);
+//        double sum = 0.0;
+//        for (Examine examine : examineList){
+//            if (map.getOrDefault(examine.getId(),0) != 1){
+//                List<Problem> problemList = problemMapper.queryProblemByExamineId(examine.getId());
+//                for (Problem problem : problemList){
+//                    sum = ArithUtil.add(sum,problem.getMaxScore());
+//                }
+//            }
+//        }
+//        for (Examine examine : examineList){
+//            if (map.getOrDefault(examine.getId(),0) != 1){
+//                double examineSum = 0.0;
+//                List<Problem> problemList = problemMapper.queryProblemByExamineId(examine.getId());
+//                for (Problem problem : problemList){
+//                    examineSum = ArithUtil.add(examineSum,problem.getMaxScore());
+//                }
+//                double weight = ArithUtil.div(examineSum,sum);
+//                weight = ArithUtil.mul(weight,nowWight);
+//                examine.setWeight(weight);
+//                res = examineMapper.updateExamine(examine);
+//            }
+//        }
         if (res == -1){
             return ResultVOUtil.error(ResultEnum.SERVER_ERROR);
         }

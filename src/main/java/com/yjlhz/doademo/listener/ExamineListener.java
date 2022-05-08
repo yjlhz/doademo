@@ -93,6 +93,9 @@ public class ExamineListener extends AnalysisEventListener<Map<Integer, String>>
             }
             count++;
         }
+        //统计题目数
+        Map<Integer, String> integerStringMap = cachedDataList.get(4);
+        int proSize = integerStringMap.size();
         //添加考核数据
         Map<Integer,String> examineMap = cachedDataList.get(0);
         for (Integer key : examines){
@@ -108,6 +111,7 @@ public class ExamineListener extends AnalysisEventListener<Map<Integer, String>>
         //添加问题数据
         int index = 0,no = 1,maxIndex = 0;
         int examineId = -1;
+        String des = "";
         for (Map.Entry entry : examineMap.entrySet()){
             if (entry.getValue()==null && index > 3){
                 Problem problem = new Problem();
@@ -127,8 +131,20 @@ public class ExamineListener extends AnalysisEventListener<Map<Integer, String>>
                 problem.setAchieve(0.0);
                 examineId = examine.getId();
                 problemMapper.addProblem(problem);
+                des = description;
             }
             index++;
+        }
+        if (index != proSize-1){
+            for (int i = index;i<proSize;i++){
+                Examine examine = examineMapper.queryByPlanIdAndCourseIdAndDescription(planId,courseId,des);
+                Problem problem = new Problem();
+                problem.setExamineId(examine.getId());
+                problem.setProblemNo(no++);
+                problem.setMaxScore(Double.valueOf(maxScores.get(maxIndex++)));
+                problem.setAchieve(0.0);
+                problemMapper.addProblem(problem);
+            }
         }
         //获取问题id
         List<Integer> problemIds = new ArrayList<>();
