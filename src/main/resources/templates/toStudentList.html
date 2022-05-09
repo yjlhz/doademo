@@ -98,7 +98,6 @@
 								<th>班级</th>
 								<th>电话</th>
 								<th>邮箱</th>
-								<th>达成度</th>
 								<th>操作</th>
 							</tr>
 							</thead>
@@ -112,7 +111,6 @@
 								<td th:text="${student.classes}"></td>
 								<td th:text="${student.phone}"></td>
 								<td th:text="${student.email}"></td>
-								<td th:text="${student.achieve}"></td>
 								<td>
 									<a class="btn btn-sm btn-primary" th:href="@{/student/toDetail/}+${student.sNum}">查看详细</a>
 								</td>

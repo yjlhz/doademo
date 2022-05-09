@@ -194,4 +194,19 @@ public class LoginController {
         return "uploadUser";
     }
 
+    @GetMapping("/toChange")
+    public String toChange(HttpSession session,Model model){
+        String userName = (String) session.getAttribute("loginUser");
+        User user = (User) userService.queryUserByName(userName).getData();
+        model.addAttribute("user",user);
+        return "change";
+    }
+
+    @PostMapping("/change")
+    public String change(User user,Model model){
+        ResultVO resultVO = userService.updateUser(user);
+        model.addAttribute("msg",resultVO.getMsg());
+        return "changeSusses";
+    }
+
 }

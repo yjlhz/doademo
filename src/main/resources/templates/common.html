@@ -23,6 +23,15 @@
                         首页 <span class="sr-only">(current)</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a th:class="${active=='login.html'?'nav-link active':'nav-link'}" th:href="@{/user/toChange}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                        修改密码
+                    </a>
+                </li>
                 <li class="nav-item" th:hidden="${session.role==2 or session.role==3 or session.role==4}">
                     <a th:class="${active=='requirement.html'?'nav-link active':'nav-link'}" th:href="@{/requirement/queryRequirementList}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
