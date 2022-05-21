@@ -212,9 +212,8 @@ public class LoginController {
     @GetMapping("downloadHelper")
     void downloadHelper(HttpServletRequest request, HttpServletResponse response){
         try {
-            //TODO
             //获取model路径
-            String realPath = "C:/Users/Lenovo/Desktop/doademo/src/main/resources"+ File.separator + "userTemplate.xlsx";
+            String realPath = "C:/Users/Lenovo/Desktop/doademo/src/main/resources"+ File.separator + "用户手册.docx";
 
             // 以流的形式下载文件。
             InputStream fis = new BufferedInputStream(new FileInputStream(realPath));
@@ -229,7 +228,7 @@ public class LoginController {
             response.setContentType("multipart/form-data");
             response.setContentType("application/x-download");
             response.setHeader("Accept-Ranges", "bytes");
-            response.setHeader("Content-Disposition","attachment;fileName="+ URLEncoder.encode(URLEncoder.encode("userTemplate.xlsx","UTF-8"),"ISO-8859-1"));
+            response.setHeader("Content-Disposition","attachment;fileName="+ URLEncoder.encode(URLEncoder.encode("用户手册.docx","UTF-8"),"ISO-8859-1"));
 
             OutputStream outputStream = new BufferedOutputStream(response.getOutputStream());
             response.setContentType("application/octet-stream");
