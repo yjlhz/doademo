@@ -78,6 +78,8 @@ public class CalculateController {
         model.addAttribute("objectiveList",objectiveList);
         model.addAttribute("planList",planList);
         model.addAttribute("courseList",courseList);
+        model.addAttribute("planId",planId);
+        model.addAttribute("courseId",courseId);
         return "calculateResult";
     }
 

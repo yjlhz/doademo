@@ -70,6 +70,21 @@ public class ObjectiveController {
         return "addObjective";
     }
 
+    @GetMapping("/toAdd1")
+    public String toAdd1(Model model,
+                         @RequestParam(value = "planId")Integer planId,
+                         @RequestParam(value = "courseId")Integer courseId){
+        List<Plan> planList = (List<Plan>) planService.queryPlans().getData();
+        List<Course> courseList = (List<Course>) courseService.queryCourses().getData();
+        List<Requirement> requirementList = (List<Requirement>) requirementService.queryRequirements().getData();
+        model.addAttribute("planList",planList);
+        model.addAttribute("courseList",courseList);
+        model.addAttribute("requirementList",requirementList);
+        model.addAttribute("planId",planId);
+        model.addAttribute("courseId",courseId);
+        return "addObjective";
+    }
+
     @GetMapping("/toObjective")
     public String toObjective(Model model,
                               @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
@@ -147,6 +162,8 @@ public class ObjectiveController {
         model.addAttribute("objectiveList",objectiveList);
         model.addAttribute("planName",plan.getName());
         model.addAttribute("courseName",course.getCourseName());
+        model.addAttribute("planId",plan.getId());
+        model.addAttribute("courseId",course.getCourseId());
         return "queryObjectiveByPlanIdAndCourseId";
     }
 

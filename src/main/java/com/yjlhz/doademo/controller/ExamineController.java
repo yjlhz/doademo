@@ -133,6 +133,19 @@ public class ExamineController {
         return "uploadExamine";
     }
 
+    @GetMapping("/toUpload1")
+    public String toUpload1(Model model,
+                            @RequestParam(value = "planId")Integer planId,
+                            @RequestParam(value = "courseId")Integer courseId){
+        List<Plan> planList = (List<Plan>) planService.queryPlans().getData();
+        List<Course> courseList = (List<Course>) courseService.queryCourses().getData();
+        model.addAttribute("planList",planList);
+        model.addAttribute("courseList",courseList);
+        model.addAttribute("planId",planId);
+        model.addAttribute("courseId",courseId);
+        return "uploadExamine";
+    }
+
     @GetMapping("/queryExamineById")
     ResultVO queryExamineById(Integer planId,Integer courseId){
         return examineService.queryExaminesByPlanCourseId(planId, courseId);

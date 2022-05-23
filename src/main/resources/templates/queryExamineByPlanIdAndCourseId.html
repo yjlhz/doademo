@@ -72,17 +72,17 @@
 						<div class="form-group">
 							<label>请选择培养计划</label>
 							<select class="form-control" name="planId">
-								<option th:each="plan:${planList}" th:checked="${plan.id}==${planId}" th:text="${plan.id}+'、'+${plan.name}" th:value="${plan.id}"></option>
+								<option th:each="plan:${planList}" th:selected="${plan.id==planId}" th:text="${plan.id}+'、'+${plan.name}" th:value="${plan.id}"></option>
 							</select>
 							<label>请选择课程信息</label>
 							<select class="form-control" name="courseId">
-								<option th:each="course:${courseList}" th:checked="${course.courseId}==${courseId}" th:text="${course.courseId}+'、'+${course.courseName}" th:value="${course.courseId}"></option>
+								<option th:each="course:${courseList}" th:selected="${course.courseId==courseId}" th:text="${course.courseId}+'、'+${course.courseName}" th:value="${course.courseId}"></option>
 							</select>
 						</div>
 						<button type="submit" class="btn btn-primary">查询</button>
 					</form>
 					<h2 th:text="${planName}+'中'+${courseName}+'课程的考核信息'"></h2>
-					<a class="btn btn-sm btn-success" th:href="@{/examine/toUpload}">上传考核成绩</a>
+					<a class="btn btn-sm btn-success" th:href="@{/examine/toUpload1/(planId=${planId},courseId=${courseId})}">上传考核成绩</a>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
 							<thead>
@@ -103,6 +103,7 @@
 									<td th:text="${examine.description}"></td>
 									<td th:text="${examine.weight}"></td>
 									<td>
+										<a class="btn btn-sm btn-primary" th:href="@{/examine/toAddWeight/}+${examine.id}">更改权重</a>
 										<a class="btn btn-sm btn-danger" href="javascript:;" th:onclick="'deleteExamine('+${examine.id}+')'">删除</a>
 									</td>
 								</tr>
